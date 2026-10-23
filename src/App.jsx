@@ -11,7 +11,7 @@ function Header({ page }) {
   const [open, setOpen] = useState(false);
   useEffect(() => { setOpen(false); }, [page]);
   return <header className="header"><a href="/" aria-label="BJS India home"><img className="logo" src={A.imgBjsLogo041} alt="Bharatiya Jain Sanghatana" /></a><button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? '✕' : '☰'}</button><nav className={open ? 'navigation open' : 'navigation'} aria-label="Main navigation">
-    {[['About Us','/about'],['Our Work','/our-work'],['Impact','/#impact'],['Get Involved','/get-involved'],['Resources','/#resources'],['Contact','/get-involved#connect']].map(([label,href]) => <a key={label} href={href} aria-current={(page === 'about' && href === '/about') || (page === 'work' && href === '/our-work') || (page === 'involved' && href === '/get-involved') ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</a>)}<a className="donate" href="mailto:info@bjsindia.org?subject=Donation%20enquiry">Donate</a>
+    {[['About Us','/about'],['Our Work','/our-work'],['Impact','/#impact'],['Get Involved','/get-involved'],['Resources','/#resources'],['Updates','/#updates']].map(([label,href]) => <a key={label} href={href} aria-current={(page === 'about' && href === '/about') || (page === 'work' && href === '/our-work') || (page === 'involved' && href === '/get-involved') ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</a>)}<a className="donate" href="mailto:info@bjsindia.org?subject=Donation%20enquiry">Donate</a>
   </nav></header>;
 }
 
