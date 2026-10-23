@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { landingAssets as L, aboutAssets as B } from './approvedAssets';
 import { subscribeNewsletter } from './api';
 import ImpactSection from './ImpactSection';
