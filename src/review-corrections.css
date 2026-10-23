@@ -55,6 +55,15 @@
     height:124.43%;top:-24.43%;
   }
   .sp-presence-map { left:auto;right:var(--sp-gutter); }
+  .sp-footer-landing .sp-footer-inner {
+    grid-template-columns:20% minmax(0,1fr) 17%;
+    gap:3.4%;
+    padding-bottom:calc(70 * var(--sp-unit));
+  }
+  .sp-footer-landing .sp-footer-inner .sp-footer-columns {
+    grid-template-columns:minmax(0,154fr) minmax(0,163fr) minmax(0,172fr) minmax(0,163fr);
+  }
+  .sp-footer-landing .sp-footer-contact h3 { font-size:calc(18 * var(--sp-unit)); }
 }
 .sp-hero-mosaic .sp-mosaic-tile > img {
   inset: 0;
