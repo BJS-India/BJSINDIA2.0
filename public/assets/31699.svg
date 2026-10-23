@@ -1,0 +1,36 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="384.528" height="391.689" viewBox="0 0 384.528 391.689" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="circle">
+<g id="Group" opacity="0.8">
+<g id="Vector" filter="url(#filter0_f_0_57)">
+<path d="M192.264 380.689C292.374 380.689 373.528 297.931 373.528 195.845C373.528 93.7577 292.374 11 192.264 11C92.1547 11 11 93.7577 11 195.845C11 297.931 92.1547 380.689 192.264 380.689Z" fill="#D0BFB4"/>
+</g>
+<path id="Vector_2" d="M187.791 368.878C287.339 368.878 368.039 286.585 368.039 185.07C368.039 83.5555 287.339 1.26172 187.791 1.26172C88.2428 1.26172 7.54297 83.5555 7.54297 185.07C7.54297 286.585 88.2428 368.878 187.791 368.878Z" fill="#686868"/>
+</g>
+<path id="Vector_3" d="M187.792 369.916C287.901 369.916 369.056 287.158 369.056 185.071C369.056 82.9844 287.901 0.226725 187.792 0.226725C87.6823 0.226725 6.5275 82.9844 6.5275 185.071C6.5275 287.158 87.6823 369.916 187.792 369.916Z" fill="url(#paint0_linear_0_57)"/>
+<g id="Vector_4">
+<use xlink:href="#stroke0_0_57" fill="url(#paint1_linear_0_57)"/>
+<mask id="stroke1_0_57" fill="white">
+<use xlink:href="#stroke0_0_57"/>
+</mask>
+<path d="M361.83 185.071C361.83 283.087 283.911 362.545 187.794 362.545C91.6763 362.545 13.7578 283.087 13.7578 185.071C13.7578 87.0554 91.6763 7.59782 187.794 7.59782C283.911 7.59782 361.83 87.0554 361.83 185.071Z" stroke-width="2" stroke="#E9E9E9" mask="url(#stroke1_0_57)"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_0_57" x="0" y="0" width="384.528" height="391.689" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="5.5" result="effect1_foregroundBlur_0_57"/>
+</filter>
+<linearGradient id="paint0_linear_0_57" x1="187.819" y1="0.254215" x2="187.805" y2="369.948" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="0.2253" stop-color="#F6F7F7"/>
+<stop offset="0.5884" stop-color="#DFE0E1"/>
+<stop offset="1" stop-color="#BCBEC0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_57" x1="96.6255" y1="23.0872" x2="294.947" y2="333.863" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FAFAFA"/>
+<stop offset="1" stop-color="#EBEBEB"/>
+</linearGradient>
+<path id="stroke0_0_57" d="M187.794 362.545C283.911 362.545 361.83 283.087 361.83 185.071C361.83 87.0554 283.911 7.59782 187.794 7.59782C91.6763 7.59782 13.7578 87.0554 13.7578 185.071C13.7578 283.087 91.6763 362.545 187.794 362.545Z"/>
+</defs>
+</svg>

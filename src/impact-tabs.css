@@ -1,0 +1,21 @@
+.sp-impact-tabs [role=tablist] { min-width:0; }
+.sp-impact-tabs [role=tab] { flex:1;min-width:0;width:auto!important; }
+.sp-impact-tabs [role=tab][aria-selected=true] { background:var(--impact-background);color:var(--impact-color); }
+.sp-impact-metric { background:var(--impact-background); }
+.sp-impact-metric > strong { color:var(--impact-color); }
+.sp-impact-metric > p { white-space:pre-line;color:#000; }
+.sp-impact-export { position:relative;display:block; }
+.sp-impact-export > .sp-impact-export-image { position:absolute;inset:0;width:100%;height:100%;object-fit:fill; }
+.sp-impact-tabs [role=tab]:focus-visible { outline:2px solid var(--impact-color);outline-offset:2px; }
+@media(min-width:1024px) {
+  .sp-impact-metrics { grid-template-columns:repeat(var(--impact-count),calc(160 * var(--sp-unit)));justify-content:center; }
+  .sp-impact-tabs [role=tab][aria-selected=true] { font-size:calc(14 * var(--sp-unit)); }
+  .sp-impact-metric > p { font-size:calc(12 * var(--sp-unit));line-height:calc(14 * var(--sp-unit)); }
+}
+@media(min-width:601px) and (max-width:1023px) {
+  .sp-impact-metrics { grid-template-columns:repeat(var(--impact-count),minmax(0,160px));justify-content:center; }
+}
+@media(max-width:600px) {
+  .sp-impact-tabs [role=tab] { flex:1;font-size:8px;padding:6px 3px;white-space:normal; }
+  .sp-impact-metrics { grid-template-columns:repeat(var(--impact-count),150px); }
+}
