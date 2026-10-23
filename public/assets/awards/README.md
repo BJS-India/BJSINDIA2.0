@@ -2,6 +2,8 @@
 
 Use the filename listed below, with `.jpg`, `.jpeg`, `.png`, or `.webp` as the extension. Uppercase extensions such as `.JPG` also work. Images are detected automatically; refresh after adding files. Existing matching photos are retained for awards without a new image, and other awards display a neutral image area. Rebuild and redeploy to add photos to the hosted site.
 
+TIFF (`.tif` / `.tiff`) originals need a PNG or JPG copy for the website. The WANGO award TIFF has a matching PNG copy; keep the original for archival use.
+
 | Year | Award | Filename |
 | --- | --- | --- |
 | 1986 | Pune Yuva Gaurav Puraskar | 1986-pune-yuva-gaurav-puraskar.png |

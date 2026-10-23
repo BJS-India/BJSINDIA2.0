@@ -8,7 +8,7 @@ export const involvementCards=[
   {id:'collaborate',title:'Collaborate With Us',tagline:'Collaborate for Greater Impact.',description:'Bring your expertise, resources or ideas to BJS and work together to address shared social challenges.',action:'Collaborate With Us',href:enquiry('Collaborate with BJS')},
   {id:'fellowship',title:'Fellowship',tagline:'Learn Through Action. Grow With Purpose.',description:'Develop your skills, gain practical experience and contribute to social development through fellowship opportunities at BJS.',action:'Submit Your Profile',href:enquiry('Fellowship opportunities at BJS')},
   {id:'donate',title:'Donate',tagline:'Help Meaningful Work Go Further.',description:'Support initiatives that strengthen families, empower communities and respond to pressing social needs.',action:'Donate Now',href:enquiry('Donation enquiry')},
-  {id:'contact-us',title:'Contact Us',tagline:'Let’s Start a Conversation.',description:'Connect with our team for enquiries, programme information or opportunities to contribute.',action:'Get In Touch',href:'#connect'},
+  {id:'contact-us',title:'Contact Us',tagline:'Let’s Start a Conversation.',description:'Connect with our team for enquiries, program information or opportunities to contribute.',action:'Get In Touch',href:'#connect'},
 ].map(card=>({...card,image:assets.get(card.id),icon:assets.get(`icon-${card.id}`)}));
 
 export const contactIcons={phone:assets.get('icon-phone'),email:assets.get('icon-email'),location:assets.get('icon-location')};

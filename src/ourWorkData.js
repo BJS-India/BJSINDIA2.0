@@ -13,9 +13,9 @@ export const focusAreas=[
 ].map((area,index)=>({...area,number:String(index+1).padStart(2,'0'),image:images.get(`focus-${index+1}-${area.id}`)}));
 
 export const programmeBaskets=[
-  {id:'prarabdh',name:'Prarabdh',description:'Foundation Programmes',color:'#73e57b'},
-  {id:'pratibimb',name:'Pratibimb',description:'Inception Programmes',color:'#ffdb34'},
-  {id:'pravah',name:'Pravah',description:'Infusion Programmes',color:'#ff8b58'},
-  {id:'parikalpana',name:'Parikalpana',description:'National Programmes',color:'#65b3ff'},
-  {id:'prabodhi',name:'Prabodhi',description:'Elevation Programmes',color:'#c68cff'},
+  {id:'prarabdh',name:'Prarabdh',description:'Foundation Programs',color:'#73e57b'},
+  {id:'pratibimb',name:'Pratibimb',description:'Inception Programs',color:'#ffdb34'},
+  {id:'pravah',name:'Pravah',description:'Infusion Programs',color:'#ff8b58'},
+  {id:'parikalpana',name:'Parikalpana',description:'National Programs',color:'#65b3ff'},
+  {id:'prabodhi',name:'Prabodhi',description:'Elevation Programs',color:'#c68cff'},
 ].map(basket=>({...basket,image:images.get(`basket-${basket.id}`)}));
