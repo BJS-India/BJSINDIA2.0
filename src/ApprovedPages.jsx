@@ -47,9 +47,15 @@ const coverGeometry = [
   ['42.44% 0 0 78.04%','hypot(58.6677cqw, 25.7692cqh)','hypot(-41.3323cqw, 74.2308cqh)','rotate(26.34deg) skewX(0.05deg)'],
 ];
 function Newsletter() {
-  const [contact,setContact] = useState(''); const [status,setStatus] = useState(''); const [busy,setBusy] = useState(false);
-  async function submit(e) { e.preventDefault(); const value=contact.trim(); if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)&&!/^\+?[\d\s()-]{8,20}$/.test(value)){setStatus('Enter a valid email address or WhatsApp number.');return;} setBusy(true);setStatus('');try{const result=await subscribeNewsletter(value);setStatus(result.configured?'Thank you for subscribing to BJS Darpan.':'Subscriptions will be available soon. Please contact info@bjsindia.org to receive BJS Darpan.');if(result.configured)setContact('');}catch(error){setStatus(error.message);}finally{setBusy(false);} }
-  return <section className="sp-newsletter" id="resources"><div className="sp-container"><div className="sp-darpan-art" aria-label="BJS Darpan newsletter editions">{darpanCovers.map((src,i)=><span className="sp-darpan-slot" key={src} style={{inset:coverGeometry[i][0]}}><span className="sp-darpan-cover" style={{width:coverGeometry[i][1],height:coverGeometry[i][2],transform:coverGeometry[i][3]}}><img src={src} alt={`BJS Darpan edition ${i+1}`} /></span></span>)}</div><div className="sp-newsletter-content"><h2>Subscribe Our Newsletter <strong>BJS Darpan</strong></h2><p>Stay connected with the latest updates, initiatives, stories and impact from BJS.</p><form onSubmit={submit}><label className="sr-only" htmlFor="sp-newsletter-contact">Email or WhatsApp number</label><input id="sp-newsletter-contact" required value={contact} onChange={e=>setContact(e.target.value)} placeholder="Enter your E-Mail or WhatsApp Number"/><button disabled={busy}>{busy?'SUBSCRIBING⬦':'SUBSCRIBE'}</button></form><p className="sp-form-status" role="status">{status}</p></div></div></section>;
+  const [contact, setContact] = useState(''); const [status, setStatus] = useState(''); const [busy, setBusy] = useState(false);
+  async function submit(e) { e.preventDefault(); const value = contact.trim(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && !/^\+?[\d\s()-]{8,20}$/.test(value)) { setStatus('Enter a valid email address or WhatsApp number.'); return; } setBusy(true); setStatus(''); try { const result = await subscribeNewsletter(value); setStatus(result.configured ? 'Thank you for subscribing to BJS Darpan.' : 'Subscriptions will be available soon. Please contact info@bjsindia.org to receive BJS Darpan.'); if (result.configured) setContact(''); } catch (error) { setStatus(error.message); } finally { setBusy(false); } }
+  return <section className="sp-newsletter" id="resources"><div className="sp-container">
+      <img
+        src="/assets/DarpanGif.gif"
+        alt="BJS Darpan newsletter editions"
+        className="sp-darpan-gif"
+      />
+      <div className="sp-newsletter-content"><h2>Subscribe Our Newsletter <strong>BJS Darpan</strong></h2><p>Stay connected with the latest updates, initiatives, stories and impact from BJS.</p><form onSubmit={submit}><label className="sr-only" htmlFor="sp-newsletter-contact">Email or WhatsApp number</label><input id="sp-newsletter-contact" required value={contact} onChange={e => setContact(e.target.value)} placeholder="Enter your E-Mail or WhatsApp Number" /><button disabled={busy}>{busy ? 'SUBSCRIBING⬦' : 'SUBSCRIBE'}</button></form><p className="sp-form-status" role="status">{status}</p></div></div></section>;
 }
 
 const programmes = [
@@ -66,9 +72,14 @@ const programmes = [
   {title:'CCB',image:'/assets/ccb-card.png',circleColor:'#f3ebde',icon:'/assets/ccb-logo.svg',copy:'Creating opportunities for inclusive and sustainable growth.',crop:{width:'100%',height:'216.7513%',left:'0',top:'0'}},
 ];
 function Programmes() {
- const ref=useRef(null);
- const scroll = direction => { const track=ref.current; if(track)track.scrollBy({left:direction*(track.firstElementChild.getBoundingClientRect().width+parseFloat(getComputedStyle(track).gap)),behavior:"smooth"}); };
- return <section className="sp-programmes" id="programs"><div className="sp-container sp-section-bar"><Kicker>Our Programmes</Kicker><Arrows previous={()=>scroll(-1)} next={()=>scroll(1)}/></div><div className="sp-programme-track" ref={ref}>{programmes.map(p=><article className="sp-programme-card" key={p.title}><div className="sp-programme-photo"><img src={p.image} alt={`${p.title} initiative`} style={p.crop}/></div><div className="sp-programme-symbol" style={p.circleColor ? {backgroundColor:p.circleColor,borderRadius:"50%"} : undefined}>{p.circle && <img src={p.circle} alt=""/>}<span><img src={p.icon} alt=""/></span></div><div className="sp-programme-body"><h3>{p.title}{p.subtitle && <> <small>{p.subtitle}</small></>}</h3><p>{p.copy}</p><a href="/our-work#program-basket">Learn More <img src={L.imgGroup5998} alt=""/></a></div></article>)}</div><div className="sp-container"><div className="sp-programme-note"><p>From water and environment to education, health and social development<br/>our initiatives are designed to create sustainable and inclusive change</p><a href="/our-work">View All Programmes <img src={L.imgGroup5998} alt=""/></a></div></div></section>;
+  const ref = useRef(null);
+  const scroll = direction => { const track = ref.current; if (track) track.scrollBy({ left: direction * (track.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap)), behavior: "smooth" }); };
+  return <section className="sp-programmes" id="programs"><div className="sp-container sp-section-bar"><Kicker>Our Programmes</Kicker><Arrows previous={() => scroll(-1)} next={() => scroll(1)} /></div><div className="sp-programme-track" ref={ref}>{programmes.map(p => <article className="sp-programme-card" key={p.title}><div className="sp-programme-photo"><img src={p.image} alt={`${p.title} initiative`} style={{
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center',
+  }}/></div><div className="sp-programme-symbol" style={p.circleColor ? { backgroundColor: p.circleColor, borderRadius: "50%" } : undefined}>{p.circle && <img src={p.circle} alt="" />}<span><img src={p.icon} alt="" /></span></div><div className="sp-programme-body"><h3>{p.title}{p.subtitle && <> <small>{p.subtitle}</small></>}</h3><p>{p.copy}</p><a href="/our-work#program-basket">Learn More <img src={L.imgGroup5998} alt="" /></a></div></article>)}</div><div className="sp-container"><div className="sp-programme-note"><p>From water and environment to education, health and social development<br />our initiatives are designed to create sustainable and inclusive change</p><a href="/our-work">View All Programmes <img src={L.imgGroup5998} alt="" /></a></div></div></section>;
 }
 
 function Impact() {
