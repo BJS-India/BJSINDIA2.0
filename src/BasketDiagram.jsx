@@ -1,3 +1,4 @@
+import React from 'react';
 import { workAssets as W } from './pageAssets';
 import { diagramPlacements } from './diagramData';
 

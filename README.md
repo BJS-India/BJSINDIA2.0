@@ -50,6 +50,8 @@ Configure the production web server to serve `index.html` for application routes
 
 ## Content still needed before launch
 
+- Get Involved is available at `/get-involved`. Add the six original card photos using `public/assets/get-involved/README.md`. Original icon assets can also replace the inline icons automatically. Application, collaboration and donation actions use email enquiries until their approved destinations are provided; the contact card scrolls to the contact panel.
+
 - Our Work follows the supplied frame `1797:1419`. Its seven focus-area cutouts and five programme-card images are pending original assets. Add them using the filename guide in `public/assets/our-work/README.md`; PNG, JPG, JPEG, WebP and SVG files are detected automatically. The existing programme basket SVG diagram is reused.
 
 - The approved landing design contains repeated testimonial names, grey video slots and play artwork. These have been preserved for content review.

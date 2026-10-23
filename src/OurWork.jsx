@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import BasketDiagram from './BasketDiagram';
 import {focusAreas,programmeBaskets} from './ourWorkData';
 import './our-work.css';

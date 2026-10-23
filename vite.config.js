@@ -12,6 +12,7 @@ const projectId = createHash('sha256')
   .slice(0, 16);
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react({ jsxRuntime: 'automatic' })],
+  esbuild: { jsx: 'automatic' },
   cacheDir: join(tmpdir(), 'bjs-vite', `${projectId}-${process.platform}-${process.arch}`),
 });

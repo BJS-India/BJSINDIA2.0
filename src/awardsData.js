@@ -133,11 +133,10 @@ const records = [
   }
 ];
 
-const photoFiles = import.meta.glob('/public/assets/awards/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', {
-  eager:true,query:'?url',import:'default',
-});
-const photosById = new Map(Object.entries(photoFiles).map(([path,url])=>[
-  path.split('/').pop().replace(/\.[^.]+$/,'').toLowerCase(),url,
+// Discover filenames only: public assets must be served from /assets, not imported.
+const photoFiles = Object.keys(import.meta.glob('/public/assets/awards/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}'));
+const photosById = new Map(photoFiles.map(path=>[
+  path.split('/').pop().replace(/\.[^.]+$/,'').toLowerCase(),path.replace(/^\/public\//,'/'),
 ]));
 
 export const awards = records.map(award=>({

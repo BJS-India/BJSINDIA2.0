@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { aboutAssets as B, workAssets as W } from './pageAssets';
 import { Button, PresenceStats, CarouselArrows } from './App';
 import { diagramPlacements } from './diagramData';

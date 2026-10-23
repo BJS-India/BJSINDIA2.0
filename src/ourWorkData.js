@@ -1,5 +1,6 @@
-const files=import.meta.glob('/public/assets/our-work/*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP}',{eager:true,query:'?url',import:'default'});
-const images=new Map(Object.entries(files).map(([path,url])=>[path.split('/').pop().replace(/\.[^.]+$/,'').toLowerCase(),url]));
+// Read filename keys without generating imports for files in public/.
+const files=Object.keys(import.meta.glob('/public/assets/our-work/*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP}'));
+const images=new Map(files.map(path=>[path.split('/').pop().replace(/\.[^.]+$/,'').toLowerCase(),path.replace(/^\/public\//,'/')]));
 
 export const focusAreas=[
   {id:'family',title:'Family & Relationships',description:'Strengthening family bonds through open communication, guidance and meaningful connections that help families navigate challenges together.'},

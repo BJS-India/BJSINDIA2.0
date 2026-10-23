@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as A from './assets';
 import OurWork from './OurWork';
+import GetInvolved from './GetInvolved';
 import { subscribeNewsletter } from './api';
 import { ApprovedLanding, ApprovedAbout, ApprovedFooter } from './ApprovedPages';
 
@@ -10,7 +11,7 @@ function Header({ page }) {
   const [open, setOpen] = useState(false);
   useEffect(() => { setOpen(false); }, [page]);
   return <header className="header"><a href="/" aria-label="BJS India home"><img className="logo" src={A.imgBjsLogo041} alt="Bharatiya Jain Sanghatana" /></a><button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? '✕' : '☰'}</button><nav className={open ? 'navigation open' : 'navigation'} aria-label="Main navigation">
-    {[['About Us','/about'],['Our Work','/our-work'],['Impact','/#impact'],['Get Involved','/#get-involved'],['Resources','/#resources'],['Contact','#contact']].map(([label,href]) => href==='/our-work' ? <span key={label} role="link" aria-disabled="true" className="nav-disabled">{label}</span> : <a key={label} href={href} aria-current={page === 'about' && href === '/about' ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</a>)}<a className="donate" href="mailto:info@bjsindia.org?subject=Donation%20enquiry">Donate</a>
+    {[['About Us','/about'],['Our Work','/our-work'],['Impact','/#impact'],['Get Involved','/get-involved'],['Resources','/#resources'],['Contact','/get-involved#connect']].map(([label,href]) => <a key={label} href={href} aria-current={(page === 'about' && href === '/about') || (page === 'work' && href === '/our-work') || (page === 'involved' && href === '/get-involved') ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</a>)}<a className="donate" href="mailto:info@bjsindia.org?subject=Donation%20enquiry">Donate</a>
   </nav></header>;
 }
 
@@ -67,7 +68,7 @@ function Landing() {
 export default function App() {
  const [pathname,setPathname]=useState(window.location.pathname);
  useEffect(()=>{ const navigate=(e)=>{const a=e.target.closest('a');if(!a || e.defaultPrevented || e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target || a.hasAttribute('download'))return;const url=new URL(a.href,window.location.href);if(url.origin!==window.location.origin)return;e.preventDefault();window.history.pushState({},'',url);setPathname(url.pathname);requestAnimationFrame(()=>{if(url.hash)document.getElementById(url.hash.slice(1))?.scrollIntoView({behavior:'smooth'});else window.scrollTo(0,0);});};const pop=()=>{setPathname(window.location.pathname);};document.addEventListener('click',navigate);window.addEventListener('popstate',pop);return()=>{document.removeEventListener('click',navigate);window.removeEventListener('popstate',pop);};},[]);
- const page=pathname.replace(/\/$/,'')==='/about'?'about':pathname.replace(/\/$/,'')==='/our-work'?'work':'home';
- useEffect(()=>{document.title= `${page==='about'?'About Us':page==='work'?'Our Work':'Impact That Brings India Together'} | BJS India`;},[page]);
- return <><a href="#main" className="skip-link">Skip to content</a><Header page={page}/><main id="main">{page==='about'?<ApprovedAbout/>:page==='work'?<OurWork/>:<ApprovedLanding/>}</main><ApprovedFooter landing={page!=='about'}/></>;
+ const page=pathname.replace(/\/$/,'')==='/about'?'about':pathname.replace(/\/$/,'')==='/our-work'?'work':pathname.replace(/\/$/,'')==='/get-involved'?'involved':'home';
+ useEffect(()=>{document.title= `${page==='about'?'About Us':page==='work'?'Our Work':page==='involved'?'Get Involved':'Impact That Brings India Together'} | BJS India`;},[page]);
+ return <><a href="#main" className="skip-link">Skip to content</a><Header page={page}/><main id="main">{page==='about'?<ApprovedAbout/>:page==='work'?<OurWork/>:page==='involved'?<GetInvolved/>:<ApprovedLanding/>}</main><ApprovedFooter landing={page!=='about'}/></>;
 }
