@@ -52,7 +52,7 @@ function Newsletter() {
 const programmes = [
   {title:'Blue Roots',image:L.imgRectangle17,circle:L.imgEllipse1,icon:L.imgLayerX00201,copy:'Rejuvenating water bodies and strengthening water security across regions.',theme:'blue',crop:{width:'131.73%',height:'135.53%',left:'-10.08%',top:'-34.94%'}},
   {title:'WERC',image:L.imgRectangle18,circle:L.imgEllipse2,icon:L.imgGroup6028,copy:'Empowering individuals through learning and skill development.',theme:'gold',crop:{width:'136.33%',height:'118.34%',left:'-14.42%',top:'-0.13%'}},
-  {title:'Disaster Response',image:L.imgRectangle19,circle:L.imgEllipse3,icon:'/assets/bced9.svg',copy:'Supporting healthier and stronger communities for a brighter future.',theme:'pink',crop:{width:'108.23%',height:'105.58%',left:'-4.2%',top:'-3.05%'}},
+  {title:'Disaster Response',image:L.imgRectangle19,circle:L.imgEllipse3,icon:'/assets/disaster-response-logo.png',copy:'Supporting healthier and stronger communities for a brighter future.',theme:'pink',crop:{width:'108.23%',height:'105.58%',left:'-4.2%',top:'-3.05%'}},
   {title:'Manthan',image:L.imgRectangle20,circle:L.imgEllipse4,icon:'/assets/3a259.svg',copy:'Creating opportunities for inclusive and sustainable growth.',theme:'peach',crop:{width:'165.05%',height:'143.26%',left:'-32.49%',top:'-17.35%'}},
   {title:'Plastic Surgery',image:L.imgRectangle21,circle:L.imgEllipse5,icon:'/assets/fb768.svg',copy:'Creating opportunities for inclusive and sustainable growth.',theme:'pink',crop:{width:'174.66%',height:'179.71%',left:'-37.3%',top:'-39.93%'}},
   {"title":"Smart Girl","image":"/assets/53965.png","circle":"/assets/73acf.svg","icon":"/assets/16c29.svg","copy":"Creating opportunities for inclusive and sustainable growth."},
