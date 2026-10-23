@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as A from './assets';
-import { About, OurWork } from './Pages';
+import OurWork from './OurWork';
 import { subscribeNewsletter } from './api';
 import { ApprovedLanding, ApprovedAbout, ApprovedFooter } from './ApprovedPages';
 
@@ -69,5 +69,5 @@ export default function App() {
  useEffect(()=>{ const navigate=(e)=>{const a=e.target.closest('a');if(!a || e.defaultPrevented || e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target || a.hasAttribute('download'))return;const url=new URL(a.href,window.location.href);if(url.origin!==window.location.origin)return;e.preventDefault();window.history.pushState({},'',url);setPathname(url.pathname);requestAnimationFrame(()=>{if(url.hash)document.getElementById(url.hash.slice(1))?.scrollIntoView({behavior:'smooth'});else window.scrollTo(0,0);});};const pop=()=>{setPathname(window.location.pathname);};document.addEventListener('click',navigate);window.addEventListener('popstate',pop);return()=>{document.removeEventListener('click',navigate);window.removeEventListener('popstate',pop);};},[]);
  const page=pathname.replace(/\/$/,'')==='/about'?'about':pathname.replace(/\/$/,'')==='/our-work'?'work':'home';
  useEffect(()=>{document.title= `${page==='about'?'About Us':page==='work'?'Our Work':'Impact That Brings India Together'} | BJS India`;},[page]);
- return <><a href="#main" className="skip-link">Skip to content</a><Header page={page}/><main id="main">{page==='about'?<ApprovedAbout/>:page==='work'?<OurWork/>:<ApprovedLanding/>}</main>{page==='work'?<Footer detailed/>:<ApprovedFooter landing={page==='home'}/>}</>;
+ return <><a href="#main" className="skip-link">Skip to content</a><Header page={page}/><main id="main">{page==='about'?<ApprovedAbout/>:page==='work'?<OurWork/>:<ApprovedLanding/>}</main><ApprovedFooter landing={page!=='about'}/></>;
 }

@@ -50,6 +50,8 @@ Configure the production web server to serve `index.html` for application routes
 
 ## Content still needed before launch
 
+- Our Work follows the supplied frame `1797:1419`. Its seven focus-area cutouts and five programme-card images are pending original assets. Add them using the filename guide in `public/assets/our-work/README.md`; PNG, JPG, JPEG, WebP and SVG files are detected automatically. The existing programme basket SVG diagram is reused.
+
 - The approved landing design contains repeated testimonial names, grey video slots and play artwork. These have been preserved for content review.
 - Awards & Recognition contains 16 awards from the supplied CSV, ordered from 1986 to 2020. Add JPG, JPEG, PNG, or WebP photos using the filename stems listed in `public/assets/awards/README.md`; uppercase extensions work too. Photos are detected automatically, existing matching photos remain as fallbacks, and missing photos leave a neutral image area. Award content is maintained in `src/awardsData.js`. The BJS Journey retains its original seven milestone years and default 1993 Shanti Yatra card.
 - Impact statistics were supplied for Blue Roots. Other tabs show the programme introduction and a link until their approved impact data is supplied.
