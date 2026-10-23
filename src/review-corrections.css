@@ -1,4 +1,6 @@
 /* Corrections from the final Figma review. */
+.navigation .nav-disabled { opacity:.5;cursor:not-allowed;text-decoration:none; }
+@media(max-width:950px) { .navigation .nav-disabled { padding:12px; } }
 @media(min-width:1024px) {
   .sp-header,.approved-landing,.sp-footer-landing {
     --sp-gutter:max(48px,calc((100vw - 1536px)/2));
