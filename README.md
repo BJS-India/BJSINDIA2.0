@@ -51,7 +51,7 @@ Configure the production web server to serve `index.html` for application routes
 ## Content still needed before launch
 
 - The approved landing design contains repeated testimonial names, grey video slots and play artwork. These have been preserved for content review.
-- Journey entries beyond the supplied Shanti Yatra card need approved milestone content. Selecting those years currently displays an information placeholder rather than inventing historical details.
+- Awards & Recognition contains 16 awards from the supplied CSV, ordered from 1986 to 2020. Add JPG, JPEG, PNG, or WebP photos using the filename stems listed in `public/assets/awards/README.md`; uppercase extensions work too. Photos are detected automatically, existing matching photos remain as fallbacks, and missing photos leave a neutral image area. Award content is maintained in `src/awardsData.js`. The BJS Journey retains its original seven milestone years and default 1993 Shanti Yatra card.
 - Impact statistics were supplied for Blue Roots. Other tabs show the programme introduction and a link until their approved impact data is supplied.
 - Supply video URLs to enable video playback. Media controls currently browse the supplied thumbnails.
 - Supply official donation, social-profile, partner and programme-detail URLs. Donation and information enquiries currently use the supplied BJS email address. Social icons are displayed without invented profile links.
