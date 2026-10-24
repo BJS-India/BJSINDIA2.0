@@ -4,35 +4,175 @@ import { Button, PresenceStats, CarouselArrows } from './App';
 import { diagramPlacements } from './diagramData';
 
 const journey = [
-  ['1985','BJS is established','Mobilising communities for social reform.'],
-  ['1991','Shanti Yatra','Peace March from Pune to Nagpur.'],
-  ['1993','Disaster relief','Supporting communities in times of need.'],
-  ['2003','Community development','Strengthening families and communities.'],
-  ['2013','Water conservation','Responding to drought and water scarcity.'],
-  ['2020','COVID-19 response','Supporting communities through the pandemic.'],
-  ['2022','A growing movement','Expanding collective action across India.'],
+  ['1985', 'BJS is established', 'Mobilising communities for social reform.'],
+  ['1991', 'Shanti Yatra', 'Peace March from Pune to Nagpur.'],
+  ['1993', 'Disaster relief', 'Supporting communities in times of need.'],
+  ['2003', 'Community development', 'Strengthening families and communities.'],
+  ['2013', 'Water conservation', 'Responding to drought and water scarcity.'],
+  ['2020', 'COVID-19 response', 'Supporting communities through the pandemic.'],
+  ['2022', 'A growing movement', 'Expanding collective action across India.'],
 ];
 const awards = [
-  ['1992','National Youth Award','Awarded by the then President Shri Shankar Dayal Ji Sharma',B.img36AwardsShankarDyalSharma21],
-  ['2004','Giants Recognition Award','Awarded by Cine Actor Mr Amitabh Bachchan',B.img2005SgmGiantsAward22],
-  ['2005','WANGO','World Association of NGOs. Awarded by Mr Taj Hamad, Chairman of WANGO',B.img2005WangoAward22],
-  ['2012','CREDAI Lifetime Achievement Award','Awarded by film actress Kareena Kapoor',B.img2012Dsc04092Credai20122],
-  ['2016','Savitribai Phule “Jeevan Sadhana Gaurav” Puraskar','Awarded by the then Honorable President Mrs Pratibha Patil',B.imgSavitribaiPhuleAward61],
-  ['2016','Ahinsa Puraskar','Honored by Lord Bates at House of Commons, London',B.img2717102018SocialWorkerShantilalMutthaWinsTheAhimsaAward20181],
+  ['1992', 'National Youth Award', 'Awarded by the then President Shri Shankar Dayal Ji Sharma', B.img36AwardsShankarDyalSharma21],
+  ['2004', 'Giants Recognition Award', 'Awarded by Cine Actor Mr Amitabh Bachchan', B.img2005SgmGiantsAward22],
+  ['2005', 'WANGO', 'World Association of NGOs. Awarded by Mr Taj Hamad, Chairman of WANGO', B.img2005WangoAward22],
+  ['2012', 'CREDAI Lifetime Achievement Award', 'Awarded by film actress Kareena Kapoor', B.img2012Dsc04092Credai20122],
+  ['2016', 'Savitribai Phule “Jeevan Sadhana Gaurav” Puraskar', 'Awarded by the then Honorable President Mrs Pratibha Patil', B.imgSavitribaiPhuleAward61],
+  ['2016', 'Ahinsa Puraskar', 'Honored by Lord Bates at House of Commons, London', B.img2717102018SocialWorkerShantilalMutthaWinsTheAhimsaAward20181],
 ];
 
 export function About() {
- const [year,setYear]=useState(1); const [leadership,setLeadership]=useState(null);const awardRef=useRef(null);
- return <><section className="about-banner"><img src={B.img31} alt="BJS founder addressing a community gathering"/><h1>4 Decades of Nation Building</h1></section><section className="who gradient"><div className="container"><h2>Who We Are</h2><h3>Strengthening Communities. Supporting Families. Responding in Times of Need.</h3><p>Established in 1985, Bharatiya Jain Sanghatana (BJS) is a nonprofit organisation that develops practical, research-based solutions to pressing social and national challenges. BJS began by mobilising communities against harmful social practices, including dowry and female foeticide. This early work grew into a mass movement for social reform.</p><p>Since 1993, BJS has also played a leading role in disaster relief and rehabilitation across India and neighbouring countries, supporting communities through natural disasters, droughts and the COVID-19 pandemic. Strengthening the family system remains central to BJS’s work. Through ongoing research and thoughtfully designed programs, BJS addresses emerging challenges around marriage and family life, helping individuals and families build stronger relationships and navigate social change.</p><div className="vision-mission"><article className="vision"><img src={B.imgGroup1} alt=""/><div><h3>Vision</h3><p>To collectively contribute towards nation building through holistic development of society.</p></div></article><article className="mission"><div><h3>Mission</h3><p>BJS identifies key societal challenges and delivers meaningful solutions through professional expertise and its nationwide volunteer network for the greater good of society.</p></div><img src={B.imgGroup} alt=""/></article></div></div></section><section className="about-presence" id="presence"><div className="container"><div><h2>A Shared Purpose.<br/>A Strong Local Presence.</h2><p>Bharatiya Jain Sanghatana is a volunteer-based organisation bringing together over 40,000 Jain volunteers across 12 states. Through local BJS chapters, they represent the organisation in their regions, bringing its initiatives closer to communities and turning shared purpose into local action.</p><Button href="mailto:info@bjsindia.org?subject=BJS%20volunteer%20network">Know more</Button></div><img className="india-map" src={B.imgD4D674418D584E59B54C8Af56B24639D1} alt="BJS presence across India"/><PresenceStats compact/></div></section><section className="journey gradient"><div className="container"><p className="eyebrow">Defining Movements</p><h2>The BJS Journey</h2><article className="journey-card"><div className="journey-photo"><img src={B.img102} alt="Shanti Yatra peace march"/></div><h3>{journey[year][1]}</h3><p>{journey[year][2]}</p></article><div className="timeline" role="group" aria-label="Select a year in the BJS journey">{journey.map(([y],i)=><button key={y} onClick={()=>setYear(i)} aria-pressed={year===i}><span className="timeline-dot"><img src={i===year?B.imgEllipse27:B.imgEllipse3} alt=""/></span>{y}</button>)}</div></div></section><section className="founder" id="founder"><div className="founder-copy"><h2>Founder</h2><h3>Mr. Shantilal Muttha</h3><p>Mr. Shantilal Muttha was born in a small village in Maharashtra. His early experiences inspired a lifelong commitment to social reform and nation building.</p><p>Subsequently, he started working with other NGOs and the Jain community, continually identifying ways to work for social causes. He established and flourished his business in real estate while dedicating himself to the betterment of society.</p><Button href="mailto:info@bjsindia.org?subject=About%20Mr.%20Shantilal%20Muttha">Know more</Button></div><img src={B.imgPolishedCorporatePortraitInAWarmOffice1} alt="Mr. Shantilal Muttha, founder of BJS"/></section><section className="leadership container" id="leadership"><div className="leadership-copy"><h2>The People<br/>Behind BJS</h2><p>A strong leadership structure that provides guidance, drives strategy and ensures effective execution across our nationwide network.</p></div><div className="head-office"><img src={B.imgBjsHq761} alt="BJS Head Office"/><div><h3>BJS Head Office</h3><p>Central administration and operational support.</p><Button href="#contact">Learn More</Button></div></div><div className="leadership-links">{['Trust Board','Founder’s President Office','Volunteer Network'].map((title,i)=><button key={title} className={`leadership-card leadership-${i}`} onClick={()=>setLeadership(leadership===i?null:i)} aria-expanded={leadership===i}><strong>{title}</strong><span aria-hidden="true">↗</span><small>{leadership===i?'Contact info@bjsindia.org for further information.':'Lorem Ipsum Dolar Sumit'}</small></button>)}</div></section><section className="awards gradient"><div className="container"><div className="heading-with-controls"><h2>Awards &amp; Recognition</h2><CarouselArrows previous={()=>awardRef.current?.scrollBy({left:-425,behavior:'smooth'})} next={()=>awardRef.current?.scrollBy({left:425,behavior:'smooth'})}/></div></div><div className="award-track" ref={awardRef}>{awards.map(([date,title,desc,img])=><article className="award-card" key={title}><img src={img} alt={title}/><div><strong>{date}</strong><h3>{title}</h3><p>{desc}</p></div></article>)}</div></section></>;
+  const [year, setYear] = useState(1); const [leadership, setLeadership] = useState(null); const awardRef = useRef(null);
+  return <>
+    <section className="about-banner">
+      <img src={B.img31} alt="BJS founder addressing a community gathering" />
+      <h1>
+        4 Decades of Nation Building
+      </h1>
+    </section>
+    <section className="who gradient">
+      <div className="container">
+        <h2>Who We Are</h2>
+        <h3>Strengthening Communities. Supporting Families. Responding in Times of Need.</h3>
+        <p>Established in 1985, Bharatiya Jain Sanghatana (BJS) is a nonprofit organisation that develops practical,
+          research-based solutions to pressing social and national challenges. BJS began by mobilising communities against harmful social practices,
+          including dowry and female foeticide. This early work grew into a mass movement for social reform.</p>
+        <p>Since 1993, BJS has also played a leading role in disaster relief and rehabilitation across India and neighbouring countries,
+          supporting communities through natural disasters, droughts and the COVID-19 pandemic. Strengthening the family system remains
+          central to BJS’s work. Through ongoing research and thoughtfully designed programmes, BJS addresses emerging challenges around
+          marriage and family life, helping individuals and families build stronger relationships and navigate social change.</p>
+        <div className="vision-mission">
+          <article className="vision">
+            <img src={B.imgGroup1} alt="" />
+            <div>
+              <h3>
+                Vision
+              </h3>
+              <p>To collectively contribute towards nation building through holistic development of society.</p>
+            </div>
+          </article>
+          <article className="mission">
+            <div>
+              <h3>Mission</h3>
+              <p>BJS identifies key societal challenges and delivers meaningful solutions through professional expertise and its nationwide volunteer network
+                for the greater good of society.
+              </p>
+            </div>
+            <img src={B.imgGroup} alt="" />
+          </article>
+        </div>
+      </div>
+    </section>
+    <section className="about-presence" id="presence">
+      <div className="container">
+        <div>
+          <h2>A Shared Purpose.<br />A Strong Local Presence.</h2>
+          <p>Bharatiya Jain Sanghatana is a volunteer-based organisation bringing together over 40,000 Jain volunteers across 12 states. Through local BJS chapters,
+            they represent the organisation in their regions, bringing its initiatives closer to communities and turning shared purpose into local action.</p>
+          <Button href="mailto:info@bjsindia.org?subject=BJS%20volunteer%20network">
+            Know more
+          </Button>
+        </div><img className="india-map" src={B.imgD4D674418D584E59B54C8Af56B24639D1} alt="BJS presence across India" />
+        <PresenceStats compact />
+      </div>
+    </section><section className="journey gradient">
+      <div className="container">
+        <p className="eyebrow">Defining Movements</p>
+        <h2>
+          The BJS Journey
+        </h2>
+        <article className="journey-card">
+          <div className="journey-photo">
+            <img
+              src={B.img102}
+              alt="Shanti Yatra peace march" />
+          </div>
+          <h3>{journey[year][1]}</h3>
+          <p>{journey[year][2]}</p>
+        </article>
+        <div className="timeline" role="group" aria-label="Select a year in the BJS journey">
+          {journey.map(([y], i) =>
+            <button key={y} onClick={() => setYear(i)} aria-pressed={year === i}>
+              <span className="timeline-dot">
+                <img src={i === year ? B.imgEllipse27 : B.imgEllipse3} alt="" />
+              </span>{y}</button>)}
+        </div>
+      </div>
+    </section>
+    <section className="founder" id="founder">
+      <div className="founder-copy">
+        <h2>Founder</h2>
+        <h3>Mr. Shantilal Muttha</h3>
+        <p>Mr. Shantilal Muttha was born in a small village in Maharashtra. His early experiences inspired a lifelong commitment to social reform and
+          nation building.</p><p>Subsequently, he started working with other NGOs and the Jain community, continually identifying ways to work for social
+            causes. He established and flourished his business in real estate while dedicating himself to the betterment of society.</p>
+        <Button href="mailto:info@bjsindia.org?subject=About%20Mr.%20Shantilal%20Muttha">
+          Know more
+        </Button>
+      </div>
+      <img src={B.imgPolishedCorporatePortraitInAWarmOffice1} alt="Mr. Shantilal Muttha, founder of BJS" />
+    </section>
+    <section
+      className="leadership container"
+      id="leadership"
+    >
+      <div className="leadership-copy">
+        <h2>The People<br />Behind BJS</h2>
+        <p>A strong leadership structure that provides guidance, drives strategy and ensures effective execution across our nationwide network.</p>
+      </div>
+      <div className="head-office">
+        <img src={B.imgBjsHq761} alt="BJS Head Office" />
+        <div>
+          <h3>BJS Head Office</h3>
+          <p>Central administration and operational support.</p>
+          <Button href="#contact">Learn More</Button></div>
+      </div>
+      <div className="leadership-links">{
+        ['Trust Board', 'Founder’s President Office', 'Volunteer Network'].map((title, i) =>
+          <button key={title}
+            className={`leadership-card leadership-${i}`}
+            onClick={() =>
+              setLeadership(leadership === i ? null : i)}
+            aria-expanded={leadership === i}>
+            <strong>{title}</strong>
+            <span aria-hidden="true">↗</span>
+            <small>{leadership === i ? 'Contact info@bjsindia.org for further information.' : 'Lorem Ipsum Dolar Sumit'}</small>
+          </button>)
+      }</div>
+    </section>
+    <section className="awards gradient">
+      <div className="container">
+        <div className="heading-with-controls">
+          <h2>Awards &amp; Recognition</h2>
+          <CarouselArrows previous={() =>
+            awardRef.current?.scrollBy({ left: -425, behavior: 'smooth' })}
+            next={() => awardRef.current?.scrollBy({ left: 425, behavior: 'smooth' })}
+          />
+        </div>
+      </div>
+      <div className="award-track" ref={awardRef}>
+        {awards.map(([date, title, desc, img]) =>
+          <article className="award-card" key={title}>
+            <img src={img} alt={title} />
+            <div>
+              <strong>{date}</strong>
+              <h3>{title}</h3>
+              <p>{desc}</p>
+            </div>
+          </article>)
+        }
+      </div>
+    </section>
+  </>;
 }
 
-const baskets = [ ['Prarabdh','Foundation Programs','#73e57b'],['Pratibimb','Inception Programs','#ffdb34'],['Pravah','Infusion Programs','#ff8b58'],['Parikalpana','National Programs','#65b3ff'],['Prabodhi','Elevation Programs','#c68cff'] ];
+const baskets = [['Prarabdh', 'Foundation Programmes', '#73e57b'], ['Pratibimb', 'Inception Programmes', '#ffdb34'], ['Pravah', 'Infusion Programmes', '#ff8b58'], ['Parikalpana', 'National Programmes', '#65b3ff'], ['Prabodhi', 'Elevation Programmes', '#c68cff']];
 
-function BasketDiagram() {return <div className="basket-diagram" role="img" aria-label="Program Basket: Prarabdh foundation, Pratibimb inception, Pravah infusion, Parikalpana national and Prabodhi elevation programs"><div className="diagram-canvas">{diagramPlacements.map(p=><div className="diagram-layer" key={p.asset} style={{inset:p.inset}}><img src={W[p.asset]} alt=""/></div>)}<strong className="basket-center">PROGRAM<br/>BASKET</strong><div className="basket-label label-foundation"><strong>Prarabdh</strong><span>Foundation<br/>Programs</span></div><div className="basket-label label-inception"><strong>Pratibimb</strong><span>Inception Programs</span></div><div className="basket-label label-infusion"><strong>Pravah</strong><span>Infusion Programs</span></div><div className="basket-label label-national"><strong>Parikalpana</strong><span>National Programs</span></div><div className="basket-label label-elevation"><strong>Prabodhi</strong><span>Elevation<br/>Programs</span></div></div></div>;}
+function BasketDiagram() { return <div className="basket-diagram" role="img" aria-label="Program Basket: Prarabdh foundation, Pratibimb inception, Pravah infusion, Parikalpana national and Prabodhi elevation programmes"><div className="diagram-canvas">{diagramPlacements.map(p => <div className="diagram-layer" key={p.asset} style={{ inset: p.inset }}><img src={W[p.asset]} alt="" /></div>)}<strong className="basket-center">PROGRAM<br />BASKET</strong><div className="basket-label label-foundation"><strong>Prarabdh</strong><span>Foundation<br />Programs</span></div><div className="basket-label label-inception"><strong>Pratibimb</strong><span>Inception Programs</span></div><div className="basket-label label-infusion"><strong>Pravah</strong><span>Infusion Programs</span></div><div className="basket-label label-national"><strong>Parikalpana</strong><span>National Programs</span></div><div className="basket-label label-elevation"><strong>Prabodhi</strong><span>Elevation<br />Programs</span></div></div></div>; }
 
 export function OurWork() {
- const [tab,setTab]=useState('areas');const [selected,setSelected]=useState(null);
- function chooseTab(value) {setTab(value);document.getElementById(value==='areas'?'working-areas':'program-basket')?.scrollIntoView({behavior:'smooth'});}
- return <div className="work-page"><section className="work-intro gradient-pink"><div className="container"><h1>Our Work</h1><p className="work-placeholder">Loreum ipsumLoreum ipsumLoreum ipsumLoreum ipsum</p><div className="work-tabs" role="group" aria-label="Our Work sections"><button aria-pressed={tab==='areas'} onClick={()=>chooseTab('areas')}>Working Areas</button><button aria-pressed={tab==='basket'} onClick={()=>chooseTab('basket')}>Program Basket</button></div><div id="working-areas"><h2 className="focus-title">Seven Focus Areas. One Shared Purpose.</h2><p className="focus-intro">BJS works across seven interconnected areas to strengthen families, support individual growth and build resilient communities. Together, these focus areas reflect our commitment to a stronger, more capable and balanced society.</p><div className="focus-visual"><div className="focus-labels top">{[0,1,2,3].map(i=><FocusLabel key={i} index={i}/>)}</div><img className="working-areas-image" src={W.imgBjsWorkingAreasWhereCompassionMeetsAction2} alt="Seven interconnected puzzle pieces showing the families and communities served by BJS"/><div className="focus-labels bottom">{[4,5,6].map(i=><FocusLabel key={i} index={i}/>)}</div></div></div></div></section><section className="basket-section gradient-pink" id="program-basket"><div className="container"><h2>Program’s Basket</h2><div className="basket-intro"><p>BJS brings together social development, disaster relief, water conservation and other community initiatives to support the wellbeing and progress of people across society.</p><p>Guided by Jain principles, our vision is a future rooted in integrity, compassion and service, where individuals grow, communities thrive and collective action creates positive change.</p><p>To achieve this vision, BJS has organised its programs into five distinct baskets, each contributing to our wider purpose:</p><p><strong>Prarabdh · Pratibimb · Pravah · Parikalpana · Prabodhi</strong></p><p>Together, these baskets provide a structured approach to strengthening individuals, supporting families and building stronger communities.</p></div></div><BasketDiagram/><div className="container basket-cards">{baskets.map(([name,desc,color],i)=><article className="basket-card" style={{'--basket-color':color}} key={name}><div className="basket-placeholder" aria-label={`${name} program image placeholder from design`}/><div className="basket-card-info"><div><h3>{name}</h3><p>{desc}</p></div><button onClick={()=>setSelected(selected===i?null:i)} aria-expanded={selected===i}>Know More</button></div>{selected===i&&<p className="basket-detail">Learn more about {name} and how to participate. <a href={`mailto:info@bjsindia.org?subject=${encodeURIComponent(name+' programs')}`}>Contact BJS ↗</a></p>}</article>)}</div></section></div>;
+  const [tab, setTab] = useState('areas'); const [selected, setSelected] = useState(null);
+  function chooseTab(value) { setTab(value); document.getElementById(value === 'areas' ? 'working-areas' : 'program-basket')?.scrollIntoView({ behavior: 'smooth' }); }
+  return <div className="work-page"><section className="work-intro gradient-pink"><div className="container"><h1>Our Work</h1><p className="work-placeholder">Loreum ipsumLoreum ipsumLoreum ipsumLoreum ipsum</p><div className="work-tabs" role="group" aria-label="Our Work sections"><button aria-pressed={tab === 'areas'} onClick={() => chooseTab('areas')}>Working Areas</button><button aria-pressed={tab === 'basket'} onClick={() => chooseTab('basket')}>Program Basket</button></div><div id="working-areas"><h2 className="focus-title">Seven Focus Areas. One Shared Purpose.</h2><p className="focus-intro">BJS works across seven interconnected areas to strengthen families, support individual growth and build resilient communities. Together, these focus areas reflect our commitment to a stronger, more capable and balanced society.</p><div className="focus-visual"><div className="focus-labels top">{[0, 1, 2, 3].map(i => <FocusLabel key={i} index={i} />)}</div><img className="working-areas-image" src={W.imgBjsWorkingAreasWhereCompassionMeetsAction2} alt="Seven interconnected puzzle pieces showing the families and communities served by BJS" /><div className="focus-labels bottom">{[4, 5, 6].map(i => <FocusLabel key={i} index={i} />)}</div></div></div></div></section><section className="basket-section gradient-pink" id="program-basket"><div className="container"><h2>Program’s Basket</h2><div className="basket-intro"><p>BJS brings together social development, disaster relief, water conservation and other community initiatives to support the wellbeing and progress of people across society.</p><p>Guided by Jain principles, our vision is a future rooted in integrity, compassion and service, where individuals grow, communities thrive and collective action creates positive change.</p><p>To achieve this vision, BJS has organised its programmes into five distinct baskets, each contributing to our wider purpose:</p><p><strong>Prarabdh · Pratibimb · Pravah · Parikalpana · Prabodhi</strong></p><p>Together, these baskets provide a structured approach to strengthening individuals, supporting families and building stronger communities.</p></div></div><BasketDiagram /><div className="container basket-cards">{baskets.map(([name, desc, color], i) => <article className="basket-card" style={{ '--basket-color': color }} key={name}><div className="basket-placeholder" aria-label={`${name} programme image placeholder from design`} /><div className="basket-card-info"><div><h3>{name}</h3><p>{desc}</p></div><button onClick={() => setSelected(selected === i ? null : i)} aria-expanded={selected === i}>Know More</button></div>{selected === i && <p className="basket-detail">Learn more about {name} and how to participate. <a href={`mailto:info@bjsindia.org?subject=${encodeURIComponent(name + ' programmes')}`}>Contact BJS ↗</a></p>}</article>)}</div></section></div>;
 }
-function FocusLabel({index}) {return <div className="focus-label" style={{'--focus-color':['#f85c54','#269ec6','#7dc76a','#ffae57','#326e8a','#29bec6','#9cbd3b'][index]}}><h3>Family &amp;<br/>Relationships</h3><p>Strengthening family bonds through open communication, guidance and meaningful connections that help families navigate challenges together.</p></div>;}
+function FocusLabel({ index }) { return <div className="focus-label" style={{ '--focus-color': ['#f85c54', '#269ec6', '#7dc76a', '#ffae57', '#326e8a', '#29bec6', '#9cbd3b'][index] }}><h3>Family &amp;<br />Relationships</h3><p>Strengthening family bonds through open communication, guidance and meaningful connections that help families navigate challenges together.</p></div>; }

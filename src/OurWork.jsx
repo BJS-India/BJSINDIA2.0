@@ -22,7 +22,10 @@ export default function OurWork() {
     <section className="ow-baskets" id="program-basket" aria-labelledby="basket-heading">
       <div className="ow-container ow-basket-intro">
         <h2 className="ow-heading" id="basket-heading">Program’s Basket</h2>
-        <p>BJS brings together social development, disaster relief, water conservation and other community initiatives to support the wellbeing and progress of people across society. Guided by Jain principles, our vision is a future rooted in integrity, compassion and service, where individuals grow, communities thrive and collective action creates positive change. To advance this vision, BJS has organised its programs into five distinct baskets, each contributing to our wider purpose:</p>
+        <p>BJS brings together social development, disaster relief, water conservation and other community initiatives to support the wellbeing and progress of 
+          people across society. Guided by Jain principles, our vision is a future rooted in integrity, compassion and service, where individuals grow, communities 
+          thrive and collective action creates positive change. To advance this vision, BJS has organised its programmes into five distinct baskets, each contributing 
+          to our wider purpose:</p>
         <p className="ow-basket-names">Prarabdh • Pratibimb • Pravah • Parikalpana • Prabodhi</p>
         <p>Together, these baskets provide a structured approach to strengthening individuals, supporting families and building stronger communities.</p>
       </div>

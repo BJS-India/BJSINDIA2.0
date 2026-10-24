@@ -1,17 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as A from './assets';
 import OurWork from './OurWork';
-import GetInvolved from './GetInvolved';
 import { subscribeNewsletter } from './api';
 import { ApprovedLanding, ApprovedAbout, ApprovedFooter } from './ApprovedPages';
+import Darpan from './Darpan/Darpan';
 
 export const Button = ({ children, href, onClick, className = '' }) => href ? <a className={`button ${className}`} href={href}>{children}<span aria-hidden="true">↗</span></a> : <button className={`button ${className}`} onClick={onClick}>{children}<span aria-hidden="true">↗</span></button>;
 
 function Header({ page }) {
   const [open, setOpen] = useState(false);
-  useEffect(() => { setOpen(false); }, [page]);
-  return <header className="header"><a href="/" aria-label="BJS India home"><img className="logo" src={A.imgBjsLogo041} alt="Bharatiya Jain Sanghatana" /></a><button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? '✕' : '☰'}</button><nav className={open ? 'navigation open' : 'navigation'} aria-label="Main navigation">
-    {[['About Us','/about'],['Our Work','/our-work'],['Impact','/#impact'],['Get Involved','/get-involved'],['Resources','/#resources'],['Updates','/#updates']].map(([label,href]) => <a key={label} href={href} aria-current={(page === 'about' && href === '/about') || (page === 'work' && href === '/our-work') || (page === 'involved' && href === '/get-involved') ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</a>)}<a className="donate" href="mailto:info@bjsindia.org?subject=Donation%20enquiry">Donate</a>
+  const [expandedMenu, setExpandedMenu] = useState('');
+  useEffect(() => { setOpen(false); setExpandedMenu(''); }, [page]);
+  const menus = [
+    { label: 'About Us', href: '/about', links: [['Our story', '/about'], ['Who we are and how we work', '/about'], ['Vision and mission', '/about#vision-mission'], ['Our presence', '/about#presence'], ['Founder', '/about#founder'], ['Trust board', '/about#trust-board'], ['Volunteer network', '/about#volunteer-network'], ['Head office', '/about#head-office'], ['Awards and recognition', '/about#awards']] },
+    { label: 'Our Work', href: '/our-work', links: [['Working areas', '/our-work'], ['Programs & Initiatives', '/our-work#program-basket'], ['Program and Program Basket', '/our-work#program-basket'], ['Research, Reports and Data', '/our-work']] },
+    { label: 'Impact', href: '/#impact', links: [['Our impact', '/#impact'], ['Impact stories', '/#stories']] },
+    { label: 'Get Involved', href: '/#get-involved', links: [['Careers (Jobs & internship)', 'mailto:info@bjsindia.org?subject=Careers'], ['Volunteer', 'mailto:info@bjsindia.org?subject=Volunteer%20with%20BJS'], ['Partner With Us', '/#partners'], ['Fellowship', 'mailto:info@bjsindia.org?subject=Fellowship'], ['Donate', 'mailto:info@bjsindia.org?subject=Donation%20enquiry'], ['Contact us', '#contact']] },
+    { label: 'Resources', href: '/#resources', links: [['BJS Darpan', '/alldarpans'], ['Blogs', '/#stories'], ['Articles', '/#resources'], ['Media Centre', '/#stories'], ['Research', '/our-work'], ['Marketing Materials', '/#resources']] },
+    { label: 'Updates', href: '/#stories', links: [['Announcements', '/#stories'], ['News & Press Releases', '/#stories'], ['Events & Activities', '#stories']] },
+  ];
+  const closeNavigation = () => {
+    setOpen(false);
+    setExpandedMenu('');
+  };
+  return <header className="header"><a href="/" aria-label="BJS India home"><img className="logo" src={A.imgBjsLogo041} alt="Bharatiya Jain Sanghatana" /></a><button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? '✕' : '☰'}</button><nav className={open ? 'navigation open' : 'navigation'} aria-label="Main navigation" onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setExpandedMenu(''); }}>
+    {menus.map(({ label, href, links }) => <div key={label} className={`nav-item${expandedMenu === label ? ' expanded' : ''}`} onMouseEnter={() => setExpandedMenu(label)} onMouseLeave={() => setExpandedMenu('')} onFocus={() => setExpandedMenu(label)}>
+      <a href={href} aria-current={page === 'about' && href === '/about' ? 'page' : undefined} onClick={closeNavigation}>{label}</a>
+      <button className="nav-expand" type="button" aria-label={`Show ${label} sections`} aria-expanded={expandedMenu === label} aria-controls={`nav-menu-${label.toLowerCase().replaceAll(' ', '-')}`} onClick={() => setExpandedMenu(expandedMenu === label ? '' : label)}><span aria-hidden="true">⌄</span></button>
+      <div className="nav-dropdown" id={`nav-menu-${label.toLowerCase().replaceAll(' ', '-')}`} aria-label={`${label} sections`}>
+        <div className="nav-dropdown-inner"><h2>{label}</h2><ul>{links.map(([item, target]) => <li key={item}><a href={target} onClick={closeNavigation}>{item}<span aria-hidden="true">↗</span></a></li>)}</ul></div>
+      </div>
+    </div>)}<a className="donate" href="mailto:info@bjsindia.org?subject=Donation%20enquiry" onClick={closeNavigation}>Donate</a>
   </nav></header>;
 }
 
@@ -68,7 +87,8 @@ function Landing() {
 export default function App() {
  const [pathname,setPathname]=useState(window.location.pathname);
  useEffect(()=>{ const navigate=(e)=>{const a=e.target.closest('a');if(!a || e.defaultPrevented || e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target || a.hasAttribute('download'))return;const url=new URL(a.href,window.location.href);if(url.origin!==window.location.origin)return;e.preventDefault();window.history.pushState({},'',url);setPathname(url.pathname);requestAnimationFrame(()=>{if(url.hash)document.getElementById(url.hash.slice(1))?.scrollIntoView({behavior:'smooth'});else window.scrollTo(0,0);});};const pop=()=>{setPathname(window.location.pathname);};document.addEventListener('click',navigate);window.addEventListener('popstate',pop);return()=>{document.removeEventListener('click',navigate);window.removeEventListener('popstate',pop);};},[]);
- const page=pathname.replace(/\/$/,'')==='/about'?'about':pathname.replace(/\/$/,'')==='/our-work'?'work':pathname.replace(/\/$/,'')==='/get-involved'?'involved':'home';
- useEffect(()=>{document.title= `${page==='about'?'About Us':page==='work'?'Our Work':page==='involved'?'Get Involved':'Impact That Brings India Together'} | BJS India`;},[page]);
- return <><a href="#main" className="skip-link">Skip to content</a><Header page={page}/><main id="main">{page==='about'?<ApprovedAbout/>:page==='work'?<OurWork/>:page==='involved'?<GetInvolved/>:<ApprovedLanding/>}</main><ApprovedFooter landing={page!=='about'}/></>;
+ const route=pathname.replace(/\/$/,'');
+ const page=route==='/about'?'about':route==='/our-work'?'work':route==='/alldarpans'?'darpan':'home';
+ useEffect(()=>{document.title= `${page==='about'?'About Us':page==='work'?'Our Work':page==='darpan'?'BJS Darpan':'Impact That Brings India Together'} | BJS India`;},[page]);
+ return <><a href="#main" className="skip-link">Skip to content</a><Header page={page}/><main id="main">{page==='about'?<ApprovedAbout/>:page==='work'?<OurWork/>:page==='darpan'?<Darpan/>:<ApprovedLanding/>}</main><ApprovedFooter landing={page!=='about'}/></>;
 }
