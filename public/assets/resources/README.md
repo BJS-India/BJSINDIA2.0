@@ -4,7 +4,6 @@ Add original images here as PNG, JPG, JPEG, or WebP (uppercase extensions work t
 
 | Image | Filename stem |
 | --- | --- |
-| October 2026 Darpan | darpan-2026-10 |
 | September 2026 Darpan | darpan-2026-09 |
 | August 2026 Darpan | darpan-2026-08 |
 | July 2026 Darpan | darpan-2026-07 |

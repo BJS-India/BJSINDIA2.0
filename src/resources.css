@@ -25,6 +25,18 @@ a.resource-card:hover h3{text-decoration:underline;text-underline-offset:4px}
 .resource-card-media,.resource-card-collateral{width:calc((min(100vw - 96px,1244px) - 32px)/3);padding:10px}
 .resource-image{overflow:hidden;border-radius:8px;flex-shrink:0;background:#f0e9e4;aspect-ratio:1.64}
 .resource-image img{display:block;width:100%;height:100%;object-fit:cover}
+.resource-document-cover{display:block;width:100%;height:100%;border:0;pointer-events:none}
+.darpan-cover-art{position:relative;width:100%;height:100%;overflow:hidden;background:linear-gradient(135deg,#faf4eb,#fffaf3 48%,#f1e8df);color:#171717;padding:18px 14px;font-family:Arial,sans-serif}
+.darpan-cover-art .cover-brand{position:absolute;right:14px;top:7px;width:42px;height:28px;object-fit:contain}
+.darpan-cover-art .cover-title{display:block;color:#ee6243;font-size:27px;line-height:1.1;margin-top:11px}
+.darpan-cover-art .cover-subtitle{display:block;font-size:12px;line-height:1.3}
+.cover-collage{position:absolute;left:14px;right:14px;top:37%;height:48%;display:grid;grid-template-columns:1fr 1fr 1.1fr;grid-template-rows:1fr 1.1fr;gap:4px}
+.cover-collage img{width:100%;height:100%;object-fit:cover}
+.cover-collage img:nth-child(3){grid-row:span 2}
+.cover-collage img:nth-child(6){grid-column:2}
+.cover-stamp{position:absolute;right:12px;bottom:16%;width:58px;height:58px;border:2px solid #dc5149;border-radius:50%;display:grid;place-content:center;text-align:center;color:#c93f3c;background:#fff;font-size:8px;font-weight:700;transform:rotate(-16deg)}
+.cover-footer-title{position:absolute;bottom:18px;left:0;width:100%;text-align:center;color:#d35b50;font-size:24px}
+.cover-footer-subtitle{position:absolute;bottom:8px;left:25%;width:50%;background:#315d9b;color:white;text-align:center;font-size:6px}
 .resource-card-issue .resource-image{border-radius:0;aspect-ratio:285/380}
 .resource-card-issue img{object-fit:contain;background:#fff}
 .resource-card-collateral .resource-image{aspect-ratio:1/1.1}

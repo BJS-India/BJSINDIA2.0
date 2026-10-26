@@ -5,7 +5,10 @@ import './resources.css';
 function ResourceImage({item}) {
   const [failed,setFailed] = useState(false);
   useEffect(() => setFailed(false), [item.image]);
-  return item.image && !failed ? <img src={item.image} alt={item.title} loading="lazy" onError={() => setFailed(true)}/> : <div className="resource-placeholder" role="img" aria-label={`${item.title} image coming soon`}><strong aria-hidden="true">BJS</strong><span>{item.title}</span></div>;
+  if (item.image && !failed) return <img src={item.image} alt={item.title} loading="lazy" onError={() => setFailed(true)}/>;
+  if (item.id === 'darpan-2026-10') return <div className="darpan-cover-art" role="img" aria-label="October 2026 BJS Darpan cover preview"><img className="cover-brand" src="/assets/resources/darpan-2026-10.png" alt=""/><strong className="cover-title">BJS दर्पण</strong><b className="cover-subtitle">प्रतिबिंब राष्ट्रव्यापी सेवा का</b><div className="cover-collage">{['werc-2.png','werc-3.png','werc-1.png','werc-4.png','werc-2.png','werc-3.png'].map((image,index)=><img key={index} src={`/assets/${image}`} alt=""/>)}</div><span className="cover-stamp">BJS<br/>अक्टूबर 2026</span><strong className="cover-footer-title">BJS दर्पण</strong><span className="cover-footer-subtitle">प्रतिबिंब राष्ट्रव्यापी सेवा का</span></div>;
+  if (item.document) return <iframe className="resource-document-cover" src={`${item.document}#page=1&view=FitH&toolbar=0&navpanes=0`} title={`${item.title} Darpan cover`} loading="lazy" tabIndex="-1"/>;
+  return <div className="resource-placeholder" role="img" aria-label={`${item.title} image coming soon`}><strong aria-hidden="true">BJS</strong><span>{item.title}</span></div>;
 }
 
 export function ResourceCard({item, kind, href}) {
