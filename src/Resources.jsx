@@ -44,7 +44,7 @@ function ResourceSection({id,title,description,items,kind,href,controls=true}) {
       </div>}
     </div>
     <div className={`resource-track-wrap${controls?' has-carousel':''}${edges.end?' at-end':''}`}><div className={`resource-track resource-track-${kind}`} ref={track} id={`${id}-track`} role="region" aria-label={`${title} cards`} tabIndex={controls?0:undefined}>
-      {items.map(item=><ResourceCard key={item.id} item={item} kind={kind} href={href}/>)}</div></div>
+      {items.map(item=><ResourceCard key={item.id} item={item} kind={kind} href={item.href || href}/>)}</div></div>
   </section>;
 }
 
@@ -54,6 +54,6 @@ export default function Resources() {
     <ResourceSection id="darpan" title="BJS Darpan" description={resourcesIntro} items={darpanCovers} kind="issue" href="/alldarpans"/>
     <ResourceSection id="articles" title="Articles" description={articlesIntro} items={articles} kind="article" href="/resources/articles"/>
     <ResourceSection id="media-centre" title="Media Centre" description="Our work, captured and shared. Discover BJS through videos, press coverage and photographs showcasing our initiatives, people and impact." items={mediaCards} kind="media" controls={false}/>
-    <ResourceSection id="collaterals" title="Collaterals" description="Resources that bring our mission to life. Access BJS publications, campaign materials and communication assets that help share our vision and work." items={collateralCards} kind="collateral"/>
+    <ResourceSection id="collaterals" title="Collaterals" description="Resources that bring our mission to life. Access BJS publications, campaign materials and communication assets that help share our vision and work." items={collateralCards} kind="collateral" controls={false}/>
   </div>;
 }

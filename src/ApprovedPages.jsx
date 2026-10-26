@@ -27,7 +27,7 @@ export function ApprovedFooter({ landing = false }) {
     ['About us', ['Our Story', '/about'], ['Our Presence', '/about#presence'], ['Founder', '/about#founder'], ['Head Office', '/about#leadership']],
     ['Our Work', ['Working Areas', '/our-work'], ['Program | Initiatives', '/our-work#program-basket']],
     ['Get Involved', ['Careers', 'mailto:info@bjsindia.org?subject=Careers'], ['Volunteer', '/#get-involved'], ['Partner With Us', '/#partners'], ['Donate', 'mailto:info@bjsindia.org?subject=Donation%20enquiry'], ['Contact With us', '#contact']],
-    ['Resources', ['BJS Darpan', '/alldarpans'], ['Articles', '/resources/articles'], ['Media Centre', '/resources#media-centre'], ['Collaterals', '/resources#collaterals']],
+    ['Resources', ['BJS Darpan', '/alldarpans'], ['Articles', '/resources/articles'], ['Videos', '/resources/videos'], ['Press Coverage', '/resources/press-coverage'], ['Photo Gallery', '/resources/photo-gallery'], ['Reports', '/resources/reports'], ['Program Brochures', '/resources/program-brochures'], ['Booklets', '/resources/booklets']],
   ];
   const socials = [
     [L.imgFrame6147, 'Facebook', 'https://www.facebook.com/BJSIndia'],

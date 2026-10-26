@@ -1,0 +1,21 @@
+.resource-listing-page{min-height:70vh;background:#fff3ed;color:#152e50;padding:64px 24px 80px}
+.resource-listing-container{width:min(100%,1244px);margin:0 auto}
+.resource-listing-heading{text-align:center;margin-bottom:32px}
+.resource-listing-heading h1{font-family:'Manrope Variable',sans-serif;font-size:48px;line-height:1.2;font-weight:700}
+.resource-listing-heading p{max-width:1040px;margin:18px auto 0;font-size:18px;line-height:1.5}
+.resource-listing-search{display:grid;gap:8px;max-width:600px;margin:0 auto 24px;font-size:14px;font-weight:600}
+.resource-listing-search input{height:46px;border:1px solid #dfcbc4;border-radius:8px;background:#fff;padding:0 14px;font:inherit}
+.resource-listing-search input:focus-visible{outline:3px solid #176f91;outline-offset:2px}
+.resource-listing-count{font-size:14px;margin:0 0 16px;color:#465e7d}
+.resource-listing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.resource-listing-grid .resource-card{width:auto;min-width:0;box-shadow:0 5px 20px #2604040c}
+.resource-listing-grid .resource-image{aspect-ratio:1.64}
+.resource-listing-grid .resource-card-collateral .resource-image{aspect-ratio:1/1.1}
+.resource-listing-grid .resource-body{min-height:100px}
+.video-listing-card{min-width:0;background:#fff;border-radius:10px;padding:10px;overflow:hidden}
+.video-listing-card video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#111;border-radius:7px}
+.video-listing-card h2{font-size:20px;line-height:1.35;padding:16px 10px 10px}
+.resource-listing-back{display:inline-block;margin-top:32px;color:#152e50;text-decoration:underline;text-underline-offset:4px}
+.resource-listing-empty{padding:32px 0;text-align:center}
+@media(max-width:850px){.resource-listing-container{width:calc(100% - 24px)}.resource-listing-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
+@media(max-width:560px){.resource-listing-page{padding:40px 20px 55px}.resource-listing-heading h1{font-size:34px}.resource-listing-heading p{font-size:15px}.resource-listing-grid{grid-template-columns:1fr}.resource-listing-search{margin-bottom:20px}}
