@@ -44,7 +44,7 @@ export default function ImpactSection({ children, programName }) {
       <div className="sp-impact-browser">
         {!programmeMode && <>
         <div className="sp-impact-tabs">
-          <button aria-label="Previous impact category" onClick={()=>select(active-1)}><img src={L.imgGroup6042} alt=""/></button>
+          <button aria-label="Previous impact category" onClick={()=>select(active-1)}><img src={L.imgGroup19} alt=""/></button>
           <div role="tablist" aria-label="Impact by program" onKeyDown={keyDown}>
             {impactProgrammes.slice(windowStart,windowStart+4).map((item,offset)=>{
               const index=windowStart+offset;
@@ -56,7 +56,7 @@ export default function ImpactSection({ children, programName }) {
         </>}
         <div id={programmeMode ? undefined : 'impact-panel'} role={programmeMode ? undefined : 'tabpanel'} aria-labelledby={programmeMode ? undefined : `impact-tab-${active}`} tabIndex={programmeMode ? undefined : 0}>
           <div className="sp-impact-metrics" style={{'--impact-count':program.cards.length}} key={program.title}>
-            {program.cards.map(card=><article className={`sp-impact-metric metric-${card.photoIndex}${program.title==='JPA'?' impact-jpa':''}${card.exportImage?' sp-impact-export':''}`} key={card.label}>
+            {program.cards.map(card=><article className={`sp-impact-metric metric-${card.photoIndex}${program.title==='JPA'?' impact-jpa':''}${card.image?' impact-photo-card':''}${program.title==='Blue Roots'&&card.photoIndex===2?' impact-water-image':''}${card.exportImage?' sp-impact-export':''}`} key={card.label}>
               {card.exportImage ? <img className="sp-impact-export-image" src={card.exportImage} alt={`${card.value} ${card.label.replaceAll('\n',' ')}`}/> : <>
                 <strong>{card.value}</strong><p>{card.label}</p>
                 {card.image && <div><img src={card.image} alt={card.label.replaceAll('\n',' ')}/></div>}

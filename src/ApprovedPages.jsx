@@ -15,7 +15,40 @@ function Action({ href, children, filled = false, arrow = true, onClick }) {
   return href ? <a className={`sp-action ${filled ? 'filled' : ''}`} href={href}>{content}</a> : <button className={`sp-action ${filled ? 'filled' : ''}`} onClick={onClick}>{content}</button>;
 }
 function Kicker({ children }) { return <p className="sp-kicker"><img src={L.imgLine1} alt="" />{children}</p>; }
-function Arrows({ previous, next, small = false }) { return <div className={`sp-arrows ${small ? 'small' : ''}`}><button aria-label="Previous slide" onClick={previous}><img src={small ? L.imgGroup6042 : L.imgGroup6041} alt="" /></button><button aria-label="Next slide" onClick={next}><img src={small ? L.imgGroup19 : L.imgGroup18} alt="" /></button></div>; }
+function Arrows({ previous, next, small = false, previousDisabled = false, nextDisabled = false }) {
+  const activeIcon = small ? L.imgGroup19 : L.imgGroup18;
+  const disabledIcon = small ? L.imgGroup6042 : L.imgGroup6041;
+  return <div className={`sp-arrows ${small ? 'small' : ''}`}>
+    <button aria-label="Previous slide" onClick={previous} disabled={previousDisabled}><img src={previousDisabled ? disabledIcon : activeIcon} alt="" /></button>
+    <button aria-label="Next slide" onClick={next} disabled={nextDisabled}><img src={nextDisabled ? disabledIcon : activeIcon} alt="" /></button>
+  </div>;
+}
+
+function useCarouselEdges(ref) {
+  const [edges, setEdges] = useState({ start: true, end: false });
+  useEffect(() => {
+    const track = ref.current;
+    if (!track) return undefined;
+    const update = () => {
+      const next = {
+        start: track.scrollLeft <= 2,
+        end: track.scrollLeft + track.clientWidth >= track.scrollWidth - 2,
+      };
+      setEdges(current => current.start === next.start && current.end === next.end ? current : next);
+    };
+    const observer = new ResizeObserver(update);
+    observer.observe(track);
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+    return () => {
+      observer.disconnect();
+      track.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, [ref]);
+  return edges;
+}
 
 export function ApprovedHeader({ page = 'home' }) {
   const [open, setOpen] = useState(false);
@@ -194,11 +227,12 @@ const programmes = [
 ];
 function Programs() {
   const ref = useRef(null);
+  const edges = useCarouselEdges(ref);
   const scroll = direction => { const track = ref.current; if (track) track.scrollBy({ left: direction * (track.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap)), behavior: "smooth" }); };
   return <section className="sp-programmes" id="programs">
     <div className="sp-container sp-section-bar">
       <Kicker>Our Programs</Kicker>
-      <Arrows previous={() => scroll(-1)} next={() => scroll(1)} />
+      <Arrows previous={() => scroll(-1)} next={() => scroll(1)} previousDisabled={edges.start} nextDisabled={edges.end} />
     </div>
     <div className="sp-programme-track" ref={ref}>{
       programmes.map(p =>
@@ -233,7 +267,7 @@ function Programs() {
 }
 
 function Impact() {
-  return <ImpactSection><Kicker>Our Impact</Kicker><h2>Real Change.<br />Lasting Impact.</h2><p>Driven by a shared commitment to social impact.<br />Our volunteers come together to create meaningful change across communities.</p><Action href="/our-work">Explore Our Impact</Action></ImpactSection>;
+  return <ImpactSection><Kicker>Our Impact</Kicker><h2>Change Where <br /> It Matters Most</h2><p style={{maxWidth:"85%"}}>Addressing diverse challenges through practical solutions and collective action for people, communities and the nation.</p><Action href="/our-work">Explore Our Impact</Action></ImpactSection>;
 }
 
 export function ApprovedStats({ compact = false }) { const stats = compact ? [['12+', 'States'], ['170+', 'Districts'], ['500+', 'Chapters'], ['40K+', 'Volunteers']] : [['12+', 'States'], ['170+', 'Districts'], ['500+', 'Chapters'], ['40+', 'Years Of BJS'], ['5K+', 'Office Bearers'], ['40K+', 'Volunteers']]; return <div className={`sp-stats ${compact ? 'compact' : ''}`}>{stats.map(([value, label], i) => <div className={i < 3 && !compact ? 'outlined' : 'raised'} key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>; }
@@ -271,7 +305,7 @@ function PresenceStats() {
   const stats = [[12, '+', 'States'], [170, '+', 'Districts'], [500, '+', 'Chapters'], [40, '+', 'Years Of BJS'], [5000, '+', 'Office Bearers'], [40000, '+', 'Volunteers']];
   return <div className="sp-stats">{stats.map(([value, suffix, label], i) => <div className={i < 3 ? 'outlined' : 'raised'} key={label}><PresenceCount value={value} suffix={suffix} /><span>{label}</span></div>)}</div>;
 }
-function Presence() { return <section className="sp-presence" id="get-involved"><img className="sp-presence-map" src={L.imgD4D674418D584E59B54C8Af56B24639D1} alt="" /><div className="sp-container"><div><Kicker>BJS Scale</Kicker><h2>A Growing<br />Presence Across India</h2><p>Our network of volunteers and initiatives continues to expand, reaching more communities and creating a wider impact every year.</p><Action href="/about#presence">View Map</Action></div><PresenceStats /></div></section>; }
+function Presence() { return <section className="sp-presence" id="get-involved"><img className="sp-presence-map" src={L.imgD4D674418D584E59B54C8Af56B24639D1} alt="" /><div className="sp-container"><div style={{alignSelf:"center"}}><Kicker>Our Presence</Kicker><h2>A Growing<br />Presence Across India</h2><p>Our network of volunteers and initiatives continues to expand, reaching more communities and creating a wider impact every year.</p><Action href="/about#presence">View Map</Action></div><PresenceStats /></div></section>; }
 function TestimonialVideoCard({ file, title, programme }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -329,6 +363,7 @@ function TestimonialVideoCard({ file, title, programme }) {
 
 function Testimonials() {
   const ref = useRef(null);
+  const edges = useCarouselEdges(ref);
   const videos = [
     ['Parinay Path - Jaipur 1.mp4', 'Parinay Path - Jaipur', 'Parinay Path'],
     ['Smart Girls - Jahazpur RJ 1.mp4', 'Smart Girls - Jahazpur', 'Smart Girls'],
@@ -337,7 +372,7 @@ function Testimonials() {
     ['Humsafar Dobara Pune 1.mp4', 'Humsafar Dobara - Pune', 'Humsafar Dobara'],
     ['JPA Case SuccesStory Testimonial 1.mp4', 'JPA Success Story', 'JPA'],
   ];
-  return <section className="sp-testimonials"><div className="sp-container"><Kicker>Real Stories. Real Change.</Kicker><div className="sp-section-bar"><div><h2>Lives Changed. Futures Transformed.</h2><p>Discover how BJS initiatives are creating real opportunities, stronger communities and brighter futures.</p></div><Arrows previous={() => ref.current?.scrollBy({ left: -289, behavior: 'smooth' })} next={() => ref.current?.scrollBy({ left: 289, behavior: 'smooth' })} /></div></div><div className="sp-testimonial-track" ref={ref}>{videos.map(([file, title, programme]) => <TestimonialVideoCard key={file} file={file} title={title} programme={programme} />)}</div></section>;
+  return <section className="sp-testimonials"><div className="sp-container"><Kicker>Real Stories. Real Change.</Kicker><div className="sp-section-bar"><div><h2>Real Lives. Lasting Change.</h2><p>Behind every initiative are people with a story. Hear what change means to them. </p></div><Arrows previous={() => ref.current?.scrollBy({ left: -289, behavior: 'smooth' })} next={() => ref.current?.scrollBy({ left: 289, behavior: 'smooth' })} previousDisabled={edges.start} nextDisabled={edges.end} /></div></div><div className="sp-testimonial-track" ref={ref}>{videos.map(([file, title, programme]) => <TestimonialVideoCard key={file} file={file} title={title} programme={programme} />)}</div></section>;
 }
 // OLD STORIES SECTION - 
 // function Stories() { const [index, setIndex] = useState(1); const slides = [L.imgRectangle450, L.imgImage8, L.imgRectangle458]; return <section className="sp-stories" id="stories"><div className="sp-container"><Kicker>Media Center</Kicker><div className="sp-section-bar"><div><h2>Stories That Inspire Change.</h2><p>Watch our videos to see how BJS initiatives are creating real impact on the ground.</p></div><Arrows previous={() => setIndex((index + 2) % 3)} next={() => setIndex((index + 1) % 3)} /></div></div><div className="sp-story-stage"><img className="sp-story-side" src={slides[(index + 2) % 3]} alt="Previous BJS story" /><div className="sp-story-main"><img src={slides[index]} alt="BJS stories: impacting lives, ushering change" /></div><img className="sp-story-side" src={slides[(index + 1) % 3]} alt="Next BJS story" /></div></section>; }
@@ -372,10 +407,9 @@ function Stories() {
 
         <div className="sp-section-bar">
           <div>
-            <h2>Stories That Inspire Change.</h2>
+            <h2>Stories Through The Lens.</h2>
             <p>
-              Watch our videos to see how BJS initiatives are creating
-              real impact on the ground.
+              From a vision for social change to decades of action across India.
             </p>
           </div>
 
@@ -487,6 +521,7 @@ export function ApprovedLanding() { return <div className="approved-landing"><He
 const years = ['1985', '1991', '1993', '2003', '2013', '2020', '2022'];
 export function ApprovedAbout() {
   const [year, setYear] = useState(2); const [expanded, setExpanded] = useState(null); const awardRef = useRef(null);
+  const awardEdges = useCarouselEdges(awardRef);
   return <div className="approved-about">
     <section className="about-banner">
       <img src={B.img31} alt="BJS founder addressing a community gathering" />
@@ -648,7 +683,9 @@ export function ApprovedAbout() {
           The BJS Head Office serves as the central hub for planning, coordination and support, ensuring the effective implementation of our vision and mission.</p>
         <Arrows
           previous={() => awardRef.current?.scrollBy({ left: -425, behavior: 'smooth' })}
-          next={() => awardRef.current?.scrollBy({ left: 425, behavior: 'smooth' })} />
+          next={() => awardRef.current?.scrollBy({ left: 425, behavior: 'smooth' })}
+          previousDisabled={awardEdges.start}
+          nextDisabled={awardEdges.end} />
       </div>
       <div className="sp-award-track" ref={awardRef}>
         {awards.map(award => <article key={award.id}><AwardPhoto award={award} />

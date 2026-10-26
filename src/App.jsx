@@ -39,7 +39,7 @@ function Header({ page }) {
       <div className="nav-dropdown" id={`nav-menu-${label.toLowerCase().replaceAll(' ', '-')}`} aria-label={`${label} sections`}>
         <div className="nav-dropdown-inner"><h2>{label}</h2><ul>{links.map(([item, target]) => <li key={item}><a href={target} onClick={closeNavigation}>{item}<span aria-hidden="true">↗</span></a></li>)}</ul></div>
       </div>
-    </div>)}<a className="donate" href="mailto:info@bjsindia.org?subject=Donation%20enquiry" onClick={closeNavigation}>Donate</a>
+    </div>)}<span className="header-language" aria-label="Language: English"><svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M1 13H7.66667M1 13C1 19.6274 6.37258 25 13 25M1 13C1 6.37258 6.37258 1 13 1M7.66667 13H18.3333M7.66667 13C7.66667 19.6274 10.0545 25 13 25M7.66667 13C7.66667 6.37258 10.0545 1 13 1M18.3333 13H25M18.3333 13C18.3333 6.37258 15.9455 1 13 1M18.3333 13C18.3333 19.6274 15.9455 25 13 25M25 13C25 6.37258 19.6274 1 13 1M25 13C25 19.6274 19.6274 25 13 25" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg><span>EN</span><svg className="header-language-chevron" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="m1 1 5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></span><a className="donate" href="mailto:info@bjsindia.org?subject=Donation%20enquiry" onClick={closeNavigation}>Donate</a>
   </nav></header>;
 }
 
