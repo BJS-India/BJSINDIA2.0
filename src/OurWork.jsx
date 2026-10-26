@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BasketDiagram from './BasketDiagram';
 import {focusAreas,programmeBaskets} from './ourWorkData';
 import './our-work.css';
 
 export default function OurWork() {
-  const [expanded,setExpanded]=useState(null);
   return <div className="our-work-approved">
     <section className="ow-focus" id="working-areas" aria-labelledby="focus-heading">
       <div className="ow-container">
@@ -33,8 +32,7 @@ export default function OurWork() {
       <div className="ow-programme-grid">
         {programmeBaskets.map(basket=><article className="ow-programme-card" key={basket.id} style={{'--basket-color':basket.color}}>
           <div className="ow-programme-photo">{basket.image&&<img src={basket.image} alt={`${basket.name} programs`}/>}</div>
-          <div className="ow-programme-info"><div><h3>{basket.name}</h3><p>{basket.description}</p></div><button aria-expanded={expanded===basket.id} aria-controls={`basket-detail-${basket.id}`} onClick={()=>setExpanded(expanded===basket.id?null:basket.id)}>Know More<span className="sr-only"> about {basket.name}</span></button></div>
-          {expanded===basket.id&&<p className="ow-programme-detail" id={`basket-detail-${basket.id}`}>For more information about {basket.name}, <a href={`mailto:info@bjsindia.org?subject=${encodeURIComponent(basket.name+' programs')}`}>contact BJS</a>.</p>}
+          <div className="ow-programme-info"><div><h3>{basket.name}</h3><p>{basket.description}</p></div><a className="ow-programme-link" href={`/our-work/programs/${basket.id}`}>Know More<span className="sr-only"> about {basket.name}</span></a></div>
         </article>)}
       </div>
     </section>

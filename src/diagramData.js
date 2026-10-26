@@ -92,7 +92,7 @@ export const diagramPlacements = [
     "asset": "imgGroup14"
   },
   {
-    "inset": "42.13% 74.95% 48.15% 15.06%",
+    "inset": "40.8% 76% 51.7% 17.5%",
     "asset": "imgGroup15"
   }
 ];
