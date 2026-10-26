@@ -11,7 +11,7 @@
 .ow-focus-card h2{color:#ef564f;font-family:'Inter Variable',sans-serif;font-weight:700;font-size:26px;line-height:32px;margin:0 0 12px;position:relative;z-index:1;white-space:pre-line;}
 .ow-focus-card p{font-size:17px;line-height:24px;margin:0;position:relative;z-index:1;}
 .ow-focus-number{position:absolute;bottom:4px;left:26px;font-size:64px;line-height:1;font-weight:800;color:#f9a5a1;}
-.ow-focus-photo{position:absolute;bottom:0;right:0;width:74%;height:180px;object-fit:contain;object-position:right bottom;z-index:2;}
+.ow-focus-photo{position:absolute;bottom:0;right:0;width:72%;height:160px;object-fit:contain;object-position:right bottom;z-index:2;}
 .ow-baskets{padding:80px 0 38px;background:#fbf7f4;}
 .ow-basket-intro{max-width:1292px;text-align:center;}
 .ow-basket-intro>p{font-size:18px;line-height:24px;margin:0;}
