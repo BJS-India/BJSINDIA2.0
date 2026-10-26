@@ -1,17 +1,20 @@
 .our-work-approved{color:#13294a;font-family:'Inter Variable',sans-serif;}
 .ow-container{width:calc(100% - 96px);max-width:1244px;margin-inline:auto;}
+.ow-focus .ow-container{width:calc(100% - 96px);max-width:1180px;}
 .ow-focus{background:#fff;padding:80px 0 100px;}
 .ow-heading{color:#ef564f;font-family:'Manrope Variable',sans-serif;font-weight:700;font-size:48px;line-height:1.25;text-align:center;margin:0;}
 .ow-heading::after{content:'';display:block;width:124px;height:4px;background:#ef564f;margin:20px auto;}
 .ow-focus-intro{font-size:20px;line-height:30px;text-align:center;margin:0;}
+.ow-focus-intro .ow-intro-line{display:block;white-space:nowrap;}
 .ow-focus-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:40px 14px;margin-top:40px;}
-.ow-focus-card{grid-column:span 2;position:relative;min-height:384px;padding:20px 20px 130px;border:1px solid #ef564f;border-radius:30px;background:#fbf7f4;overflow:hidden;}
+.ow-focus-card{grid-column:span 2;position:relative;min-height:364px;padding:20px 20px 130px;border:1px solid #ef564f;border-radius:30px;background:#fbf7f4;overflow:hidden;}
 .ow-focus-card:nth-child(5){grid-column:2/span 2;}
 .ow-focus-card::after{content:'';position:absolute;bottom:0;left:20px;right:20px;height:5px;background:#ef564f;border-radius:5px;}
-.ow-focus-card h2{color:#ef564f;font-family:'Inter Variable',sans-serif;font-weight:700;font-size:26px;line-height:32px;margin:0 0 12px;position:relative;z-index:1;white-space:pre-line;}
-.ow-focus-card p{font-size:17px;line-height:24px;margin:0;position:relative;z-index:1;}
+.ow-focus-card h2{color:#ef564f;font-family:'Inter Variable',sans-serif;font-weight:700;font-size:24px;line-height:32px;margin:0 0 12px;position:relative;z-index:1;white-space:pre-line;}
+.ow-focus-card p{font-size:16px;line-height:22px;margin:0;position:relative;z-index:1;}
 .ow-focus-number{position:absolute;bottom:4px;left:26px;font-size:64px;line-height:1;font-weight:800;color:#f9a5a1;}
 .ow-focus-photo{position:absolute;bottom:0;right:0;width:74%;height:180px;object-fit:contain;object-position:right bottom;z-index:2;}
+.focus-education .ow-focus-photo{width:54%;height:158px;right:8px;}
 .ow-baskets{padding:80px 0 38px;background:#fbf7f4;}
 .ow-basket-intro{max-width:1292px;text-align:center;}
 .ow-basket-intro>p{font-size:18px;line-height:24px;margin:0;}
@@ -35,5 +38,5 @@
  .ow-container,.ow-programme-grid{width:calc(100% - 48px);}.ow-desktop-break{display:none;}.ow-focus{padding:45px 0 60px;}.ow-focus-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}.ow-focus-card,.ow-focus-card:nth-child(5){grid-column:auto;}.ow-focus-card:last-child{grid-column:1/-1;width:calc((100% - 24px)/2);justify-self:center;}.ow-baskets{padding-top:55px;}.ow-basket-intro>p{font-size:16px;line-height:24px;}.ow-basket-intro .ow-basket-names{font-size:18px;}.ow-programme-card{flex-basis:calc((100% - 30px)/2);}.ow-programme-photo{height:190px;}
 }
 @media(max-width:480px){
- .ow-container,.ow-programme-grid{width:calc(100% - 40px);}.ow-heading{font-size:30px;}.ow-heading::after{width:90px;height:3px;margin:18px auto;}.ow-focus-intro{font-size:15px;line-height:24px;}.ow-focus-grid{grid-template-columns:1fr;margin-top:28px;gap:20px;}.ow-focus-card,.ow-focus-card:last-child{width:100%;grid-column:auto;min-height:350px;}.ow-focus-card h2{font-size:23px;line-height:30px;}.ow-focus-card p{font-size:16px;line-height:24px;}.ow-focus-photo{height:170px;width:65%;}.ow-programme-grid{gap:22px;}.ow-programme-card{flex-basis:100%;}.ow-programme-photo{height:210px;}.ow-programme-info{flex-wrap:nowrap;}.ow-programme-info p{font-size:13px;}.ow-programme-info button{font-size:12px;}.our-work-approved .basket-diagram{margin-top:35px;margin-bottom:35px;}
+ .ow-container,.ow-programme-grid{width:calc(100% - 40px);}.ow-heading{font-size:30px;}.ow-heading::after{width:90px;height:3px;margin:18px auto;}.ow-focus-intro{font-size:15px;line-height:24px;}.ow-focus-grid{grid-template-columns:1fr;margin-top:28px;gap:20px;}.ow-focus-card,.ow-focus-card:last-child{width:100%;grid-column:auto;min-height:350px;}.ow-focus-card h2{font-size:23px;line-height:30px;}.ow-focus-card p{font-size:16px;line-height:24px;}.ow-focus-photo{height:170px;width:65%;}.focus-education .ow-focus-photo{width:54%;height:158px;right:8px;}.ow-programme-grid{gap:22px;}.ow-programme-card{flex-basis:100%;}.ow-programme-photo{height:210px;}.ow-programme-info{flex-wrap:nowrap;}.ow-programme-info p{font-size:13px;}.ow-programme-info button{font-size:12px;}.our-work-approved .basket-diagram{margin-top:35px;margin-bottom:35px;}
 }

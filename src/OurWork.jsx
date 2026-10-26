@@ -9,7 +9,7 @@ export default function OurWork() {
     <section className="ow-focus" id="working-areas" aria-labelledby="focus-heading">
       <div className="ow-container">
         <h1 className="ow-heading" id="focus-heading">Seven Focus Areas. One Shared Purpose.</h1>
-        <p className="ow-focus-intro">BJS works across seven interconnected areas to strengthen families, support individual growth and build resilient communities.<br className="ow-desktop-break"/> Together, these focus areas reflect our commitment to a stronger, more capable and balanced society.</p>
+        <p className="ow-focus-intro"><span className="ow-intro-line">BJS works across seven interconnected areas to strengthen families, support individual growth and build resilient communities.</span><span className="ow-intro-line">Together, these focus areas reflect our commitment to a stronger, more capable and balanced society.</span></p>
         <div className="ow-focus-grid">
           {focusAreas.map(area=><article className={`ow-focus-card focus-${area.id}`} key={area.id}>
             <h2>{area.title}</h2><p>{area.description}</p>

@@ -6,7 +6,7 @@ export const focusAreas=[
   {id:'family',title:'Family & Relationships',description:'Strengthening family bonds through open communication, guidance and meaningful connections that help families navigate challenges together.'},
   {id:'values',title:'Values &\nResponsible Living',description:'Encouraging integrity, respect and empathy through values-based learning, personal development and responsible citizenship.'},
   {id:'environment',title:'Environmental\nConservation &\nDisaster Response',description:'Protecting natural resources and supporting communities through disaster relief, rehabilitation and efforts to build resilience.'},
-  {id:'education',title:'Education &\nSkills Development',description:'Helping people pursue education, embrace lifelong learning and develop skills for employment, personal growth and self-reliance.'},
+  {id:'education',title:'Educational\nRehabilitation, Lifelong Learning & Skill Development',description:'Helping people pursue education, embrace lifelong learning and develop skills for employment, personal growth and self-reliance.'},
   {id:'networking',title:'Networking & Entrepreneurship',description:'Connecting aspiring entrepreneurs with guidance, resources and networks to nurture ideas, build businesses and support economic progress.'},
   {id:'health',title:'Health & Wellbeing',description:'Supporting physical and mental wellbeing through health awareness, preventive care, health camps and initiatives that encourage healthier lives.'},
   {id:'culture',title:'Culture & Interests',description:'Celebrating art, culture and traditions while creating opportunities for people to explore their interests, develop talents and connect through shared passions.'},
