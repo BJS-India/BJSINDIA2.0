@@ -24,12 +24,19 @@ export function ApprovedHeader() {
 
 export function ApprovedFooter({ landing = false }) {
   const columns = [
-    ['About us', ['Our Story', '/about'], ['Our Presences', '/about#presence'], ['Founder', '/about#founder'], ['Head Office', '/about#leadership']],
+    ['About us', ['Our Story', '/about'], ['Our Presence', '/about#presence'], ['Founder', '/about#founder'], ['Head Office', '/about#leadership']],
     ['Our Work', ['Working Areas', '/our-work'], ['Program | Initiatives', '/our-work#program-basket']],
     ['Get Involved', ['Careers', 'mailto:info@bjsindia.org?subject=Careers'], ['Volunteer', '/#get-involved'], ['Partner With Us', '/#partners'], ['Donate', 'mailto:info@bjsindia.org?subject=Donation%20enquiry'], ['Contact With us', '#contact']],
     ['Resources', ['BJS Darpan', '/alldarpans'], ['Articles', '/resources/articles'], ['Media Centre', '/resources#media-centre'], ['Collaterals', '/resources#collaterals']],
   ];
-  return <footer className={`sp-footer${landing ? ' sp-footer-landing' : ''}`} id="contact"><div className="sp-container sp-footer-inner"><div className="sp-footer-brand"><a href="/" aria-label="BJS India home"><img src={L.imgWhiteBjsEnglish1} alt="Bharatiya Jain Sanghatana" /></a><p>Level 8, Mutha Chambers, II,<br />Senapati Bapat Rd,<br />Chattushringi, Gokhalenagar,<br />Pune, Maharashtra 411016</p><div className="sp-socials">{[L.imgFrame6147, L.imgFrame6148, L.imgFrame6149, L.imgFrame6150, L.imgFrame6151].map((src, i) => <img key={src} src={src} alt={['Facebook', 'Instagram', 'YouTube', 'X', 'LinkedIn'][i]} />)}</div><strong>Follow Us</strong></div><div className="sp-footer-columns">{columns.map(([title, ...links]) => <div key={title}><h3>{title}</h3>{links.map(([label, href]) => <a key={label} href={href}>{label}</a>)}</div>)}</div><div className="sp-footer-contact"><h3>Let's Connect</h3><strong>Call</strong><a href="tel:+912066050000">+91 020 6605 0000</a><strong>Email</strong><a href="mailto:info@bjsindia.org">info@bjsindia.org</a></div></div><div className="sp-copyright">2025 | BJS India | All Rights Reserved</div></footer>;
+  const socials = [
+    [L.imgFrame6147, 'Facebook', 'https://www.facebook.com/BJSIndia'],
+    [L.imgFrame6148, 'Instagram', 'https://www.instagram.com/bhartiyajainsanghatana'],
+    [L.imgFrame6149, 'YouTube', 'https://www.youtube.com/channel/UCFLe91tMq_twtQ7EDi97USQ'],
+    [L.imgFrame6150, 'X', 'https://x.com/BJS_India'],
+    [L.imgFrame6151, 'LinkedIn', 'https://www.linkedin.com/company/bjs-india/posts/?feedView=all'],
+  ];
+  return <footer className={`sp-footer${landing ? ' sp-footer-landing' : ''}`} id="contact"><div className="sp-container sp-footer-inner"><div className="sp-footer-brand"><a href="/" aria-label="BJS India home"><img src={L.imgWhiteBjsEnglish1} alt="Bharatiya Jain Sanghatana" /></a><p>Level 8, Mutha Chambers, II,<br />Senapati Bapat Rd,<br />Chattushringi, Gokhalenagar,<br />Pune, Maharashtra 411016</p><div className="sp-socials">{socials.map(([src, label, href]) => <a key={label} href={href} aria-label={`BJS India on ${label}`} target="_blank" rel="noopener noreferrer"><img src={src} alt="" /></a>)}</div><strong>Follow Us</strong></div><div className="sp-footer-columns">{columns.map(([title, ...links]) => <div key={title}><h3>{title}</h3>{links.map(([label, href]) => <a key={label} href={href}>{label}</a>)}</div>)}</div><div className="sp-footer-contact"><h3>Let's Connect</h3><strong>Call</strong><a href="tel:+912066050000">+91 020 6605 0000</a><strong>Email</strong><a href="mailto:info@bjsindia.org">info@bjsindia.org</a></div></div><div className="sp-copyright">2026 | BJS India | All Rights Reserved</div></footer>;
 }
 //OLD HERO SECTION
 // function Hero() {
