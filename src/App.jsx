@@ -5,6 +5,8 @@ import { subscribeNewsletter } from './api';
 import { ApprovedLanding, ApprovedAbout, ApprovedFooter } from './ApprovedPages';
 import Darpan from './Darpan/Darpan';
 import GetInvolved from './GetInvolved';
+import Resources from './Resources';
+import Articles from './Articles';
 
 export const Button = ({ children, href, onClick, className = '' }) => href ? <a className={`button ${className}`} href={href}>{children}<span aria-hidden="true">↗</span></a> : <button className={`button ${className}`} onClick={onClick}>{children}<span aria-hidden="true">↗</span></button>;
 
@@ -17,7 +19,7 @@ function Header({ page }) {
     { label: 'Our Work', href: '/our-work', links: [['Working areas', '/our-work'], ['Programs & Initiatives', '/our-work#program-basket'], ['Program and Program Basket', '/our-work#program-basket'], ['Research, Reports and Data', '/our-work']] },
     { label: 'Impact', href: '/#impact', links: [['Our impact', '/#impact'], ['Impact stories', '/#stories']] },
     { label: 'Get Involved', href: '/get-involved', links: [['Careers (Jobs & internship)', 'mailto:info@bjsindia.org?subject=Careers'], ['Volunteer', 'mailto:info@bjsindia.org?subject=Volunteer%20with%20BJS'], ['Partner With Us', '/#partners'], ['Fellowship', 'mailto:info@bjsindia.org?subject=Fellowship'], ['Donate', 'mailto:info@bjsindia.org?subject=Donation%20enquiry'], ['Contact us', '#contact']] },
-    { label: 'Resources', href: '/#resources', links: [['BJS Darpan', '/alldarpans'], ['Blogs', '/#stories'], ['Articles', '/#resources'], ['Media Centre', '/#stories'], ['Research', '/our-work'], ['Marketing Materials', '/#resources']] },
+    { label: 'Resources', href: '/resources', links: [['BJS Darpan', '/alldarpans'], ['Blogs', '/#stories'], ['Articles', '/resources/articles'], ['Media Centre', '/resources#media-centre'], ['Research', '/our-work'], ['Collaterals', '/resources#collaterals']] },
     { label: 'Updates', href: '/#stories', links: [['Announcements', '/#stories'], ['News & Press Releases', '/#stories'], ['Events & Activities', '#stories']] },
   ];
   const closeNavigation = () => {
@@ -26,7 +28,7 @@ function Header({ page }) {
   };
   return <header className="header"><a href="/" aria-label="BJS India home"><img className="logo" src={A.imgBjsLogo041} alt="Bharatiya Jain Sanghatana" /></a><button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? '✕' : '☰'}</button><nav className={open ? 'navigation open' : 'navigation'} aria-label="Main navigation" onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setExpandedMenu(''); }}>
     {menus.map(({ label, href, links }) => <div key={label} className={`nav-item${expandedMenu === label ? ' expanded' : ''}`} onMouseEnter={() => setExpandedMenu(label)} onMouseLeave={() => setExpandedMenu('')} onFocus={() => setExpandedMenu(label)}>
-      <a href={href} aria-current={(page === 'about' && href === '/about') || (page === 'get-involved' && href === '/get-involved') ? 'page' : undefined} onClick={closeNavigation}>{label}</a>
+      <a href={href} aria-current={(page === 'about' && href === '/about') || (page === 'get-involved' && href === '/get-involved') || (['resources','articles','darpan'].includes(page) && href === '/resources') ? 'page' : undefined} onClick={closeNavigation}>{label}</a>
       <button className="nav-expand" type="button" aria-label={`Show ${label} sections`} aria-expanded={expandedMenu === label} aria-controls={`nav-menu-${label.toLowerCase().replaceAll(' ', '-')}`} onClick={() => setExpandedMenu(expandedMenu === label ? '' : label)}><span aria-hidden="true">⌄</span></button>
       <div className="nav-dropdown" id={`nav-menu-${label.toLowerCase().replaceAll(' ', '-')}`} aria-label={`${label} sections`}>
         <div className="nav-dropdown-inner"><h2>{label}</h2><ul>{links.map(([item, target]) => <li key={item}><a href={target} onClick={closeNavigation}>{item}<span aria-hidden="true">↗</span></a></li>)}</ul></div>
@@ -89,7 +91,7 @@ export default function App() {
  const [pathname,setPathname]=useState(window.location.pathname);
  useEffect(()=>{ const navigate=(e)=>{const a=e.target.closest('a');if(!a || e.defaultPrevented || e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target || a.hasAttribute('download'))return;const url=new URL(a.href,window.location.href);if(url.origin!==window.location.origin)return;e.preventDefault();window.history.pushState({},'',url);setPathname(url.pathname);requestAnimationFrame(()=>{if(url.hash)document.getElementById(url.hash.slice(1))?.scrollIntoView({behavior:'smooth'});else window.scrollTo(0,0);});};const pop=()=>{setPathname(window.location.pathname);};document.addEventListener('click',navigate);window.addEventListener('popstate',pop);return()=>{document.removeEventListener('click',navigate);window.removeEventListener('popstate',pop);};},[]);
  const route=pathname.replace(/\/$/,'');
- const page=route==='/about'?'about':route==='/our-work'?'work':route==='/alldarpans'?'darpan':route==='/get-involved'?'get-involved':'home';
- useEffect(()=>{document.title= `${page==='about'?'About Us':page==='work'?'Our Work':page==='darpan'?'BJS Darpan':page==='get-involved'?'Get Involved':'Impact That Brings India Together'} | BJS India`;},[page]);
- return <><a href="#main" className="skip-link">Skip to content</a><Header page={page}/><main id="main">{page==='about'?<ApprovedAbout/>:page==='work'?<OurWork/>:page==='darpan'?<Darpan/>:page==='get-involved'?<GetInvolved/>:<ApprovedLanding/>}</main><ApprovedFooter landing={page!=='about'}/></>;
+ const page=route==='/about'?'about':route==='/our-work'?'work':route==='/alldarpans'?'darpan':route==='/get-involved'?'get-involved':route==='/resources'?'resources':route==='/resources/articles'?'articles':'home';
+ useEffect(()=>{document.title= `${page==='about'?'About Us':page==='work'?'Our Work':page==='darpan'?'BJS Darpan':page==='get-involved'?'Get Involved':page==='resources'?'Resources':page==='articles'?'Articles':'Impact That Brings India Together'} | BJS India`;},[page]);
+ return <><a href="#main" className="skip-link">Skip to content</a><Header page={page}/><main id="main">{page==='about'?<ApprovedAbout/>:page==='work'?<OurWork/>:page==='darpan'?<Darpan/>:page==='get-involved'?<GetInvolved/>:page==='resources'?<Resources/>:page==='articles'?<Articles/>:<ApprovedLanding/>}</main><ApprovedFooter landing={page!=='about'}/></>;
 }
