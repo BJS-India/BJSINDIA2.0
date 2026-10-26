@@ -34,7 +34,7 @@ export default function ImpactSection({ children }) {
         </div>
         <div id="impact-panel" role="tabpanel" aria-labelledby={`impact-tab-${active}`} tabIndex={0}>
           <div className="sp-impact-metrics" style={{'--impact-count':program.cards.length}} key={program.title}>
-            {program.cards.map(card=><article className={`sp-impact-metric metric-${card.photoIndex}${card.exportImage?' sp-impact-export':''}`} key={card.label}>
+            {program.cards.map(card=><article className={`sp-impact-metric metric-${card.photoIndex}${program.title==='JPA'?' impact-jpa':''}${card.exportImage?' sp-impact-export':''}`} key={card.label}>
               {card.exportImage ? <img className="sp-impact-export-image" src={card.exportImage} alt={`${card.value} ${card.label.replaceAll('\n',' ')}`}/> : <>
                 <strong>{card.value}</strong><p>{card.label}</p>
                 {card.image && <div><img src={card.image} alt={card.label.replaceAll('\n',' ')}/></div>}

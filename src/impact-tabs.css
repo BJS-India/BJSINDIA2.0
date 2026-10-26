@@ -4,11 +4,15 @@
 .sp-impact-metric { background:var(--impact-background); }
 .sp-impact-metric > strong { color:var(--impact-color); }
 .sp-impact-metric > p { white-space:pre-line;color:#000; }
+.sp-impact-metric.impact-jpa{border-radius:calc(30 * var(--sp-unit));overflow:hidden;}
+.sp-impact-metric.impact-jpa>div{position:absolute;top:79px;left:0;width:100%;height:178px;}
+.sp-impact-metric.impact-jpa>div img{inset:0;width:100%;height:100%;object-fit:cover;}
 .sp-impact-export { position:relative;display:block; }
 .sp-impact-export > .sp-impact-export-image { position:absolute;inset:0;width:100%;height:100%;object-fit:fill; }
 .sp-impact-tabs [role=tab]:focus-visible { outline:2px solid var(--impact-color);outline-offset:2px; }
 @media(min-width:1024px) {
   .sp-impact-metrics { grid-template-columns:repeat(var(--impact-count),calc(160 * var(--sp-unit)));justify-content:center; }
+  .sp-impact-metric.impact-jpa>div{top:calc(79 * var(--sp-unit));height:calc(178 * var(--sp-unit));}
   .sp-impact-tabs [role=tab][aria-selected=true] { font-size:calc(14 * var(--sp-unit)); }
   .sp-impact-metric > p { font-size:calc(12 * var(--sp-unit));line-height:calc(14 * var(--sp-unit)); }
 }

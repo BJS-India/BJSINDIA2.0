@@ -459,9 +459,9 @@ body {
   }
 
   .sp-programmes {
-    height: calc(955 * var(--sp-unit));
+    height: calc(800 * var(--sp-unit));
     min-height: 0;
-    padding: calc(96 * var(--sp-unit)) 0 0;
+    padding: calc(75 * var(--sp-unit)) 0 0;
     position: relative;
   }
 
@@ -485,10 +485,13 @@ body {
   }
 
   .sp-programme-card {
+    display: flex;
+    flex-direction: column;
     flex-basis: calc(304 * var(--sp-unit));
     /* height: calc(427 * var(--sp-unit)); */
-    height: auto;
-    min-height: calc(427 * var(--sp-unit));
+    height: calc(475 * var(--sp-unit)) !important;
+    min-width:300px;
+    min-height: 0 !important;
     border-radius: calc(10 * var(--sp-unit));
   }
 
@@ -514,7 +517,12 @@ body {
   }
 
   .sp-programme-body {
-    padding: calc(56 * var(--sp-unit)) calc(25 * var(--sp-unit)) calc(18 * var(--sp-unit));
+    display: flex;
+    height: auto !important;
+    min-height: 0;
+    flex: 1;
+    flex-direction: column;
+    padding: calc(48 * var(--sp-unit)) calc(25 * var(--sp-unit)) calc(12 * var(--sp-unit));
   }
 
   .sp-programme-body h3 {
@@ -534,15 +542,21 @@ body {
   .sp-programme-body a {
     font-size: calc(20 * var(--sp-unit));
     line-height: calc(30.4 * var(--sp-unit));
-    margin-top: calc(150 * var(--sp-unit)) !important;
+    align-self: flex-start;
+    margin-top: auto !important;
     gap: calc(8 * var(--sp-unit));
   }
 
   .sp-programme-note {
+    position: absolute;
+    left: var(--sp-gutter);
+    bottom: calc(30 * var(--sp-unit));
+    width: calc(100% - 2 * var(--sp-gutter));
     height: calc(109 * var(--sp-unit));
     border-left-width: calc(12 * var(--sp-unit));
     padding: calc(12 * var(--sp-unit)) 0 0 calc(21 * var(--sp-unit));
-    margin-top: calc(42 * var(--sp-unit));
+    margin-top: 0;
+    z-index: 1;
   }
 
   .sp-programme-note p {
@@ -809,7 +823,7 @@ body {
     gap: calc(89 * var(--sp-unit));
     min-height: 0;
     height: calc(544 * var(--sp-unit));
-    padding: calc(100 * var(--sp-unit)) 0 0;
+    padding: calc(70 * var(--sp-unit)) 0 0;
     align-items: start;
   }
 
@@ -898,7 +912,7 @@ body {
 
   .sp-testimonials h2 {
     height: calc(73 * var(--sp-unit));
-    font-size: calc(54 * var(--sp-unit));
+    font-size: calc(40 * var(--sp-unit));
     line-height: calc(67.5 * var(--sp-unit));
   }
 
@@ -961,9 +975,10 @@ body {
   }
 
   .sp-stories {
-    height: calc(838 * var(--sp-unit));
+    height: calc(700 * var(--sp-unit));
+    /* height: max-content; */
     min-height: 0;
-    padding: calc(100 * var(--sp-unit)) 0 0;
+    padding: calc(70 * var(--sp-unit)) 0 0;
   }
 
   .sp-stories .sp-section-bar {
@@ -1004,9 +1019,9 @@ body {
   }
 
   .sp-partners {
-    height: calc(380 * var(--sp-unit));
+    height: calc(300 * var(--sp-unit));
     min-height: 0;
-    padding: calc(105 * var(--sp-unit)) 0 0;
+    padding: calc(60 * var(--sp-unit)) 0 0;
   }
 
   .sp-partners>.sp-container {

@@ -392,6 +392,11 @@
     align-items: center
 }
 
+.sp-newsletter>.sp-container>.sp-darpan-gif {
+    align-self: end;
+    margin: 0;
+}
+
 .sp-darpan-art {
     position: relative;
     height: 223px;
@@ -571,7 +576,7 @@
     flex: 0 0 304px;
     scroll-snap-align: start;
     position: relative;
-    min-height: 450px !important;
+    min-height: 420px !important;
     background: #fbf7f4;
     border-radius: 10px 10px 0 0;
     overflow: hidden
@@ -1018,8 +1023,8 @@
 .sp-story-gallery {
   width: 100%;
   max-width: 1250px; /* was 1100px */
-  margin: 30px auto 0;
-  padding: 0 24px;
+  /* margin: 30px auto 0; */
+  /* padding: 0 24px; */
 }
 
 .sp-story-player {
@@ -1141,9 +1146,8 @@
 /* ``` */
 .sp-story-gallery {
   width: 100%;
-  margin: 30px auto 0;
   overflow: hidden;
-  padding: 24px 0;
+  padding: 20px 0;
 }
 
 /* ```css */
@@ -1210,12 +1214,34 @@
 }
 /* ``` */
 
-.sp-story-counter {
-  margin: 20px 0 0;
-  color: #666;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-align: center;
+.sp-story-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.sp-story-indicators button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #c7c7c7;
+  cursor: pointer;
+  transition: width 200ms ease, background-color 200ms ease;
+}
+
+.sp-story-indicators button.is-active {
+  width: 22px;
+  border-radius: 999px;
+  background: #152e50;
+}
+
+.sp-story-indicators button:focus-visible {
+  outline: 2px solid #152e50;
+  outline-offset: 3px;
 }
 
 @media (max-width: 700px) {
