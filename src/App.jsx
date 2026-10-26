@@ -18,7 +18,7 @@ function Header({ page }) {
   const [expandedMenu, setExpandedMenu] = useState('');
   useEffect(() => { setOpen(false); setExpandedMenu(''); }, [page]);
   const menus = [
-    { label: 'About Us', href: '/about', links: [['Our story', '/about'], ['Who we are and how we work', '/about'], ['Vision and mission', '/about#vision-mission'], ['Our presence', '/about#presence'], ['Founder', '/about#founder'], ['Trust board', '/about#trust-board'], ['Volunteer network', '/about#volunteer-network'], ['Head office', '/about#head-office'], ['Awards and recognition', '/about#awards']] },
+    { label: 'About Us', href: '/about', links: [['Our Story', '/about'], ['Trust Board', '/about#trust-board'], ['Founder', '/about#founder'], ['Volunteer Network', '/about#volunteer-network'], ['Our Presences', '/about#presence'], ['Head Office', '/about#head-office']] },
     { label: 'Our Work', href: '/our-work', links: [['Working areas', '/our-work'], ['Programs & Initiatives', '/our-work#program-basket'], ['Program and Program Basket', '/our-work#program-basket'], ['Research, Reports and Data', '/our-work']] },
     { label: 'Impact', href: '/#impact', links: [['Our impact', '/#impact'], ['Impact stories', '/#stories']] },
     { label: 'Get Involved', href: '/get-involved', links: [['Careers (Jobs & internship)', 'mailto:info@bjsindia.org?subject=Careers'], ['Volunteer', 'mailto:info@bjsindia.org?subject=Volunteer%20with%20BJS'], ['Partner With Us', '/#partners'], ['Fellowship', 'mailto:info@bjsindia.org?subject=Fellowship'], ['Donate', 'mailto:info@bjsindia.org?subject=Donation%20enquiry'], ['Contact us', '#contact']] },

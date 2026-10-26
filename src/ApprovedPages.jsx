@@ -45,28 +45,65 @@ export function ApprovedFooter({ landing = false }) {
 
 
 function Hero() {
+  const heroImages = [
+    '/assets/hero-mosaic.png',
+    '/assets/hero-mosaic-2.png',
+    '/assets/hero-mosaic-3.png',
+  ];
+  const [activeHeroImage, setActiveHeroImage] = useState(0);
+  const [previousHeroImage, setPreviousHeroImage] = useState(heroImages.length - 1);
+
+  useEffect(() => {
+    const carouselTimer = window.setInterval(() => {
+      setPreviousHeroImage(activeHeroImage);
+      setActiveHeroImage((activeHeroImage + 1) % heroImages.length);
+    }, 6000);
+
+    return () => window.clearInterval(carouselTimer);
+  }, [activeHeroImage]);
+
   return (
     <section className="sp-hero">
       <div className="sp-hero-art" aria-hidden="true">
-        <img src="/assets/hero-mosaic.png" alt="" />
+        <div className="sp-hero-art-track">
+          <img
+            className="is-previous"
+            src={heroImages[previousHeroImage]}
+            alt=""
+            key={`previous-${previousHeroImage}`}
+          />
+          <img
+            className="is-active"
+            src={heroImages[activeHeroImage]}
+            alt=""
+            key={`active-${activeHeroImage}`}
+          />
+        </div>
+        <div className="sp-hero-indicators" aria-hidden="true">
+          {heroImages.map((src, index) => (
+            <span
+              className={index === activeHeroImage ? 'is-active' : ''}
+              key={src}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="sp-container">
         <div className="sp-hero-copy">
           <h1>
-            Building Solutions.
-            <br />
-            Creating Change.
-            <strong>Together.</strong>
+            <strong>Visionary
+              Solutions</strong>
+            for Evolving Social Challenges
           </h1>
 
           <p>
-            Driven by a shared commitment to social impact. our volunteers
-            come together to create meaningful change across communities.
+            For over 42 years, BJS has been empowering individuals, strengthening families, and 
+            uniting communities turning vision into collective action for a stronger nation.
           </p>
 
           <div className="sp-hero-actions">
-            <Action filled href="/about">
+            <Action filled href="/our-work">
               Explore BJS
             </Action>
           </div>
@@ -87,32 +124,45 @@ const coverGeometry = [
   ['21.5% 7.03% 5.84% 65.92%', 'hypot(62.4081cqw, 22.8497cqh)', 'hypot(-37.5919cqw, 77.1503cqh)', 'rotate(22.92deg) skewX(0.04deg)'],
   ['42.44% 0 0 78.04%', 'hypot(58.6677cqw, 25.7692cqh)', 'hypot(-41.3323cqw, 74.2308cqh)', 'rotate(26.34deg) skewX(0.05deg)'],
 ];
+
 function Newsletter() {
   const [contact, setContact] = useState('');
-  const [status, setStatus] = useState('');
+  const [toast, setToast] = useState(null);
   const [busy, setBusy] = useState(false);
   const redirectTimer = useRef(null);
+  const toastTimer = useRef(null);
 
-  useEffect(() => () => window.clearTimeout(redirectTimer.current), []);
+  useEffect(() => () => {
+    window.clearTimeout(redirectTimer.current);
+    window.clearTimeout(toastTimer.current);
+  }, []);
+
+  function showToast(message, type) {
+    window.clearTimeout(toastTimer.current);
+    setToast({ message, type });
+    toastTimer.current = window.setTimeout(() => setToast(null), 5000);
+  }
 
   async function submit(event) {
     event.preventDefault();
     const value = contact.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && !/^\+?[\d\s()-]{8,20}$/.test(value)) {
-      setStatus('Enter a valid email address or WhatsApp number.');
+      showToast('Enter a valid email address or WhatsApp number.', 'error');
       return;
     }
     setBusy(true);
-    setStatus('');
     try {
       const result = await subscribeNewsletter(value);
-      setStatus(result.configured
-        ? 'Thank you for subscribing to BJS Darpan.'
-        : 'Subscriptions will be available soon. Please contact info@bjsindia.org to receive BJS Darpan.');
+      showToast(
+        result.configured
+          ? 'Thank you for subscribing to BJS Darpan.'
+          : 'Subscriptions will be available soon. Please contact info@bjsindia.org to receive BJS Darpan.',
+        result.configured ? 'success' : 'info'
+      );
       if (result.configured) setContact('');
       redirectTimer.current = window.setTimeout(() => window.location.assign('/alldarpans'), 2000);
     } catch (error) {
-      setStatus(error.message);
+      showToast(error.message, 'error');
     } finally {
       setBusy(false);
     }
@@ -124,7 +174,9 @@ function Newsletter() {
       alt="BJS Darpan newsletter editions"
       className="sp-darpan-gif"
     />
-    <div className="sp-newsletter-content"><h2>Subscribe Our Newsletter <strong>BJS Darpan</strong></h2><p>Stay connected with the latest updates, initiatives, stories and impact from BJS.</p><form onSubmit={submit}><label className="sr-only" htmlFor="sp-newsletter-contact">Email or WhatsApp number</label><input id="sp-newsletter-contact" required value={contact} onChange={event => setContact(event.target.value)} placeholder="Enter your E-Mail or WhatsApp Number" /><button type="submit" disabled={busy}>{busy ? 'SUBSCRIBING…' : 'SUBSCRIBE'}</button></form><p className="sp-form-status" role="status">{status}</p></div></div></section>;
+    <div className="sp-newsletter-content"><h2>Subscribe Our Newsletter <strong>BJS Darpan</strong></h2><p>Stay connected with the latest updates, initiatives, stories and impact from BJS.</p><form onSubmit={submit}><label className="sr-only" htmlFor="sp-newsletter-contact">Email or WhatsApp number</label><input id="sp-newsletter-contact" required value={contact} onChange={event => setContact(event.target.value)} placeholder="Enter your E-Mail or WhatsApp Number" /><button type="submit" disabled={busy}>{busy ? 'SUBSCRIBING…' : 'SUBSCRIBE'}</button></form></div></div>
+    {toast && <div className={`sp-newsletter-toast ${toast.type}`} role={toast.type === 'error' ? 'alert' : 'status'}>{toast.message}</div>}
+  </section>;
 }
 
 const programmes = [
@@ -220,17 +272,72 @@ function PresenceStats() {
   return <div className="sp-stats">{stats.map(([value, suffix, label], i) => <div className={i < 3 ? 'outlined' : 'raised'} key={label}><PresenceCount value={value} suffix={suffix} /><span>{label}</span></div>)}</div>;
 }
 function Presence() { return <section className="sp-presence" id="get-involved"><img className="sp-presence-map" src={L.imgD4D674418D584E59B54C8Af56B24639D1} alt="" /><div className="sp-container"><div><Kicker>BJS Scale</Kicker><h2>A Growing<br />Presence Across India</h2><p>Our network of volunteers and initiatives continues to expand, reaching more communities and creating a wider impact every year.</p><Action href="/about#presence">View Map</Action></div><PresenceStats /></div></section>; }
+function TestimonialVideoCard({ file, title, programme }) {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [playbackError, setPlaybackError] = useState('');
+
+  async function togglePlayback() {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      try {
+        await video.play();
+        setPlaybackError('');
+      } catch {
+        setPlaybackError('This video could not be played. Please try again.');
+      }
+    } else {
+      video.pause();
+    }
+  }
+
+  return <article className="sp-testimonial-card">
+    <div className="sp-testimonial-player">
+      <video
+        ref={videoRef}
+        className="sp-testimonial-video"
+        src={`/assets/testimonials/${encodeURIComponent(file)}`}
+        playsInline
+        preload="metadata"
+        aria-label={title}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onEnded={() => setIsPlaying(false)}
+      />
+      <strong className="sp-testimonial-programme">{programme}</strong>
+      <button
+        type="button"
+        className="sp-testimonial-play-toggle"
+        onClick={togglePlayback}
+        aria-label={`${isPlaying ? 'Pause' : 'Play'} ${title}`}
+        aria-pressed={isPlaying}
+      >
+        {isPlaying ? (
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM15 5h4v14h-4z" /></svg>
+        ) : (
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+        )}
+      </button>
+      {playbackError && <span className="sp-testimonial-error" role="alert">{playbackError}</span>}
+    </div>
+    <h3>{title}</h3>
+    <p>Watch their story</p>
+  </article>;
+}
+
 function Testimonials() {
   const ref = useRef(null);
   const videos = [
-    ['Parinay Path - Jaipur 1.mp4', 'Parinay Path - Jaipur'],
-    ['Smart Girls - Jahazpur RJ 1.mp4', 'Smart Girls - Jahazpur'],
-    ['BJS Saksham 1.mp4', 'BJS Saksham'],
-    ['DKJ Doctor 2.mp4', 'Dil Ka Jigsaw - Doctor'],
-    ['Humsafar Dobara Pune 1.mp4', 'Humsafar Dobara - Pune'],
-    ['JPA Case SuccesStory Testimonial 1.mp4', 'JPA Success Story'],
+    ['Parinay Path - Jaipur 1.mp4', 'Parinay Path - Jaipur', 'Parinay Path'],
+    ['Smart Girls - Jahazpur RJ 1.mp4', 'Smart Girls - Jahazpur', 'Smart Girls'],
+    ['BJS Saksham 1.mp4', 'BJS Saksham', 'BJS Saksham'],
+    ['DKJ Doctor 2.mp4', 'Dil Ka Jigsaw - Doctor', 'Dil Ka Jigsaw'],
+    ['Humsafar Dobara Pune 1.mp4', 'Humsafar Dobara - Pune', 'Humsafar Dobara'],
+    ['JPA Case SuccesStory Testimonial 1.mp4', 'JPA Success Story', 'JPA'],
   ];
-  return <section className="sp-testimonials"><div className="sp-container"><Kicker>Real Stories. Real Change.</Kicker><div className="sp-section-bar"><div><h2>Lives Changed. Futures Transformed.</h2><p>Discover how BJS initiatives are creating real opportunities, stronger communities and brighter futures.</p></div><Arrows previous={() => ref.current?.scrollBy({ left: -289, behavior: 'smooth' })} next={() => ref.current?.scrollBy({ left: 289, behavior: 'smooth' })} /></div></div><div className="sp-testimonial-track" ref={ref}>{videos.map(([file, title]) => <video className="sp-testimonial-video" key={file} src={`/assets/testimonials/${encodeURIComponent(file)}`} controls playsInline preload="metadata" aria-label={title} />)}</div></section>;
+  return <section className="sp-testimonials"><div className="sp-container"><Kicker>Real Stories. Real Change.</Kicker><div className="sp-section-bar"><div><h2>Lives Changed. Futures Transformed.</h2><p>Discover how BJS initiatives are creating real opportunities, stronger communities and brighter futures.</p></div><Arrows previous={() => ref.current?.scrollBy({ left: -289, behavior: 'smooth' })} next={() => ref.current?.scrollBy({ left: 289, behavior: 'smooth' })} /></div></div><div className="sp-testimonial-track" ref={ref}>{videos.map(([file, title, programme]) => <TestimonialVideoCard key={file} file={file} title={title} programme={programme} />)}</div></section>;
 }
 // OLD STORIES SECTION - 
 // function Stories() { const [index, setIndex] = useState(1); const slides = [L.imgRectangle450, L.imgImage8, L.imgRectangle458]; return <section className="sp-stories" id="stories"><div className="sp-container"><Kicker>Media Center</Kicker><div className="sp-section-bar"><div><h2>Stories That Inspire Change.</h2><p>Watch our videos to see how BJS initiatives are creating real impact on the ground.</p></div><Arrows previous={() => setIndex((index + 2) % 3)} next={() => setIndex((index + 1) % 3)} /></div></div><div className="sp-story-stage"><img className="sp-story-side" src={slides[(index + 2) % 3]} alt="Previous BJS story" /><div className="sp-story-main"><img src={slides[index]} alt="BJS stories: impacting lives, ushering change" /></div><img className="sp-story-side" src={slides[(index + 1) % 3]} alt="Next BJS story" /></div></section>; }
@@ -287,7 +394,7 @@ function Stories() {
 
             return (
               <button
-                key={`${videoIndex}-${offset}`}
+                key={offset}
                 type="button"
                 className={`sp-story-preview ${offset === 0
                   ? "is-center"
@@ -306,7 +413,6 @@ function Stories() {
               >
                 {offset === 0 ? (
                   <iframe
-                    key={videos[index]}
                     src={`https://www.youtube-nocookie.com/embed/${videos[index]}?rel=0`}
                     title={`BJS story video ${index + 1}`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -383,13 +489,13 @@ export function ApprovedAbout() {
         <h2>Who We Are</h2>
         <h3>Strengthening Communities. Supporting Families. Responding in Times of Need.</h3>
         <p>Established in 1985, Bharatiya Jain Sanghatana (BJS) is a nonprofit organisation that develops practical, research-based solutions to pressing social and national challenges.</p>
-          <p>BJS began by mobilising communities against harmful social practices, including dowry and female foeticide. This early work grew into a mass movement for social reform.
-        Since 1993, BJS has also played a leading role in disaster relief and rehabilitation across India and neighbouring countries, supporting communities through natural disasters,
+        <p>BJS began by mobilising communities against harmful social practices, including dowry and female foeticide. This early work grew into a mass movement for social reform.
+          Since 1993, BJS has also played a leading role in disaster relief and rehabilitation across India and neighbouring countries, supporting communities through natural disasters,
           droughts and the COVID-19 pandemic. </p>
-          
-          <p>Strengthening the family system remains central to BJS’s work. Through ongoing research and thoughtfully designed programmes,
+
+        <p>Strengthening the family system remains central to BJS’s work. Through ongoing research and thoughtfully designed programmes,
           BJS addresses emerging challenges around marriage and family life, helping individuals and families build stronger relationships and navigate social change.
-          </p>
+        </p>
         <div className="sp-vision-mission" id="vision-mission">
           {[
             ['Our Vision', B.imgImage21, 'To collectively contribute towards nation building through the holistic development of society, fostering an empowered, self-reliant and inclusive nation where every individual has equal opportunities to learn, grow, participate and thrive.'],
