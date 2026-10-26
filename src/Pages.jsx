@@ -166,7 +166,7 @@ export function About() {
   </>;
 }
 
-const baskets = [['Prarabdh', 'Foundation Programmes', '#73e57b'], ['Pratibimb', 'Inception Programmes', '#ffdb34'], ['Pravah', 'Infusion Programmes', '#ff8b58'], ['Parikalpana', 'National Programmes', '#65b3ff'], ['Prabodhi', 'Elevation Programmes', '#c68cff']];
+const baskets = [['Prarabdh', 'Foundation Programs', '#73e57b'], ['Pratibimb', 'Inception Programs', '#ffdb34'], ['Pravah', 'Infusion Programs', '#ff8b58'], ['Parikalpana', 'National Programs', '#65b3ff'], ['Prabodhi', 'Elevation Programs', '#c68cff']];
 
 function BasketDiagram() { return <div className="basket-diagram" role="img" aria-label="Program Basket: Prarabdh foundation, Pratibimb inception, Pravah infusion, Parikalpana national and Prabodhi elevation programmes"><div className="diagram-canvas">{diagramPlacements.map(p => <div className="diagram-layer" key={p.asset} style={{ inset: p.inset }}><img src={W[p.asset]} alt="" /></div>)}<strong className="basket-center">PROGRAM<br />BASKET</strong><div className="basket-label label-foundation"><strong>Prarabdh</strong><span>Foundation<br />Programs</span></div><div className="basket-label label-inception"><strong>Pratibimb</strong><span>Inception Programs</span></div><div className="basket-label label-infusion"><strong>Pravah</strong><span>Infusion Programs</span></div><div className="basket-label label-national"><strong>Parikalpana</strong><span>National Programs</span></div><div className="basket-label label-elevation"><strong>Prabodhi</strong><span>Elevation<br />Programs</span></div></div></div>; }
 

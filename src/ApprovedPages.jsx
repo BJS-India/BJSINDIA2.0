@@ -167,7 +167,7 @@ function Programs() {
     <div className="sp-container">
       <div className="sp-programme-note">
         <p>From water and environment to education, health and social development<br />our initiatives are designed to create sustainable and inclusive change</p>
-        <a href="/our-work">View All Programmes <img src={L.imgGroup5998} alt="" /></a>
+        <a href="/our-work">View All Programs <img src={L.imgGroup5998} alt="" /></a>
       </div>
     </div>
   </section>;
