@@ -1,29 +1,30 @@
-.resources-page{--resource-gutter:max(48px,calc((100% - 1244px)/2));background:#faf7f5;color:#152e50;padding-bottom:90px}
-.resources-container{width:calc(100% - 96px);max-width:1244px;margin-inline:auto}
-.resources-page h1,.resources-page h2{font-size:48px;line-height:1.2;font-weight:650;letter-spacing:-1px}
+.resources-page{--resource-gutter:max(48px,calc((100% - 1180px)/2));background:#faf7f5;color:#152e50;padding-bottom:90px}
+.resources-container{width:calc(100% - 96px);max-width:1180px;margin-inline:auto}
+.resources-page h1,.resources-page h2{font-size:44px;line-height:1.2;font-weight:650;letter-spacing:-1px}
 .resources-page p{font-size:20px;line-height:1.4}
 .resources-intro{text-align:center;padding-block:65px 48px}
 .resources-intro p{margin-top:24px}
 .resource-section{padding-top:55px}
 .resource-section-issue{background:#fdeeed;padding-bottom:50px}
-.resource-section-heading{position:relative;margin-bottom:28px;padding-right:135px}
-.resource-section-heading p{margin-top:20px;max-width:1040px}
+.resource-section-heading{position:relative;margin-bottom:20px;padding-right:135px}
+.resource-section-heading p{margin-top:16px;max-width:1040px}
 .resource-controls{display:flex;gap:12px;position:absolute;right:0;top:0}
 .resource-controls button,.resource-controls a{width:48px;height:48px;display:grid;place-items:center;border:0;border-radius:50%;background:#fdeeed;color:#ff5350;font:38px/1 Arial,sans-serif;padding-bottom:5px;text-decoration:none}
 .resource-section-issue .resource-controls>*{background:#faf7f5}
 .resource-controls button:disabled{color:#ffb7b2;cursor:default;opacity:1}
 .resource-track-wrap{position:relative}
-.resource-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--resource-gutter);padding:0 var(--resource-gutter) 4px;scrollbar-width:none}
+.resource-track{display:flex;gap:15px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--resource-gutter);padding:0 var(--resource-gutter) 4px;scrollbar-width:none}
 .resource-track::-webkit-scrollbar{display:none}
 .resource-track-wrap.has-carousel:not(.at-end)::after{content:'';position:absolute;top:0;bottom:0;right:0;width:90px;background:linear-gradient(90deg,transparent,#faf7f5);pointer-events:none}
 .resource-section-issue .resource-track-wrap.has-carousel:not(.at-end)::after{background:linear-gradient(90deg,transparent,#fdeeed)}
 .resource-card{display:flex;flex-direction:column;flex-shrink:0;min-width:0;background:#fff;border-radius:10px;overflow:hidden;scroll-snap-align:start;color:#152e50;text-decoration:none;position:relative}
 a.resource-card:hover{text-decoration:none}
 a.resource-card:hover h3{text-decoration:underline;text-underline-offset:4px}
-.resource-card-issue{width:285px}
+.resource-card-issue{width:270px}
 .resource-card-article{width:452px;padding:10px}
 .resource-card-media,.resource-card-collateral{width:calc((min(100vw - 96px,1244px) - 32px)/3);padding:10px}
 .resource-image{overflow:hidden;border-radius:8px;flex-shrink:0;background:#f0e9e4;aspect-ratio:1.64}
+.resource-latest{position:absolute;z-index:1;top:15px;left:-33px;width:116px;padding:7px 0;background:#f35450;color:#fff;text-align:center;text-transform:uppercase;font-size:10px;font-weight:800;line-height:1.05;letter-spacing:.7px;transform:rotate(-45deg);box-shadow:0 2px 5px #0002}
 .resource-image img{display:block;width:100%;height:100%;object-fit:cover}
 .resource-document-cover{display:block;width:100%;height:100%;border:0;pointer-events:none}
 .darpan-cover-art{position:relative;width:100%;height:100%;overflow:hidden;background:linear-gradient(135deg,#faf4eb,#fffaf3 48%,#f1e8df);color:#171717;padding:18px 14px;font-family:Arial,sans-serif}
@@ -37,13 +38,13 @@ a.resource-card:hover h3{text-decoration:underline;text-underline-offset:4px}
 .cover-stamp{position:absolute;right:12px;bottom:16%;width:58px;height:58px;border:2px solid #dc5149;border-radius:50%;display:grid;place-content:center;text-align:center;color:#c93f3c;background:#fff;font-size:8px;font-weight:700;transform:rotate(-16deg)}
 .cover-footer-title{position:absolute;bottom:18px;left:0;width:100%;text-align:center;color:#d35b50;font-size:24px}
 .cover-footer-subtitle{position:absolute;bottom:8px;left:25%;width:50%;background:#315d9b;color:white;text-align:center;font-size:6px}
-.resource-card-issue .resource-image{border-radius:0;aspect-ratio:285/380}
+.resource-card-issue .resource-image{border-radius:0;aspect-ratio:3/4}
 .resource-card-issue img{object-fit:contain;background:#fff}
 .resource-card-collateral .resource-image{aspect-ratio:1/1.1}
 .resource-placeholder{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;background:#eee8e3;color:#6d747a}
 .resource-placeholder strong{font-size:36px;color:#b7b0aa}
 .resource-placeholder span{font-size:18px;line-height:1.4}
-.resource-month{padding:14px 8px;text-align:center;text-transform:uppercase;letter-spacing:6px;font-size:11px;font-weight:700;line-height:1.5}
+.resource-month{padding:10px 8px;text-align:center;text-transform:uppercase;letter-spacing:5px;font-size:11px;font-weight:700;line-height:1.5}
 .resource-body{position:relative;padding:21px 18px 22px;flex:1}
 .resource-body h3{font-size:24px;line-height:1.4;font-weight:700;letter-spacing:-.4px;padding-right:56px}
 .resource-card-article h3{padding-right:0;max-width:360px}

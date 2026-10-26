@@ -12,7 +12,7 @@ function ResourceImage({item}) {
 }
 
 export function ResourceCard({item, kind, href}) {
-  const content = <><div className="resource-image"><ResourceImage item={item}/></div>{kind === 'issue' ? <div className="resource-month">{item.title}</div> : <div className="resource-body">
+  const content = <><div className="resource-image"><ResourceImage item={item}/>{item.id === 'darpan-2026-10' && <span className="resource-latest">Latest<br/>Edition</span>}</div>{kind === 'issue' ? <div className="resource-month">{item.title}</div> : <div className="resource-body">
     {kind === 'article' && <span className="resource-category">{item.category}</span>}
     <h3>{item.title}</h3>
     {kind === 'article' && <><div className="resource-rule"/><time dateTime={item.date}>{new Date(`${item.date}T12:00:00`).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</time></>}
@@ -39,7 +39,7 @@ function ResourceSection({id,title,description,items,kind,href,controls=true}) {
   return <section id={id} className={`resource-section resource-section-${kind}`} aria-labelledby={`${id}-heading`}>
     <div className="resources-container resource-section-heading"><h2 id={`${id}-heading`}>{title}</h2><p>{description}</p>
       {controls && <div className="resource-controls">
-        <button type="button" onClick={()=>scroll(-1)} disabled={edges.start} aria-label={`Previous ${title}`} aria-controls={`${id}-track`}>‹</button>
+        {id !== 'darpan' && id !== 'articles' && <button type="button" onClick={()=>scroll(-1)} disabled={edges.start} aria-label={`Previous ${title}`} aria-controls={`${id}-track`}>‹</button>}
         {href ? <a href={href} aria-label={`View all ${title}`}>›</a> : <button type="button" onClick={()=>scroll(1)} disabled={edges.end} aria-label={`Next ${title}`} aria-controls={`${id}-track`}>›</button>}
       </div>}
     </div>

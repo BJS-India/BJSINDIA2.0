@@ -21,7 +21,7 @@ function InvolvementIcon({type,source}) {
 export default function GetInvolved() {
   return <div className="get-involved-page">
     <section className="gi-opportunities gi-container" aria-labelledby="involvement-heading">
-      <h1 id="involvement-heading">Be Part of the Change.</h1>
+      <h1 id="involvement-heading">Be Part Of The Change.</h1>
       <p className="gi-intro">Contribute your time, skills or support to help BJS strengthen families, empower communities and create lasting social change.</p>
       <div className="gi-cards">
         {involvementCards.map(card=><article className="gi-card" id={card.id} key={card.id}>
@@ -34,7 +34,8 @@ export default function GetInvolved() {
     <section className="gi-connect gi-container" id="connect" aria-labelledby="connect-heading">
       <div className="gi-connect-copy"><h2 id="connect-heading">We're Here<br/>to Connect.</h2><p>Have a question or want to explore a way to get involved? Reach out to our team and we'll be happy to help</p></div>
       <div className="gi-contact-panel">
-        <div className="gi-contact-item"><span className="gi-contact-icon"><InvolvementIcon type="phone" source={contactIcons.phone}/></span><div><h3>Phone</h3><a href="tel:+912066050000">+91 020 6605 0000</a></div></div>
+        <div className="gi-contact-item"><span className="gi-contact-icon"><InvolvementIcon type="phone" source={contactIcons.phone}/></span><div><h3>Phone</h3><a href="tel:+912066050000">020 6605 0000</a></div></div>
+        <div className="gi-contact-item"><span className="gi-contact-icon"><InvolvementIcon type="email" source={contactIcons.email}/></span><div><h3>Email</h3><a href="mailto:info@bjsindia.org">info@bjsindia.org</a></div></div>
         <div className="gi-contact-item gi-address"><span className="gi-contact-icon"><InvolvementIcon type="location" source={contactIcons.location}/></span><div><h3>Visit Us</h3><address>Level 8, Mutha Chambers, II, Senapati Bapat Rd, <br className="gi-address-break"/>Chattushringi, Gokhalenagar, Pune, Maharashtra 411016</address></div></div>
       </div>
     </section>

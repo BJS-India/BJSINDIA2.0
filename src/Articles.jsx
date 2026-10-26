@@ -11,7 +11,6 @@ export default function Articles() {
   const results=articles.filter(article=>(year==='all'||article.date.startsWith(year)) && `${article.title} ${article.category}`.toLowerCase().includes(search.trim().toLowerCase())).sort((a,b)=>sort==='latest'?b.date.localeCompare(a.date):a.date.localeCompare(b.date));
   const clear=()=>{setSearch('');setYear('all');setSort('latest');};
   return <section className="darpan-page articles-page"><div className="darpan-container">
-    <nav className="articles-breadcrumb" aria-label="Breadcrumb"><a href="/resources">Resources</a><span aria-hidden="true">/</span><span aria-current="page">Articles</span></nav>
     <header className="darpan-heading"><h1>Articles</h1><p>{articlesIntro}</p></header>
     <div className="darpan-filters" aria-label="Filter articles">
       <label className="darpan-search"><span>Search by name</span><input type="search" placeholder="Search articles" value={search} onChange={event=>setSearch(event.target.value)}/></label>

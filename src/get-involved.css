@@ -1,16 +1,17 @@
 .get-involved-page{background:#fbf7f4;color:#13294a;font-family:'Inter Variable',sans-serif;padding-bottom:120px;}
-.gi-container{width:calc(100% - 96px);max-width:1244px;margin-inline:auto;}
+.gi-container{width:calc(100% - 96px);max-width:1180px;margin-inline:auto;}
 .gi-opportunities{padding-top:72px;}
-.gi-opportunities>h1,.gi-connect-copy>h2{font-family:'Manrope Variable',sans-serif;font-size:48px;line-height:1.25;font-weight:800;margin:0;}
+.gi-opportunities>h1,.gi-connect-copy>h2{font-family:'Manrope Variable',sans-serif;font-size:46px;line-height:1.25;font-weight:800;margin:0;}
 .gi-opportunities>h1{text-align:center;}
-.gi-intro{font-size:18px;line-height:28px;font-weight:500;text-align:center;margin:16px 0 0;}
-.gi-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:50px 30px;margin-top:60px;}
+.gi-opportunities>h1{color:#f45751;}
+.gi-intro{font-size:18px;line-height:28px;font-weight:500;text-align:center;margin:8px 0 0;}
+.gi-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:50px 30px;margin-top:54px;}
 .gi-card{position:relative;background:#fff;border-radius:12px;display:flex;flex-direction:column;scroll-margin-top:30px;}
-.gi-photo{height:268px;margin:10px 10px 0;border-radius:10px;overflow:hidden;background:#f0eae6;}
+.gi-photo{height:254px;margin:10px 10px 0;border-radius:10px;overflow:hidden;background:#f0eae6;}
 .gi-photo img{display:block;width:100%;height:100%;object-fit:cover;}
-.gi-badge{position:absolute;right:24px;top:224px;width:108px;height:108px;border:6px solid #fff;border-radius:50%;background:#fbf7f4;display:grid;place-items:center;color:#ef564f;}
+.gi-badge{position:absolute;right:24px;top:210px;width:106px;height:106px;border:6px solid #fff;border-radius:50%;background:#fbf7f4;display:grid;place-items:center;color:#ef564f;}
 .gi-badge svg,.gi-badge img{width:52px;height:52px;object-fit:contain;}
-.gi-card-content{display:flex;flex-direction:column;flex:1;padding:30px 30px 32px;}
+.gi-card-content{display:flex;flex-direction:column;flex:1;padding:24px 28px 32px;}
 .gi-card h2{font-family:'Inter Variable',sans-serif;font-size:24px;line-height:32px;font-weight:700;color:#13294a;margin:0;}
 .gi-tagline{font-size:14px;line-height:22px;color:#ef564f;font-weight:600;margin:0;}
 .gi-card-rule{display:block;width:92px;height:3px;background:#ef564f;margin:20px 0;}
