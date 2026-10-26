@@ -23,7 +23,7 @@ export const impactProgrammes = [
   ])},
   {title:'JPA',background:'#ffe8d4',color:'#f45100',cards:cards([
     ['138','Total Cases'],['96','Total Cases Closed'],['35','Divorce Settlement'],['42','Cases in-process'],
-  ],[])},
+  ],['/assets/JPA-1.png','/assets/JPA-2.png','/assets/JPA-3.png','/assets/JPA-4.png'])},
   {title:'CCB',background:'#ddfaff',color:'#0799bc',cards:cards([
     ['5','Total Trainings'],['594','Total Participant\nRegistered'],['206','Total Registered\nChapter'],['372','Participant\nAttended'],
   ])},

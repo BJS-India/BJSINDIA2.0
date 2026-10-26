@@ -25,9 +25,9 @@ export function ApprovedHeader() {
 export function ApprovedFooter({ landing = false }) {
   const columns = [
     ['About us', ['Our Story', '/about'], ['Our Presence', '/about#presence'], ['Founder', '/about#founder'], ['Head Office', '/about#leadership']],
-    ['Our Work', ['Working Areas', '/our-work'], ['Program | Initiatives', '/our-work#program-basket']],
+    ['Our Work', ['Working Areas', '/our-work'], ["Program's Basket", '/our-work#program-basket']],
     ['Get Involved', ['Careers', 'mailto:info@bjsindia.org?subject=Careers'], ['Volunteer', '/#get-involved'], ['Partner With Us', '/#partners'], ['Donate', 'mailto:info@bjsindia.org?subject=Donation%20enquiry'], ['Contact With us', '#contact']],
-    ['Resources', ['BJS Darpan', '/alldarpans'], ['Articles', '/resources/articles'], ['Videos', '/resources/videos'], ['Press Coverage', '/resources/press-coverage'], ['Photo Gallery', '/resources/photo-gallery'], ['Reports', '/resources/reports'], ['Program Brochures', '/resources/program-brochures'], ['Booklets', '/resources/booklets']],
+    ['Resources', ['BJS Darpan', '/alldarpans'], ['Articles', '/resources/articles'], ['Media Center', '/resources/media-centre'], ['Collaterals', '/resources/collaterals']],
   ];
   const socials = [
     [L.imgFrame6147, 'Facebook', 'https://www.facebook.com/BJSIndia'],
@@ -189,7 +189,7 @@ const programmes = [
   { title: "JPA", "subtitle": "(Jain Parivarik Adalat)", image: "/assets/6d1e1.png", "circle": "/assets/47a74.svg", "icon": "/assets/18f5b.svg", copy: 'Resolving family conflicts through dialogue, understanding and mutual consent', crop: { "width": "125.22%", "height": "128.83%", "left": "-12.58%", "top": "-28.83%" } },
   { title: "Saksham", image: "/assets/57103.png", "circle": "/assets/2f476.svg", "icon": "/assets/9ff8d.svg", copy: "Helping entrepreneurs access MSME schemes and grow businesses." },
   { title: "Vivaah Verse Series", image: "/assets/afda8.png", "circle": "/assets/08a7e.svg", "icon": "/assets/beb94.svg", copy: "Enabling meaningful partner connections through self-discovery and compatibility." },
-  { title: "Foundation Program Series", image: "/assets/6053d.png", "circle": "/assets/f4409.svg", "icon": "/assets/38a47.svg", copy: "Strengthening community engagement through structured, chapter-led initiatives.", crop: { "width": "163.58%", "height": "112.02%", "left": "-31.79%", "top": "0" } },
+  { title: "Foundation Program", image: "/assets/6053d.png", "circle": "/assets/f4409.svg", "icon": "/assets/38a47.svg", copy: "Strengthening community engagement through structured, chapter-led initiatives.", crop: { "width": "163.58%", "height": "112.02%", "left": "-31.79%", "top": "0" } },
   { title: 'CCB', image: '/assets/ccb-card.png', circleColor: '#f3ebde', icon: '/assets/ccb-logo.svg', copy: 'Building community capabilities for collective action and sustainable development.', crop: { width: '100%', height: '216.7513%', left: '0', top: '0' } },
 ];
 function Programs() {
@@ -253,7 +253,7 @@ function PresenceCount({ value, suffix }) {
       }
       const start = performance.now();
       const update = now => {
-        const progress = Math.min((now - start) / 1600, 1);
+        const progress = Math.min((now - start) / 2600, 1);
         setCount(Math.round(value * (1 - (1 - progress) ** 3)));
         if (progress < 1) frame = requestAnimationFrame(update);
       };
@@ -430,10 +430,18 @@ function Stories() {
           })}
         </div>
 
-        <p className="sp-story-counter">
-          {String(index + 1).padStart(2, "0")} /{" "}
-          {String(videos.length).padStart(2, "0")}
-        </p>
+        <div className="sp-story-indicators" role="group" aria-label="Select a Media Center video">
+          {videos.map((video, videoIndex) => (
+            <button
+              key={video}
+              type="button"
+              className={videoIndex === index ? "is-active" : ""}
+              aria-label={`Show video ${videoIndex + 1} of ${videos.length}`}
+              aria-current={videoIndex === index ? "true" : undefined}
+              onClick={() => setIndex(videoIndex)}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

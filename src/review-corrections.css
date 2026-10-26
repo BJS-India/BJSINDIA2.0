@@ -109,6 +109,7 @@
   .sp-partner-logo-group>.sp-partner-logo {
     width: calc(160 * var(--sp-unit));
     height: calc(98 * var(--sp-unit));
+    object-fit: contain;
   }
 }
 
@@ -771,30 +772,21 @@
 /* Testimonial video responsive layout */
 @media (min-width: 1000px) {
   .sp-testimonial-track {
-    display: grid !important;
-    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-    overflow: visible !important;
-    gap: 10px;
-  }
-
-  .sp-testimonial-track>.sp-testimonial-video {
-    width: 100% !important;
-    flex: initial !important;
+    display: flex !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
   }
 }
 
 @media (min-width: 600px) and (max-width: 999px) {
   .sp-testimonial-track {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    overflow: visible !important;
+    display: flex !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
     gap: 16px;
     padding-inline: 24px;
-  }
-
-  .sp-testimonial-track>.sp-testimonial-video {
-    width: 100% !important;
-    flex: initial !important;
+    scroll-snap-type: x mandatory;
   }
 }
 
@@ -802,18 +794,20 @@
   .sp-testimonial-track {
     display: flex !important;
     overflow-x: auto !important;
+    overflow-y: hidden;
     gap: 16px;
     padding-inline: 20px;
+    scroll-snap-type: x mandatory;
   }
 
-  .sp-testimonial-track>.sp-testimonial-video {
+  .sp-testimonial-track>.sp-testimonial-card {
     flex: 0 0 85vw !important;
-    width: 85vw !important;
   }
 }
 
 .sp-testimonial-track>.sp-testimonial-card {
   display: flex;
+  flex: 0 0 269px;
   min-width: 0;
   height: auto;
   flex-direction: column;
@@ -821,6 +815,7 @@
   border-radius: 28px;
   background: #ffecdc;
   text-align: center;
+  scroll-snap-align: start;
 }
 
 .sp-testimonial-player {
@@ -912,6 +907,10 @@
 
 @media (min-width: 1024px) {
   .sp-testimonial-track>.sp-testimonial-card {
+    flex-basis: calc(269 * var(--sp-unit));
+  }
+
+  .sp-testimonial-track>.sp-testimonial-card {
     min-height: calc(395 * var(--sp-unit));
     padding: calc(15 * var(--sp-unit)) calc(15 * var(--sp-unit)) calc(21 * var(--sp-unit));
     border-radius: calc(28 * var(--sp-unit));
@@ -936,6 +935,12 @@
   .sp-testimonial-play-toggle svg {
     width: calc(42 * var(--sp-unit));
     height: calc(42 * var(--sp-unit));
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .sp-testimonial-track>.sp-testimonial-card {
+    flex-basis: 269px;
   }
 }
 
