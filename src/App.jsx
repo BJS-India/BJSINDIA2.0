@@ -19,7 +19,14 @@ export const Button = ({ children, href, onClick, className = '' }) => href ? <a
 function Header({ page }) {
   const [open, setOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState('');
+  const [scrolled, setScrolled] = useState(false);
   useEffect(() => { setOpen(false); setExpandedMenu(''); }, [page]);
+  useEffect(() => {
+    const updateScrolled = () => setScrolled(window.scrollY > 24);
+    updateScrolled();
+    window.addEventListener('scroll', updateScrolled, { passive: true });
+    return () => window.removeEventListener('scroll', updateScrolled);
+  }, []);
   const menus = [
     { label: 'About Us', href: '/about', links: [['Our Story', '/about'], ['Trust Board', '/about#trust-board'], ['Founder', '/about#founder'], ['Volunteer Network', '/about#volunteer-network'], ['Our Presences', '/about#presence'], ['Head Office', '/about#head-office']] },
     { label: 'Our Work', href: '/our-work', links: [['Working areas', '/our-work'], ['Programs & Initiatives', '/our-work#program-basket'], ['Program and Program Basket', '/our-work#program-basket'], ['Research, Reports and Data', '/our-work']] },
@@ -32,7 +39,7 @@ function Header({ page }) {
     setOpen(false);
     setExpandedMenu('');
   };
-  return <header className="header"><a href="/" aria-label="BJS India home"><img className="logo" src={A.imgBjsLogo041} alt="Bharatiya Jain Sanghatana" /></a><button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? '✕' : '☰'}</button><nav className={open ? 'navigation open' : 'navigation'} aria-label="Main navigation" onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setExpandedMenu(''); }}>
+  return <header className={`header${scrolled ? ' is-scrolled' : ''}`}><a href="/" aria-label="BJS India home"><img className="logo" src={A.imgBjsLogo041} alt="Bharatiya Jain Sanghatana" /></a><button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? '✕' : '☰'}</button><nav className={open ? 'navigation open' : 'navigation'} aria-label="Main navigation" onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setExpandedMenu(''); }}>
     {menus.map(({ label, href, links }) => <div key={label} className={`nav-item${expandedMenu === label ? ' expanded' : ''}`} onMouseEnter={() => setExpandedMenu(label)} onMouseLeave={() => setExpandedMenu('')} onFocus={() => setExpandedMenu(label)}>
       <a href={href} aria-current={(page === 'about' && href === '/about') || (page === 'work' && href === '/our-work') || (page === 'impact' && href === '/impact') || (page === 'get-involved' && href === '/get-involved') || (page === 'updates' && href === '/updates') || (['resources','articles','darpan','media-centre','collaterals','videos','press-coverage','photo-gallery','reports','program-brochures','booklets'].includes(page) && href === '/resources') ? 'page' : undefined} onClick={closeNavigation}>{label}</a>
       <button className="nav-expand" type="button" aria-label={`Show ${label} sections`} aria-expanded={expandedMenu === label} aria-controls={`nav-menu-${label.toLowerCase().replaceAll(' ', '-')}`} onClick={() => setExpandedMenu(expandedMenu === label ? '' : label)}><span aria-hidden="true">⌄</span></button>
