@@ -21,4 +21,4 @@ Optional original icons replace the default inline icons when supplied:
 - `icon-email`
 - `icon-location`
 
-Card actions currently open an email enquiry, except Contact Us, which scrolls to the contact panel. Replace their hrefs in `src/getInvolvedData.js` when dedicated application forms, job listings or an approved donation destination are supplied.
+Card actions scroll to the contact panel. Replace their hrefs in `src/getInvolvedData.js` when dedicated application forms, job listings or an approved donation destination are supplied.

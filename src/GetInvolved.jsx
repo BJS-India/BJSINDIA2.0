@@ -35,8 +35,7 @@ export default function GetInvolved() {
       <div className="gi-connect-copy"><h2 id="connect-heading">We're Here<br/>to Connect.</h2><p>Have a question or want to explore a way to get involved? Reach out to our team and we'll be happy to help</p></div>
       <div className="gi-contact-panel">
         <div className="gi-contact-item"><span className="gi-contact-icon"><InvolvementIcon type="phone" source={contactIcons.phone}/></span><div><h3>Phone</h3><a href="tel:+912066050000">+91 020 6605 0000</a></div></div>
-        <div className="gi-contact-item"><span className="gi-contact-icon"><InvolvementIcon type="email" source={contactIcons.email}/></span><div><h3>Email</h3><a href="mailto:info@bjsindia.org">info@bjsindia.org</a></div></div>
-        <div className="gi-contact-item gi-address"><span className="gi-contact-icon"><InvolvementIcon type="location" source={contactIcons.location}/></span><div><h3>Visit Us</h3><address>Level 8, Mutha Chambers, N. C. Kelkar Road,<br className="gi-address-break"/> Narayan Peth, Pune, Maharashtra 411030</address></div></div>
+        <div className="gi-contact-item gi-address"><span className="gi-contact-icon"><InvolvementIcon type="location" source={contactIcons.location}/></span><div><h3>Visit Us</h3><address>Level 8, Mutha Chambers, II, Senapati Bapat Rd, <br className="gi-address-break"/>Chattushringi, Gokhalenagar, Pune, Maharashtra 411016</address></div></div>
       </div>
     </section>
   </div>;
