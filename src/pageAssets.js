@@ -66,7 +66,7 @@ export const workAssets = {
   "imgGroup12": "/assets/335ed.svg",
   "imgGroup13": "/assets/96172.svg",
   "imgGroup14": "/assets/3940b.svg",
-  "imgGroup15": "/assets/95bc3.svg",
+  "imgGroup15": "/assets/foundation-arrow.png",
   "imgEllipse40": "/assets/4e1f2.svg",
   "imgEllipse44": "/assets/78e6c.svg",
   "imgEllipse45": "/assets/e81bc.svg",

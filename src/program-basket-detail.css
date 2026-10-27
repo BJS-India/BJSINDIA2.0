@@ -43,5 +43,13 @@
 .pbd-outcomes span{font-size:12px;line-height:1.35;color:#4f5862;}
 .pbd-missing{min-height:50vh;display:grid;place-content:center;gap:12px;text-align:center;background:#fbf7f4;}
 .pbd-missing a{color:var(--pbd-accent);}
-@media(max-width:800px){.pbd-shell{width:calc(100% - 48px);}.pbd-basket-nav{gap:8px;}.pbd-basket-nav a{padding-inline:7px;}.pbd-content-grid{grid-template-columns:1fr;}.pbd-gallery{min-height:220px;}.pbd-outcomes>div{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media(max-width:560px){.pbd-section{padding:22px 0 44px;}.pbd-shell{width:calc(100% - 32px);}.pbd-basket-nav{display:flex;overflow:auto;}.pbd-basket-nav a{min-width:118px;}.pbd-intro h1{font-size:25px;}.pbd-featured{grid-template-columns:1fr;}.pbd-program-heading h2{font-size:20px;}.pbd-details ul{grid-template-columns:1fr;}.pbd-gallery{grid-template-rows:repeat(2,105px);min-height:0;}}
+.pbd-impact-generated{margin-top:32px;text-align:center;}
+.pbd-impact-generated h2{font-family:'Manrope Variable',sans-serif;font-size:32px;font-weight:700;color:var(--pbd-ink);margin:0 0 24px;}
+.pbd-impact-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;}
+.pbd-ig-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:20px 14px;border-radius:16px;background:#ffe8e0;text-align:center;}
+.pbd-ig-card strong{font-family:'Manrope Variable',sans-serif;font-size:28px;font-weight:800;color:#f45145;line-height:1.2;}
+.pbd-ig-card span{font-size:13px;line-height:1.35;color:#173052;}
+.pbd-ig-photo{width:100%;height:160px;margin-top:8px;border-radius:12px;overflow:hidden;background:#f3efed;}
+.pbd-ig-photo img{display:block;width:100%;height:100%;object-fit:cover;}
+@media(max-width:800px){.pbd-shell{width:calc(100% - 48px);}.pbd-basket-nav{gap:8px;}.pbd-basket-nav a{padding-inline:7px;}.pbd-content-grid{grid-template-columns:1fr;}.pbd-gallery{min-height:220px;}.pbd-outcomes>div{grid-template-columns:repeat(2,minmax(0,1fr));}.pbd-impact-cards{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:560px){.pbd-section{padding:22px 0 44px;}.pbd-shell{width:calc(100% - 32px);}.pbd-basket-nav{display:flex;overflow:auto;}.pbd-basket-nav a{min-width:118px;}.pbd-intro h1{font-size:25px;}.pbd-featured{grid-template-columns:1fr;}.pbd-program-heading h2{font-size:20px;}.pbd-details ul{grid-template-columns:1fr;}.pbd-gallery{grid-template-rows:repeat(2,105px);min-height:0;}.pbd-impact-cards{grid-template-columns:1fr 1fr;}.pbd-ig-card strong{font-size:22px;}.pbd-ig-photo{height:120px;}}

@@ -49,11 +49,11 @@ export default function ImpactPage() {
 
     <section className="ip-stats ip-container" aria-label="Impact at a glance">
       {[
-        ['14,204+', 'Water bodies rejuvenated'],
-        ['24,860+', 'People reached through Blue Roots'],
-        ['557', 'Plastic surgery camps'],
-        ['34,062', 'Patients treated'],
-      ].map(([value,label])=><article className="ip-stat" key={label}><strong>{value}</strong><span>{label}</span></article>)}
+        ['14,374+', 'Lorem Ipsum'],
+        ['14,374+', 'Lorem Ipsum'],
+        ['14,374+', 'Lorem Ipsum'],
+        ['14,374+', 'Lorem Ipsum'],
+      ].map(([value,label], i)=><article className="ip-stat" key={i}><strong>{value}</strong><span>{label}</span></article>)}
     </section>
 
     <section className="impact-stories" id="impact-stories" aria-label="Our impact stories">

@@ -57,10 +57,16 @@ export default function ProgramBasketDetail({ basketId }) {
             </div>
           </div>
 
-          <ImpactSection programName={activeProgram.name}>
-            <h2>Our Impact</h2>
-            <p>Impact and outcomes for {activeProgram.name}.</p>
-          </ImpactSection>
+          <section className="pbd-impact-generated">
+            <h2>Impact Generated</h2>
+            <div className="pbd-impact-cards">
+              {[0,1,2,3].map(i=><article className="pbd-ig-card" key={i}>
+                <strong>14,374+</strong>
+                <span>Water Bodies<br/>Rejuvenated</span>
+                <div className="pbd-ig-photo"><img src={gallery[i] || ''} alt=""/></div>
+              </article>)}
+            </div>
+          </section>
         </section>
       </div>
     </section>
