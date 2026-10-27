@@ -1434,7 +1434,8 @@
     display: block;
     line-height: 28px;
     margin-top: 10px;
-    white-space: nowrap
+    white-space: nowrap;
+    color: #fff;
 }
 
 .sp-footer-contact {
@@ -1704,7 +1705,7 @@
     /* padding: 60px 75px 60px max(40px, calc((100vw - 1244px)/2)) */
     padding-top: 75px !important;
     padding-bottom: 75px !important;
-    padding-left: 25px !important;
+    padding-left: 60px !important;
 }
 
 .sp-founder h3 {
@@ -1735,7 +1736,7 @@
     width: 148.89%;
     height: 100%;
     max-width: none;
-    left: -34.77%;
+    left: -20.77%;
     top: 0;
     object-fit: cover
 }

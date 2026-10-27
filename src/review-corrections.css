@@ -525,13 +525,13 @@ header.header.is-scrolled .logo {
 .sp-founder-inner {
   display: grid;
   grid-template-columns: 793fr 647fr;
-  max-width: 1244px;
+  width: 100%;
   min-height: 589px;
   margin-inline: auto;
 }
 
 .sp-founder-copy {
-  padding: 77px 55px 72px calc(min(100vw, 1536px) * .06805556);
+  /* padding: 77px 55px 72px calc(min(100vw, 1536px) * .06805556); */
 }
 
 .sp-founder h2 {
@@ -796,7 +796,7 @@ header.header.is-scrolled .logo {
   border: 0;
   border-top: 5px solid #13294a;
   border-radius: 20px;
-  box-shadow: 0 14px 24px #0008;
+  box-shadow: 0 8px 18px rgba(100, 100, 100, 0.5);
 }
 
 .nav-dropdown h2 {
@@ -1018,6 +1018,104 @@ header.header.is-scrolled .logo {
   font-family: 'Manrope Variable', sans-serif;
   font-size: 12px;
   line-height: 1.5;
+}
+
+.sp-testimonial-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #000b;
+}
+
+.sp-testimonial-modal {
+  position: relative;
+  width: min(100%, 1040px);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  border-radius: 18px;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 24px 80px #0008;
+}
+
+.sp-testimonial-modal:focus {
+  outline: none;
+}
+
+.sp-testimonial-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+}
+
+.sp-testimonial-modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.sp-testimonial-modal-close {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff1a;
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sp-testimonial-modal-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.sp-testimonial-modal-video {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 126px);
+  aspect-ratio: 16 / 9;
+  background: #000;
+  object-fit: contain;
+}
+
+.sp-testimonial-modal-error {
+  margin: 0;
+  padding: 12px 18px;
+  color: #ffb8b4;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .sp-testimonial-modal-backdrop {
+    padding: 14px;
+  }
+
+  .sp-testimonial-modal {
+    max-height: calc(100vh - 28px);
+    border-radius: 12px;
+  }
+
+  .sp-testimonial-modal-header {
+    padding: 10px 12px;
+  }
+
+  .sp-testimonial-modal-header h2 {
+    font-size: 16px;
+  }
+
+  .sp-testimonial-modal-video {
+    max-height: calc(100vh - 96px);
+  }
 }
 
 .sp-testimonial-error {

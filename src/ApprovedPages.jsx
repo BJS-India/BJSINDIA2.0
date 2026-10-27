@@ -267,7 +267,7 @@ function Programs() {
 }
 
 function Impact() {
-  return <ImpactSection><Kicker>Our Impact</Kicker><h2>Change Where <br /> It Matters Most</h2><p style={{ maxWidth: "85%" }}>Addressing diverse challenges through practical solutions and collective action for people, communities and the nation.</p><Action href="/our-work">Explore Our Impact</Action></ImpactSection>;
+  return <ImpactSection><Kicker>Our Impact</Kicker><h2>Change Where <br /> It Matters Most</h2><p style={{ maxWidth: "85%" }}>Addressing diverse challenges through practical solutions and collective action for people, communities and the nation.</p><Action href="/impact">Explore Our Impact</Action></ImpactSection>;
 }
 
 export function ApprovedStats({ compact = false }) { const stats = compact ? [['12+', 'States'], ['170+', 'Districts'], ['500+', 'Chapters'], ['40K+', 'Volunteers']] : [['12+', 'States'], ['170+', 'Districts'], ['500+', 'Chapters'], ['42+', 'Years Of BJS'], ['5K+', 'Office Bearers'], ['40K+', 'Volunteers']]; return <div className={`sp-stats ${compact ? 'compact' : ''}`}>{stats.map(([value, label], i) => <div className={i < 3 && !compact ? 'outlined' : 'raised'} key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>; }
@@ -302,67 +302,30 @@ function PresenceCount({ value, suffix }) {
   return <strong ref={ref} aria-label={`${value}${suffix}`}>{new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 0 }).format(count)}{suffix}</strong>;
 }
 function PresenceStats() {
-  const stats = [[12, '+', 'States'], [170, '+', 'Districts'], [500, '+', 'Chapters'], [40, '+', 'Years Of BJS'], [5000, '+', 'Office Bearers'], [40000, '+', 'Volunteers']];
+  const stats = [[12, '+', 'States'], [170, '+', 'Districts'], [500, '+', 'Chapters'], [42, '+', 'Years Of BJS'], [5000, '+', 'Office Bearers'], [40000, '+', 'Volunteers']];
   return <div className="sp-stats">{stats.map(([value, suffix, label], i) => <div className={i < 3 ? 'outlined' : 'raised'} key={label}><PresenceCount value={value} suffix={suffix} /><span>{label}</span></div>)}</div>;
 }
 function Presence() { return <section className="sp-presence" id="get-involved"><img className="sp-presence-map" src={L.imgD4D674418D584E59B54C8Af56B24639D1} alt="" /><div className="sp-container"><div style={{ alignSelf: "center" }}><Kicker>Our Presence</Kicker><h2>A Growing<br />Presence Across India</h2><p>Our network of volunteers and initiatives continues to expand, reaching more communities and creating a wider impact every year.</p><Action href="/about#presence">View Map</Action></div><PresenceStats /></div></section>; }
-function TestimonialVideoCard({ file, title, programme, isActive, onActivate }) {
-  const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [playbackError, setPlaybackError] = useState('');
-
-  useEffect(() => {
-    if (!isActive) videoRef.current?.pause();
-  }, [isActive]);
-
-  async function togglePlayback() {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (video.paused) {
-      onActivate(file);
-      try {
-        await video.play();
-        setPlaybackError('');
-      } catch {
-        setPlaybackError('This video could not be played. Please try again.');
-      }
-    } else {
-      video.pause();
-    }
-  }
-
+function TestimonialVideoCard({ file, title, programme, onOpen }) {
   return <article className="sp-testimonial-card">
     <div className="sp-testimonial-player">
       <video
-        ref={videoRef}
         className="sp-testimonial-video"
         src={`/assets/testimonials/${encodeURIComponent(file)}`}
+        muted
         playsInline
         preload="metadata"
         aria-label={title}
-        onPlay={() => {
-          setIsPlaying(true);
-          onActivate(file);
-        }}
-        onPause={() => setIsPlaying(false)}
-        onEnded={() => setIsPlaying(false)}
       />
       <strong className="sp-testimonial-programme">{programme}</strong>
       <button
         type="button"
         className="sp-testimonial-play-toggle"
-        onClick={togglePlayback}
-        aria-label={`${isPlaying ? 'Pause' : 'Play'} ${title}`}
-        aria-pressed={isPlaying}
+        onClick={onOpen}
+        aria-label={`Play ${title}`}
       >
-        {isPlaying ? (
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM15 5h4v14h-4z" /></svg>
-        ) : (
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
-        )}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
       </button>
-      {playbackError && <span className="sp-testimonial-error" role="alert">{playbackError}</span>}
     </div>
     <h3>{title}</h3>
     <p>Watch their story</p>
@@ -371,7 +334,9 @@ function TestimonialVideoCard({ file, title, programme, isActive, onActivate }) 
 
 function Testimonials() {
   const ref = useRef(null);
-  const [activeVideo, setActiveVideo] = useState(null);
+  const modalRef = useRef(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [modalPlaybackError, setModalPlaybackError] = useState('');
   const edges = useCarouselEdges(ref);
   const videos = [
     ['Parinay Path - Jaipur 1.mp4', 'Parinay Path - Jaipur', 'Parinay Path'],
@@ -381,7 +346,44 @@ function Testimonials() {
     ['Humsafar Dobara Pune 1.mp4', 'Humsafar Dobara - Pune', 'Humsafar Dobara'],
     ['JPA Case SuccesStory Testimonial 1.mp4', 'JPA Success Story', 'JPA'],
   ];
-  return <section className="sp-testimonials"><div className="sp-container"><Kicker>Real Stories. Real Change.</Kicker><div className="sp-section-bar"><div><h2>Real Lives. Lasting Change.</h2><p>Behind every initiative are people with a story. Hear what change means to them. </p></div><Arrows previous={() => ref.current?.scrollBy({ left: -289, behavior: 'smooth' })} next={() => ref.current?.scrollBy({ left: 289, behavior: 'smooth' })} previousDisabled={edges.start} nextDisabled={edges.end} /></div></div><div className="sp-testimonial-track" ref={ref}>{videos.map(([file, title, programme]) => <TestimonialVideoCard key={file} file={file} title={title} programme={programme} isActive={activeVideo === file} onActivate={setActiveVideo} />)}</div></section>;
+  useEffect(() => {
+    if (!selectedVideo) return undefined;
+    setModalPlaybackError('');
+    const previousOverflow = document.body.style.overflow;
+    const previouslyFocused = document.activeElement;
+    const closeOnEscape = event => {
+      if (event.key === 'Escape') setSelectedVideo(null);
+    };
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', closeOnEscape);
+    modalRef.current?.focus();
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', closeOnEscape);
+      if (previouslyFocused instanceof HTMLElement && previouslyFocused.isConnected) previouslyFocused.focus();
+    };
+  }, [selectedVideo]);
+
+  return <>
+    <section className="sp-testimonials"><div className="sp-container"><Kicker>Real Stories. Real Change.</Kicker><div className="sp-section-bar"><div><h2>Real Lives. Lasting Change.</h2><p>Behind every initiative are people with a story. Hear what change means to them. </p></div><Arrows previous={() => ref.current?.scrollBy({ left: -289, behavior: 'smooth' })} next={() => ref.current?.scrollBy({ left: 289, behavior: 'smooth' })} previousDisabled={edges.start} nextDisabled={edges.end} /></div></div><div className="sp-testimonial-track" ref={ref}>{videos.map(([file, title, programme]) => <TestimonialVideoCard key={file} file={file} title={title} programme={programme} onOpen={() => setSelectedVideo({ file, title })} />)}</div></section>
+    {selectedVideo && <div className="sp-testimonial-modal-backdrop" onMouseDown={event => { if (event.target === event.currentTarget) setSelectedVideo(null); }}>
+      <section className="sp-testimonial-modal" role="dialog" aria-modal="true" aria-labelledby="sp-testimonial-modal-title" tabIndex="-1" ref={modalRef}>
+        <header className="sp-testimonial-modal-header">
+          <h2 id="sp-testimonial-modal-title">{selectedVideo.title}</h2>
+          <button type="button" className="sp-testimonial-modal-close" onClick={() => setSelectedVideo(null)} aria-label="Close video">×</button>
+        </header>
+        <video
+          className="sp-testimonial-modal-video"
+          src={`/assets/testimonials/${encodeURIComponent(selectedVideo.file)}`}
+          controls
+          autoPlay
+          playsInline
+          onError={() => setModalPlaybackError('This video could not be loaded. Please try again later.')}
+        />
+        {modalPlaybackError && <p className="sp-testimonial-modal-error" role="alert">{modalPlaybackError}</p>}
+      </section>
+    </div>}
+  </>;
 }
 // OLD STORIES SECTION - 
 // function Stories() { const [index, setIndex] = useState(1); const slides = [L.imgRectangle450, L.imgImage8, L.imgRectangle458]; return <section className="sp-stories" id="stories"><div className="sp-container"><Kicker>Media Center</Kicker><div className="sp-section-bar"><div><h2>Stories That Inspire Change.</h2><p>Watch our videos to see how BJS initiatives are creating real impact on the ground.</p></div><Arrows previous={() => setIndex((index + 2) % 3)} next={() => setIndex((index + 1) % 3)} /></div></div><div className="sp-story-stage"><img className="sp-story-side" src={slides[(index + 2) % 3]} alt="Previous BJS story" /><div className="sp-story-main"><img src={slides[index]} alt="BJS stories: impacting lives, ushering change" /></div><img className="sp-story-side" src={slides[(index + 1) % 3]} alt="Next BJS story" /></div></section>; }
@@ -625,7 +627,7 @@ export function ApprovedAbout() {
           <p>Social Reformer | Philanthropist | Humanitarian</p>
           <p style={{ textAlign: "left", fontSize: "14px", lineHeight: "20px" }}>Shri Shantilal Muttha is an Indian social reformer and philanthropist dedicated to nation-building through social development. Born in Maharashtra in 1954, he founded the Bharatiya Jain Sanghatana (BJS) in 1985 to address social challenges through education, family development, and disaster rehabilitation.</p>
           <p style={{ textAlign: "left", fontSize: "14px", lineHeight: "20px" }}>His initiatives include anti-dowry campaigns, mass marriages, educational reforms, and rehabilitation of children affected by the 1993 Latur earthquake through the Wagholi Educational and Rehabilitation Centre (WERC). Through the Shantilal Muttha Foundation, he continues to advance educational transformation and community development. His contributions have earned him over 40 national and international honours.</p>
-          <Action href="mailto:info@bjsindia.org?subject=About%20Mr.%20Shantilal%20Muttha">
+          <Action href="https://hi.wikipedia.org/wiki/%E0%A4%B8%E0%A4%A6%E0%A4%B8%E0%A5%8D%E0%A4%AF_%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%A4%E0%A4%BE:Shantilal_G_Muttha">
             Know more
           </Action>
         </div>
