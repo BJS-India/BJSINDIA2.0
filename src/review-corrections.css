@@ -1034,7 +1034,7 @@ header.header.is-scrolled .logo {
 
   .sp-testimonial-track>.sp-testimonial-card {
     min-height: calc(395 * var(--sp-unit));
-    padding: calc(15 * var(--sp-unit)) calc(15 * var(--sp-unit)) calc(21 * var(--sp-unit));
+    padding: calc(10 * var(--sp-unit)) calc(10 * var(--sp-unit)) calc(20 * var(--sp-unit));
     border-radius: calc(28 * var(--sp-unit));
   }
 

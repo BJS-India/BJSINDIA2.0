@@ -977,10 +977,9 @@ body {
   }
 
   .sp-stories {
-    height: calc(600 * var(--sp-unit));
-    /* height: max-content; */
-    min-height: 0;
-    padding: calc(50 * var(--sp-unit)) 0 0;
+    height: auto;
+    min-height: calc(640 * var(--sp-unit));
+    padding: calc(50 * var(--sp-unit)) 0 calc(32 * var(--sp-unit));
   }
 
   .sp-stories .sp-section-bar {

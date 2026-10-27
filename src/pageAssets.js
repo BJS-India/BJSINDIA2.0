@@ -1,5 +1,5 @@
 export const aboutAssets = {
-  "img31": "/assets/c4edd.png",
+  "img31": "/assets/aboutUs/aboutUsBanner.png",
   "imgBjsLogo041": "/assets/91cfb.png",
   "img102": "/assets/771b8.png",
   "imgWhiteBjsEnglish1": "/assets/b753f.png",

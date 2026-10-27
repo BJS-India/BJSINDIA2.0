@@ -79,7 +79,7 @@ export const landingAssets = {
 };
 export const aboutAssets = {
   "imgBjsLogo041": "/assets/91cfb.png",
-  "img31": "/assets/c4edd.png",
+  "img31": "/assets/aboutUs/aboutUsBanner.png",
   "img102": "/assets/771b8.png",
   "imgD4D674418D584E59B54C8Af56B24639D1": "/assets/575e1.png",
   "imgPolishedCorporatePortraitInAWarmOffice1": "/assets/04b99.png",
@@ -88,7 +88,7 @@ export const aboutAssets = {
   "img2005WangoAward22": "/assets/1ef8d.png",
   "img2717102018SocialWorkerShantilalMutthaWinsTheAhimsaAward20182": "/assets/e0a58.png",
   "imgImage20": "/assets/55f76.png",
-  "imgImage21": "/assets/d5696.png",
+  "imgImage21": "/assets/vision.png",
   "imgImage22": "/assets/cf8a7.png",
   "imgImg202507181651581": "/assets/348a1.png",
   "imgImage23": "/assets/e8f2a.png",
