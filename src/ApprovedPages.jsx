@@ -136,7 +136,7 @@ function Hero() {
           </p>
 
           <div className="sp-hero-actions">
-            <Action filled href="/our-work">
+            <Action outlined href="/our-work">
               Explore BJS
             </Action>
           </div>
@@ -306,16 +306,21 @@ function PresenceStats() {
   return <div className="sp-stats">{stats.map(([value, suffix, label], i) => <div className={i < 3 ? 'outlined' : 'raised'} key={label}><PresenceCount value={value} suffix={suffix} /><span>{label}</span></div>)}</div>;
 }
 function Presence() { return <section className="sp-presence" id="get-involved"><img className="sp-presence-map" src={L.imgD4D674418D584E59B54C8Af56B24639D1} alt="" /><div className="sp-container"><div style={{alignSelf:"center"}}><Kicker>Our Presence</Kicker><h2>A Growing<br />Presence Across India</h2><p>Our network of volunteers and initiatives continues to expand, reaching more communities and creating a wider impact every year.</p><Action href="/about#presence">View Map</Action></div><PresenceStats /></div></section>; }
-function TestimonialVideoCard({ file, title, programme }) {
+function TestimonialVideoCard({ file, title, programme, isActive, onActivate }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackError, setPlaybackError] = useState('');
+
+  useEffect(() => {
+    if (!isActive) videoRef.current?.pause();
+  }, [isActive]);
 
   async function togglePlayback() {
     const video = videoRef.current;
     if (!video) return;
 
     if (video.paused) {
+      onActivate(file);
       try {
         await video.play();
         setPlaybackError('');
@@ -336,7 +341,10 @@ function TestimonialVideoCard({ file, title, programme }) {
         playsInline
         preload="metadata"
         aria-label={title}
-        onPlay={() => setIsPlaying(true)}
+        onPlay={() => {
+          setIsPlaying(true);
+          onActivate(file);
+        }}
         onPause={() => setIsPlaying(false)}
         onEnded={() => setIsPlaying(false)}
       />
@@ -363,6 +371,7 @@ function TestimonialVideoCard({ file, title, programme }) {
 
 function Testimonials() {
   const ref = useRef(null);
+  const [activeVideo, setActiveVideo] = useState(null);
   const edges = useCarouselEdges(ref);
   const videos = [
     ['Parinay Path - Jaipur 1.mp4', 'Parinay Path - Jaipur', 'Parinay Path'],
@@ -372,7 +381,7 @@ function Testimonials() {
     ['Humsafar Dobara Pune 1.mp4', 'Humsafar Dobara - Pune', 'Humsafar Dobara'],
     ['JPA Case SuccesStory Testimonial 1.mp4', 'JPA Success Story', 'JPA'],
   ];
-  return <section className="sp-testimonials"><div className="sp-container"><Kicker>Real Stories. Real Change.</Kicker><div className="sp-section-bar"><div><h2>Real Lives. Lasting Change.</h2><p>Behind every initiative are people with a story. Hear what change means to them. </p></div><Arrows previous={() => ref.current?.scrollBy({ left: -289, behavior: 'smooth' })} next={() => ref.current?.scrollBy({ left: 289, behavior: 'smooth' })} previousDisabled={edges.start} nextDisabled={edges.end} /></div></div><div className="sp-testimonial-track" ref={ref}>{videos.map(([file, title, programme]) => <TestimonialVideoCard key={file} file={file} title={title} programme={programme} />)}</div></section>;
+  return <section className="sp-testimonials"><div className="sp-container"><Kicker>Real Stories. Real Change.</Kicker><div className="sp-section-bar"><div><h2>Real Lives. Lasting Change.</h2><p>Behind every initiative are people with a story. Hear what change means to them. </p></div><Arrows previous={() => ref.current?.scrollBy({ left: -289, behavior: 'smooth' })} next={() => ref.current?.scrollBy({ left: 289, behavior: 'smooth' })} previousDisabled={edges.start} nextDisabled={edges.end} /></div></div><div className="sp-testimonial-track" ref={ref}>{videos.map(([file, title, programme]) => <TestimonialVideoCard key={file} file={file} title={title} programme={programme} isActive={activeVideo === file} onActivate={setActiveVideo} />)}</div></section>;
 }
 // OLD STORIES SECTION - 
 // function Stories() { const [index, setIndex] = useState(1); const slides = [L.imgRectangle450, L.imgImage8, L.imgRectangle458]; return <section className="sp-stories" id="stories"><div className="sp-container"><Kicker>Media Center</Kicker><div className="sp-section-bar"><div><h2>Stories That Inspire Change.</h2><p>Watch our videos to see how BJS initiatives are creating real impact on the ground.</p></div><Arrows previous={() => setIndex((index + 2) % 3)} next={() => setIndex((index + 1) % 3)} /></div></div><div className="sp-story-stage"><img className="sp-story-side" src={slides[(index + 2) % 3]} alt="Previous BJS story" /><div className="sp-story-main"><img src={slides[index]} alt="BJS stories: impacting lives, ushering change" /></div><img className="sp-story-side" src={slides[(index + 1) % 3]} alt="Next BJS story" /></div></section>; }
@@ -381,15 +390,13 @@ function Stories() {
   const videos = [
     "LLg32P8vTKo",
     "Nba31fBkDME",
+    "uBKArGHwz_8",
+    "jY7LCStHhfg",
+    "9Azx8W5iqaU",
     "V6SPfrESFOs",
     "wYcd1CK8Yig",
-    "HFZAkZp9cBc",
-    "uBKArGHwz_8",
-    "9Azx8W5iqaU",
     "NBefzjHJ0FQ",
     "aJHpGUYJmCg",
-    "9v777k0TKeI",
-    "tJI1gbX1F8s",
   ];
 
   const [index, setIndex] = useState(0);
@@ -518,7 +525,15 @@ function Partners() {
 }
 export function ApprovedLanding() { return <div className="approved-landing"><Hero /><Newsletter /><Programs /><Impact /><Presence /><Testimonials /><Stories /><Partners /></div>; }
 
-const years = ['1985', '1991', '1993', '2003', '2013', '2020', '2022'];
+const journeyMilestones = [
+  { year: '1985', title: 'Mass Marriage', image: '/assets/bjsJourney/1985-MassMarriage.jpg' },
+  { year: '1989', title: 'Padyatra', image: '/assets/bjsJourney/1989-Padyatra.jpg' },
+  { year: '1993', title: 'Latur Earthquake', image: '/assets/bjsJourney/1993-LaturEarthquake.jpg' },
+  { year: '2003', title: 'FJEI', image: '/assets/bjsJourney/2003-FJEI.jpg' },
+  { year: '2013', title: 'Maharashtra Drought', image: '/assets/bjsJourney/2013-MaharashtraDrought.JPG' },
+  { year: '2020', title: 'COVID Relief', image: '/assets/bjsJourney/2020-COVIDRelief.jpg' },
+  { year: '2022', title: 'RWB', image: '/assets/bjsJourney/2022-RWB.jpeg' },
+];
 export function ApprovedAbout() {
   const [year, setYear] = useState(2); const [expanded, setExpanded] = useState(null); const awardRef = useRef(null);
   const awardEdges = useCarouselEdges(awardRef);
@@ -580,21 +595,18 @@ export function ApprovedAbout() {
         </h2>
         <article className="sp-journey-card">
           <div>
-            <img src={B.img102} alt="Shanti Yatra peace march" />
+            <img
+              src={journeyMilestones[year].image}
+              alt={`${journeyMilestones[year].title} (${journeyMilestones[year].year})`}
+            />
           </div>
-          <h3>{year === 2 ? 'Shanti Yatra' : years[year]}</h3>
-          <p>{
-            year === 2
-              ? 'Peace March from Pune to Nagpur.'
-              : 'BJS journey milestone - contact BJS for the full story.'
-          }
-          </p>
+          <h3>{journeyMilestones[year].title}</h3>
         </article>
         <div className="sp-timeline" role="group" aria-label="Select a year in the BJS journey">
           <img className="sp-timeline-line" src={B.imgLine5} alt="" />
 
-          {years.map(
-            (value, i) =>
+          {journeyMilestones.map(
+            ({ year: value }, i) =>
               <button key={value}
                 aria-pressed={year === i}
                 onClick={() => setYear(i)}>
@@ -609,7 +621,7 @@ export function ApprovedAbout() {
       </div>
     </section>
     <section className="sp-founder" id="founder">
-      <div className="sp-founder-inner">
+      <div className="sp-founder-inner sp-container">
         <div className="sp-founder-copy">
           <h2>Founder</h2>
           <h3>Mr. Shantilal Muttha</h3>
@@ -643,8 +655,8 @@ export function ApprovedAbout() {
         </span>
         {[
           ['Trust Board', B.imgImg202507181651581],
-          ['Founder President’s Office', B.img41],
-          ['Volunteer Network', B.imgScreenshot202608041615551]
+          ['Founder President’s Office', B.imgScreenshot202608041615551],
+          ['Volunteer Network', B.img41]
         ].map(([title, img], i) => <article
           key={title}
           id={i === 0
@@ -678,9 +690,10 @@ export function ApprovedAbout() {
     </section>
     <section className="sp-awards" id="awards">
       <div className="sp-container sp-awards-intro">
-        <h2>Awards<br />&amp; Recognition</h2>
-        <p>The BJS Head Office serves as the central hub for planning, coordination and support, ensuring the effective implementation of our vision and mission.
-          The BJS Head Office serves as the central hub for planning, coordination and support, ensuring the effective implementation of our vision and mission.</p>
+        <h2>Awards &amp; Recognition</h2>
+        <p>
+          Recognised by distinguished national and international institutions for <br /> outstanding contributions to social development.
+        </p>
         <Arrows
           previous={() => awardRef.current?.scrollBy({ left: -425, behavior: 'smooth' })}
           next={() => awardRef.current?.scrollBy({ left: 425, behavior: 'smooth' })}

@@ -328,12 +328,12 @@ body {
     margin-top: calc(41 * var(--sp-unit));
   }
 
-  .sp-hero-actions .filled {
+  .sp-hero-actions .outlined {
     width: calc(192 * var(--sp-unit));
     min-width: 0;
   }
 
-  .sp-hero-actions .sp-action:not(.filled) {
+  .sp-hero-actions .sp-action:not(.outlined) {
     width: calc(146 * var(--sp-unit));
     padding-inline: 0;
   }
@@ -459,7 +459,7 @@ body {
   }
 
   .sp-programmes {
-    height: calc(800 * var(--sp-unit));
+    height: calc(770 * var(--sp-unit));
     min-height: 0;
     padding: calc(75 * var(--sp-unit)) 0 0;
     position: relative;
@@ -489,7 +489,7 @@ body {
     flex-direction: column;
     flex-basis: calc(304 * var(--sp-unit));
     /* height: calc(427 * var(--sp-unit)); */
-    height: calc(475 * var(--sp-unit)) !important;
+    height: calc(440 * var(--sp-unit)) !important;
     min-width:300px;
     min-height: 0 !important;
     border-radius: calc(10 * var(--sp-unit));

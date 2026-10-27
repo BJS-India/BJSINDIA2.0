@@ -480,7 +480,7 @@ header.header.is-scrolled .logo {
 .sp-programme-body {
   display: flex;
   flex-direction: column;
-  height: 230px;
+  height: 200px;
 }
 
 .sp-programme-body h3 small {
