@@ -542,7 +542,7 @@ header.header.is-scrolled .logo {
   font-family: 'Bricolage Grotesque Variable', sans-serif;
   font-size: 36px;
   line-height: 43px;
-  margin: 0 0 17px;
+  margin: 0 0 5px;
 }
 
 .sp-founder p {
@@ -590,6 +590,11 @@ header.header.is-scrolled .logo {
 }
 
 .sp-people-line-horizontal img {
+  display: block;
+  width: 93%;
+  z-index: 999 !important;
+  margin-left: 45px;
+  height: auto;
   max-width: none;
 }
 

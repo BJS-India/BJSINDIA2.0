@@ -108,7 +108,7 @@ export const aboutAssets = {
   "img2717102018SocialWorkerShantilalMutthaWinsTheAhimsaAward20181": "/assets/9eddc.svg",
   "imgEllipse55": "/assets/b490b.svg",
   "imgLine29": "/assets/f279a.svg",
-  "imgLine22": "/assets/3eeaf.svg",
+  "imgLine22": "/assets/aboutUs/how-we-work-connector.png",
   "imgLine23": "/assets/e4685.svg",
   "imgEllipse39": "/assets/cff7e.svg",
   "imgGroup5999": "/assets/f1646.svg",

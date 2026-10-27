@@ -31,3 +31,4 @@
     letter-spacing: 1px
 }
 .about-banner h1{left:0;right:0;width:100%;text-align:center}
+.about-banner:after{display:none}

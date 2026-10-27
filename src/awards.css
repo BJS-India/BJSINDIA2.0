@@ -6,3 +6,6 @@
 @media(max-width:600px) {
   .sp-award-track > article > .sp-award-photo { height:255px; }
 }
+@media(min-width:951px) {
+  .sp-award-track > article > .sp-award-photo { height:210px; }
+}

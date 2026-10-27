@@ -10,9 +10,9 @@ import './review-corrections.css';
 import './impact-tabs.css';
 import './awards.css';
 
-function Action({ href, children, filled = false, arrow = true, onClick }) {
+function Action({ href, children, filled = false, arrow = true, onClick, ariaLabel }) {
   const content = <>{children}{arrow && <img className="sp-action-arrow" src={filled ? L.imgGroup6001 : L.imgGroup5998} alt="" />}</>;
-  return href ? <a className={`sp-action ${filled ? 'filled' : ''}`} href={href}>{content}</a> : <button className={`sp-action ${filled ? 'filled' : ''}`} onClick={onClick}>{content}</button>;
+  return href ? <a className={`sp-action ${filled ? 'filled' : ''}`} href={href} aria-label={ariaLabel}>{content}</a> : <button className={`sp-action ${filled ? 'filled' : ''}`} onClick={onClick} aria-label={ariaLabel}>{content}</button>;
 }
 function Kicker({ children }) { return <p className="sp-kicker"><img src={L.imgLine1} alt="" />{children}</p>; }
 function Arrows({ previous, next, small = false, previousDisabled = false, nextDisabled = false }) {
@@ -131,7 +131,7 @@ function Hero() {
           </h1>
 
           <p>
-            For over 42 years, BJS has been empowering individuals, strengthening families, and 
+            For over 42 years, BJS has been empowering individuals, strengthening families, and
             uniting communities turning vision into collective action for a stronger nation.
           </p>
 
@@ -267,10 +267,10 @@ function Programs() {
 }
 
 function Impact() {
-  return <ImpactSection><Kicker>Our Impact</Kicker><h2>Change Where <br /> It Matters Most</h2><p style={{maxWidth:"85%"}}>Addressing diverse challenges through practical solutions and collective action for people, communities and the nation.</p><Action href="/our-work">Explore Our Impact</Action></ImpactSection>;
+  return <ImpactSection><Kicker>Our Impact</Kicker><h2>Change Where <br /> It Matters Most</h2><p style={{ maxWidth: "85%" }}>Addressing diverse challenges through practical solutions and collective action for people, communities and the nation.</p><Action href="/our-work">Explore Our Impact</Action></ImpactSection>;
 }
 
-export function ApprovedStats({ compact = false }) { const stats = compact ? [['12+', 'States'], ['170+', 'Districts'], ['500+', 'Chapters'], ['40K+', 'Volunteers']] : [['12+', 'States'], ['170+', 'Districts'], ['500+', 'Chapters'], ['40+', 'Years Of BJS'], ['5K+', 'Office Bearers'], ['40K+', 'Volunteers']]; return <div className={`sp-stats ${compact ? 'compact' : ''}`}>{stats.map(([value, label], i) => <div className={i < 3 && !compact ? 'outlined' : 'raised'} key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>; }
+export function ApprovedStats({ compact = false }) { const stats = compact ? [['12+', 'States'], ['170+', 'Districts'], ['500+', 'Chapters'], ['40K+', 'Volunteers']] : [['12+', 'States'], ['170+', 'Districts'], ['500+', 'Chapters'], ['42+', 'Years Of BJS'], ['5K+', 'Office Bearers'], ['40K+', 'Volunteers']]; return <div className={`sp-stats ${compact ? 'compact' : ''}`}>{stats.map(([value, label], i) => <div className={i < 3 && !compact ? 'outlined' : 'raised'} key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>; }
 function PresenceCount({ value, suffix }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
@@ -305,7 +305,7 @@ function PresenceStats() {
   const stats = [[12, '+', 'States'], [170, '+', 'Districts'], [500, '+', 'Chapters'], [40, '+', 'Years Of BJS'], [5000, '+', 'Office Bearers'], [40000, '+', 'Volunteers']];
   return <div className="sp-stats">{stats.map(([value, suffix, label], i) => <div className={i < 3 ? 'outlined' : 'raised'} key={label}><PresenceCount value={value} suffix={suffix} /><span>{label}</span></div>)}</div>;
 }
-function Presence() { return <section className="sp-presence" id="get-involved"><img className="sp-presence-map" src={L.imgD4D674418D584E59B54C8Af56B24639D1} alt="" /><div className="sp-container"><div style={{alignSelf:"center"}}><Kicker>Our Presence</Kicker><h2>A Growing<br />Presence Across India</h2><p>Our network of volunteers and initiatives continues to expand, reaching more communities and creating a wider impact every year.</p><Action href="/about#presence">View Map</Action></div><PresenceStats /></div></section>; }
+function Presence() { return <section className="sp-presence" id="get-involved"><img className="sp-presence-map" src={L.imgD4D674418D584E59B54C8Af56B24639D1} alt="" /><div className="sp-container"><div style={{ alignSelf: "center" }}><Kicker>Our Presence</Kicker><h2>A Growing<br />Presence Across India</h2><p>Our network of volunteers and initiatives continues to expand, reaching more communities and creating a wider impact every year.</p><Action href="/about#presence">View Map</Action></div><PresenceStats /></div></section>; }
 function TestimonialVideoCard({ file, title, programme, isActive, onActivate }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -493,7 +493,7 @@ function Partners() {
   const logos = [
     ['/assets/Partners-Logo/credai.png', 'CREDAI'],
     ['/assets/Partners-Logo/unitedway.png', 'United Way'],
-    ['/assets/Partners-Logo/jaina.jpg', 'JAINA'],
+    ['/assets/Partners-Logo/jaina.png', 'JAINA'],
     ['/assets/Partners-Logo/tatatrusts.jpg', 'Tata Trusts'],
     ['/assets/Partners-Logo/bajaj.png', 'Bajaj'],
     ['/assets/Partners-Logo/forcemotors.png', 'Force Motors'],
@@ -546,12 +546,9 @@ export function ApprovedAbout() {
       <div className="sp-container">
         <h2>Who We Are</h2>
         <h3>Strengthening Communities. Supporting Families. Responding in Times of Need.</h3>
-        <p>Established in 1985, Bharatiya Jain Sanghatana (BJS) is a nonprofit organisation that develops practical, research-based solutions to pressing social and national challenges.</p>
-        <p>BJS began by mobilising communities against harmful social practices, including dowry and female foeticide. This early work grew into a mass movement for social reform.
-          Since 1993, BJS has also played a leading role in disaster relief and rehabilitation across India and neighbouring countries, supporting communities through natural disasters,
-          droughts and the COVID-19 pandemic. </p>
-
-        <p>Strengthening the family system remains central to BJS’s work. Through ongoing research and thoughtfully designed programmes,
+        <p>Established in 1985, Bharatiya Jain Sanghatana (BJS) is a nonprofit organisation that develops practical, research-based solutions to pressing social and national challenges. BJS began by mobilising communities against harmful social practices, including dowry and female foeticide. This early work grew into a mass movement for social reform.</p>
+        <p> Since 1993, BJS has also played a leading role in disaster relief and rehabilitation across India and neighbouring countries, supporting communities through natural disasters,
+          droughts and the COVID-19 pandemic. Strengthening the family system remains central to BJS’s work. Through ongoing research and thoughtfully designed programmes,
           BJS addresses emerging challenges around marriage and family life, helping individuals and families build stronger relationships and navigate social change.
         </p>
         <div className="sp-vision-mission" id="vision-mission">
@@ -625,8 +622,9 @@ export function ApprovedAbout() {
         <div className="sp-founder-copy">
           <h2>Founder</h2>
           <h3>Mr. Shantilal Muttha</h3>
-          <p>Mr. Shantilal Muttha was born on 15 August 1954 in the small village of Dongarkinhi. He graduated from BMCC College, Pune. While studying he had experienced social disparities and exploitation by the person of means which left a bad impression on his mind.</p>
-          <p>Subsequently, he started working with other NGOs and the Jain community. He was continually identifying the means of work for social causes due to unforeseen childhood. To look after the financial issue, he has established and flourished his business of real estate.</p>
+          <p>Social Reformer | Philanthropist | Humanitarian</p>
+          <p style={{ textAlign: "left", fontSize: "14px", lineHeight: "20px" }}>Shri Shantilal Muttha is an Indian social reformer and philanthropist dedicated to nation-building through social development. Born in Maharashtra in 1954, he founded the Bharatiya Jain Sanghatana (BJS) in 1985 to address social challenges through education, family development, and disaster rehabilitation.</p>
+          <p style={{ textAlign: "left", fontSize: "14px", lineHeight: "20px" }}>His initiatives include anti-dowry campaigns, mass marriages, educational reforms, and rehabilitation of children affected by the 1993 Latur earthquake through the Wagholi Educational and Rehabilitation Centre (WERC). Through the Shantilal Muttha Foundation, he continues to advance educational transformation and community development. His contributions have earned him over 40 national and international honours.</p>
           <Action href="mailto:info@bjsindia.org?subject=About%20Mr.%20Shantilal%20Muttha">
             Know more
           </Action>
@@ -638,12 +636,13 @@ export function ApprovedAbout() {
     </section>
     <section className="sp-people sp-container" id="leadership">
       <div className="sp-people-intro">
-        <h2>Our People</h2>
-        <p>The BJS Head Office serves as the central hub for planning, coordination and support, ensuring the effective implementation of our vision and mission.</p>
+        <h2>How We Work</h2>
+        <p>An organizational structure where top leadership drives strategic decision-making, with resources developed at the head office and disseminated nationwide through a network of volunteers.</p>
         <article className="sp-head-office" id="head-office">
           <img src={B.imgImage23} alt="BJS Head Office" />
           <h3>BJS Head Office</h3>
-          <Action href="#contact">Know more</Action>
+          <p style={{ textAlign: "left", fontSize: "16px", marginLeft: "15px" }}>A team of specialists that designs programmes, develops strategies, and drives implementation across the organisation.</p>
+          <Action href="#contact" ariaLabel="Contact BJS about the Head Office"></Action>
         </article>
       </div>
       <div className="sp-people-cards">
@@ -654,10 +653,10 @@ export function ApprovedAbout() {
           <img src={B.imgLine23} alt="" />
         </span>
         {[
-          ['Trust Board', B.imgImg202507181651581],
-          ['Founder President’s Office', B.imgScreenshot202608041615551],
-          ['Volunteer Network', B.img41]
-        ].map(([title, img], i) => <article
+          ['Trust Board', B.imgImg202507181651581, "The organisation’s highest decision-making body, providing strategic direction and overseeing key priorities."],
+          ['Founder President’s Office', B.imgScreenshot202608041615551, "The driving force behind BJS’s vision, guiding new initiatives and shaping the organisation’s future direction."],
+          ['Volunteer Network', B.img41, "A nationwide network of volunteers that connects BJS with communities and carries its programmes into action across regions."]
+        ].map(([title, img, description], i) => <article
           key={title}
           id={i === 0
             ? 'trust-board'
@@ -669,11 +668,14 @@ export function ApprovedAbout() {
             img src={img} alt={title} /></div>
           <div>
             <h3>{title}</h3>
+            <p style={{ textAlign: "left", fontSize: "16px" }}>{description}</p>
             <button
+              type="button"
               className="sp-person-more"
-              onClick={() => setExpanded(expanded === i ? null : i)} aria-expanded={expanded === i}
+              onClick={() => setExpanded(expanded === i ? null : i)}
+              aria-label={`${expanded === i ? 'Hide' : 'Show'} more about ${title}`}
+              aria-expanded={expanded === i}
             >
-              Know more
               <img
                 src={B[['imgGroup5999', 'imgGroup6000', 'imgGroup6001'][i]]}
                 alt=""
