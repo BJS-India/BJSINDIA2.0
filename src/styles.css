@@ -32,3 +32,13 @@
 }
 .about-banner h1{left:0;right:0;width:100%;text-align:center}
 .about-banner:after{display:none}
+
+/* Keep typography consistent across every page and embedded editor. */
+body,
+body * {
+  font-family: 'Inter Variable', sans-serif !important;
+}
+
+body :is(h1, h2, h3, h4, h5, h6) {
+  font-family: 'Manrope Variable', sans-serif !important;
+}
