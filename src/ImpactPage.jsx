@@ -42,17 +42,18 @@ export default function ImpactPage() {
   return <div className="impact-page">
     <section className="impact-hero">
       <div className="ip-container impact-hero-inner">
-        <div className="impact-hero-copy"><h1>Altering The<br/>Reality</h1><p>Lorem Ipsum Dolor Sit Amet, Consectetuer Adipiscing Elit. Aenean Commodo Ligula Eget Dolor. Aenean Massa. Cum Sociis Natoque I</p></div>
+        <div className="impact-hero-copy"><h1>Driving Change
+<br/>At Scale</h1><p>Behind every number is a life touched, a community strengthened, and a step towards lasting change.</p></div>
         <div className="impact-orbit" aria-hidden="true"><img src={impactHeroArtwork} alt="" /></div>
       </div>
     </section>
 
     <section className="ip-stats ip-container" aria-label="Impact at a glance">
       {[
-        ['14,374+', 'Lorem Ipsum'],
-        ['14,374+', 'Lorem Ipsum'],
-        ['14,374+', 'Lorem Ipsum'],
-        ['14,374+', 'Lorem Ipsum'],
+        ['14,374+', 'Water bodies revitalised '],
+        ['265,668+', 'Smiles Recovered'],
+        ['814,831+', 'Girls Empowered'],
+        ['4,227+', 'Children Rehabilitated'],
       ].map(([value,label], i)=><article className="ip-stat" key={i}><strong>{value}</strong><span>{label}</span></article>)}
     </section>
 
