@@ -1738,7 +1738,56 @@
     max-width: none;
     left: -20.77%;
     top: 0;
-    object-fit: cover
+    object-fit: cover;
+}
+
+@media (min-width: 1600px) {
+    .sp-founder {
+        position: relative;
+        display: block;
+        min-height: 0;
+    }
+
+    .sp-founder .sp-founder-inner {
+        display: block;
+        width: min(1244px, calc(100% - 120px));
+        max-width: 1244px;
+        min-height: max(589px, min(45vw, 856px));
+        margin-inline: auto;
+    }
+
+    .sp-founder .sp-founder-copy {
+        width: min(700px, 100%);
+        padding: 75px 0 !important;
+    }
+
+    .sp-founder .sp-founder-photo {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: min(45vw, 856px);
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    .sp-founder .sp-founder-photo img {
+        width: 160%;
+        height: 100%;
+        left: -30%;
+        object-fit: contain;
+    }
+}
+@media (min-width: 1280px) {
+    .sp-founder-photo {
+        aspect-ratio: 1;
+    }
+
+    .sp-founder-photo img {
+        width: 160%;
+        height: 90%;
+        left: -30%;
+        object-fit: contain;
+    }
 }
 
 .sp-people {

@@ -215,7 +215,7 @@ function Newsletter() {
 const programmes = [
   { title: 'Blue Roots', image: L.imgRectangle17, circle: L.imgEllipse1, icon: L.imgLayerX00201, copy: 'Reviving water bodies and strengthening regional water security.', theme: 'blue', crop: { width: '131.73%', height: '135.53%', left: '-10.08%', top: '-34.94%' } },
   { title: 'WERC', image: L.imgRectangle18, circle: L.imgEllipse2, icon: L.imgGroup6028, copy: 'Empowering children through educational rehabilitation and holistic development.', theme: 'gold', crop: { width: '136.33%', height: '118.34%', left: '-14.42%', top: '-0.13%' } },
-  { title: 'Disaster Response', image: L.imgRectangle19, circle: L.imgEllipse3, icon: '/assets/disaster-response-logo.png', copy: 'Delivering disaster relief and supporting long-term community recovery.', theme: 'pink', crop: { width: '108.23%', height: '105.58%', left: '-4.2%', top: '-3.05%' } },
+  { title: 'Disaster Response', image: L.imgRectangle19, circle: L.imgEllipse3, icon: '/assets/disaster-response-logo.svg', copy: 'Delivering disaster relief and supporting long-term community recovery.', theme: 'pink', crop: { width: '108.23%', height: '105.58%', left: '-4.2%', top: '-3.05%' } },
   { title: 'Manthan', image: L.imgRectangle20, circle: L.imgEllipse4, icon: '/assets/3a259.svg', copy: 'Encouraging social dialogue to address challenges and explore solutions', theme: 'peach', crop: { width: '165.05%', height: '143.26%', left: '-32.49%', top: '-17.35%' } },
   { title: 'Plastic Surgery', image: L.imgRectangle21, circle: L.imgEllipse5, icon: '/assets/fb768.svg', copy: 'Providing free plastic surgery to children from underserved communities.', theme: 'pink', crop: { width: '174.66%', height: '179.71%', left: '-37.3%', top: '-39.93%' } },
   { title: "Smart Girl", image: "/assets/53965.png", "circle": "/assets/73acf.svg", "icon": "/assets/16c29.svg", copy: "Equipping adolescent girls with life skills and confidence." },
@@ -641,7 +641,7 @@ export function ApprovedAbout() {
         <h2>How We Work</h2>
         <p>An organizational structure where top leadership drives strategic decision-making, with resources developed at the head office and disseminated nationwide through a network of volunteers.</p>
         <article className="sp-head-office" id="head-office">
-          <img src={B.imgImage23} alt="BJS Head Office" />
+          <img style={{width:"100%"}} src={B.imgImage23} alt="BJS Head Office" />
           <h3>BJS Head Office</h3>
           <p style={{ textAlign: "left", fontSize: "16px", marginLeft: "15px" }}>A team of specialists that designs programmes, develops strategies, and drives implementation across the organisation.</p>
           <Action href="#contact" ariaLabel="Contact BJS about the Head Office"></Action>
@@ -666,8 +666,9 @@ export function ApprovedAbout() {
               ? 'volunteer-network'
               : undefined}
           className={`sp-person-card person-${i}`}>
-          <div className="sp-person-photo"><
-            img src={img} alt={title} /></div>
+          <div className="sp-person-photo">
+            <img src={img} alt={title} />
+            </div>
           <div>
             <h3>{title}</h3>
             <p style={{ textAlign: "left", fontSize: "16px" }}>{description}</p>

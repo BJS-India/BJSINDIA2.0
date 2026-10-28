@@ -524,7 +524,7 @@ header.header.is-scrolled .logo {
 
 .sp-founder-inner {
   display: grid;
-  grid-template-columns: 793fr 647fr;
+  grid-template-columns: 700fr 647fr;
   width: 100%;
   min-height: 589px;
   margin-inline: auto;
@@ -1172,5 +1172,109 @@ header.header.is-scrolled .logo {
 @media (max-width: 599px) {
   .sp-testimonial-track>.sp-testimonial-card {
     flex: 0 0 85vw;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 950px) {
+  .sp-people {
+    width: min(1244px, calc(100% - 120px));
+    min-height: 0;
+    grid-template-columns: minmax(0, 30fr) minmax(0, 65fr);
+    column-gap: 5%;
+    align-items: stretch;
+    margin-inline: auto;
+    padding-block: 20px;
+  }
+
+  .sp-people h2 {
+    font-size: 34px;
+    white-space: nowrap;
+  }
+
+  .sp-people-intro>p {
+    max-width: none;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .sp-people .sp-head-office {
+    width: 100%;
+    padding: 14px;
+    margin-top: auto;
+  }
+
+  .sp-people .sp-head-office>img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.74;
+  }
+
+  .sp-people .sp-head-office h3 {
+    font-size: 21px;
+  }
+
+  .sp-people .sp-head-office>p {
+    font-size: 14px !important;
+    line-height: 1.3;
+    margin-left: 0 !important;
+    padding-right: 40px;
+  }
+
+  .sp-people .sp-people-cards {
+    align-content: start;
+    gap: 42px;
+  }
+
+  .sp-person-card {
+    grid-template-columns: 30% minmax(0, 1fr);
+    height: 156px;
+    min-height: 156px;
+    gap: 16px;
+    padding: 0 50px 0 0;
+  }
+
+  .sp-person-photo {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    align-self: stretch;
+    aspect-ratio: auto;
+    border-radius: 19px 0 0 19px;
+  }
+
+  .sp-person-card h3 {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.2;
+  }
+
+  .sp-person-card>div:last-child {
+    padding-right: 0;
+  }
+
+  .sp-person-card p {
+    margin: 5px 0 0;
+    font-size: 13px !important;
+    line-height: 1.35;
+  }
+
+  .sp-person-more {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    transform: translateY(-50%);
+  }
+
+  .sp-people .sp-people-cards>.sp-people-line-horizontal,
+  .sp-people .sp-people-cards>.sp-people-line-vertical {
+    display: block;
+  }
+
+  .sp-people .sp-people-line-vertical {
+    left: 50%;
+    height: 358px;
   }
 }
