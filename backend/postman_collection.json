@@ -1,0 +1,368 @@
+{
+  "info": {
+    "_postman_id": "bjs-program-management-api",
+    "name": "BJS Program Management API",
+    "description": "Comprehensive Postman collection for the BJS Program Management MERN Stack Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api",
+      "type": "string"
+    },
+    {
+      "key": "basketId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "secondaryBasketId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "programId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Baskets",
+      "item": [
+        {
+          "name": "Create Basket (Pratibimb)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pratibimb\",\n  \"slug\": \"pratibimb\",\n  \"tagline\": \"Inception Programs\",\n  \"description\": \"Initiatives designed to trigger reflection and early awareness across communities.\",\n  \"logo\": {\n    \"url\": \"https://example.org/logos/pratibimb.svg\",\n    \"key\": \"pratibimb-logo\"\n  },\n  \"displayOrder\": 1,\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/baskets",
+              "host": ["{{baseUrl}}"],
+              "path": ["baskets"]
+            }
+          }
+        },
+        {
+          "name": "Create Basket (Pravah - for move test)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pravah\",\n  \"slug\": \"pravah\",\n  \"tagline\": \"Infusion Programs\",\n  \"description\": \"Continuous community engagement and youth life-skills programs.\",\n  \"logo\": {\n    \"url\": \"https://example.org/logos/pravah.svg\",\n    \"key\": \"pravah-logo\"\n  },\n  \"displayOrder\": 2,\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/baskets",
+              "host": ["{{baseUrl}}"],
+              "path": ["baskets"]
+            }
+          }
+        },
+        {
+          "name": "Get All Baskets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/baskets?includePrograms=true&sortBy=displayOrder&sortOrder=asc",
+              "host": ["{{baseUrl}}"],
+              "path": ["baskets"],
+              "query": [
+                {
+                  "key": "includePrograms",
+                  "value": "true"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "displayOrder"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "asc"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Basket by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/baskets/{{basketId}}?includePrograms=true",
+              "host": ["{{baseUrl}}"],
+              "path": ["baskets", "{{basketId}}"],
+              "query": [
+                {
+                  "key": "includePrograms",
+                  "value": "true"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Basket",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Updated description: Inception and seed programs sparking long-term change.\",\n  \"tagline\": \"Catalysts of Social Awakening\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/baskets/{{basketId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["baskets", "{{basketId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Basket (Soft Delete)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/baskets/{{basketId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["baskets", "{{basketId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Programs",
+      "item": [
+        {
+          "name": "Create Program",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"basketId\": \"{{basketId}}\",\n  \"name\": \"Smart Girl\",\n  \"slug\": \"smart-girl\",\n  \"shortDescription\": \"Life skills and empowerment for adolescent girls\",\n  \"description\": \"An experiential, activity-based 2-day workshop empowering young girls with self-awareness, decision making and emotional strength.\",\n  \"thumbnail\": {\n    \"url\": \"https://example.org/images/smart-girl.png\",\n    \"key\": \"smart-girl-thumb\"\n  },\n  \"displayOrder\": 1,\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/programs",
+              "host": ["{{baseUrl}}"],
+              "path": ["programs"]
+            }
+          }
+        },
+        {
+          "name": "Get All Programs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/programs?includeContent=true",
+              "host": ["{{baseUrl}}"],
+              "path": ["programs"],
+              "query": [
+                {
+                  "key": "includeContent",
+                  "value": "true"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Program by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/programs/{{programId}}?includeContent=true",
+              "host": ["{{baseUrl}}"],
+              "path": ["programs", "{{programId}}"],
+              "query": [
+                {
+                  "key": "includeContent",
+                  "value": "true"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Programs by Basket",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/baskets/{{basketId}}/programs",
+              "host": ["{{baseUrl}}"],
+              "path": ["baskets", "{{basketId}}", "programs"]
+            }
+          }
+        },
+        {
+          "name": "Update Program",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shortDescription\": \"Comprehensive life-skills and confidence workshop for girls aged 13-18\",\n  \"displayOrder\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/programs/{{programId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["programs", "{{programId}}"]
+            }
+          }
+        },
+        {
+          "name": "Move Program to Another Basket",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"basketId\": \"{{secondaryBasketId}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/programs/{{programId}}/move",
+              "host": ["{{baseUrl}}"],
+              "path": ["programs", "{{programId}}", "move"]
+            }
+          }
+        },
+        {
+          "name": "Delete Program (Soft Delete)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/programs/{{programId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["programs", "{{programId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Program Contents",
+      "item": [
+        {
+          "name": "Create Program Content",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"programId\": \"{{programId}}\",\n  \"overview\": \"Smart Girl equips young girls with essential life skills, emotional resilience, self-defence awareness, and communication skills.\",\n  \"objectives\": [\n    \"Foster self-worth and positive self-image\",\n    \"Equip girls with critical decision-making abilities\",\n    \"Promote open dialogue between parents and adolescents\"\n  ],\n  \"targetAudience\": [\n    \"Girls aged 13 to 18 years\",\n    \"Parents and educators\"\n  ],\n  \"duration\": \"2 Days (16 hours total)\",\n  \"modules\": [\n    {\n      \"title\": \"Self-Awareness & Self-Esteem\",\n      \"description\": \"Understanding personal strengths and emotional identity.\",\n      \"displayOrder\": 1,\n      \"topics\": [\"Identity Discovery\", \"Overcoming Insecurities\", \"Positive Body Image\"]\n    },\n    {\n      \"title\": \"Communication & Interpersonal Relations\",\n      \"description\": \"Building empathetic relationships and expressing feelings constructively.\",\n      \"displayOrder\": 2,\n      \"topics\": [\"Effective Listening\", \"Saying No with Respect\", \"Parent-Child Bridge\"]\n    }\n  ],\n  \"resources\": [\n    {\n      \"title\": \"Smart Girl Participant Handbook\",\n      \"description\": \"Guidebook containing exercises and reflective worksheets\",\n      \"type\": \"document\",\n      \"url\": \"https://example.org/resources/smart-girl-handbook.pdf\"\n    },\n    {\n      \"title\": \"Introduction Video\",\n      \"description\": \"Overview video highlighting key themes\",\n      \"type\": \"video\",\n      \"url\": \"https://example.org/videos/smart-girl-intro.mp4\"\n    }\n  ],\n  \"additionalInformation\": {\n    \"certificationProvided\": true,\n    \"trainers\": \"Certified Master Trainers\",\n    \"nationalImpactCount\": 814831\n  },\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/program-contents",
+              "host": ["{{baseUrl}}"],
+              "path": ["program-contents"]
+            }
+          }
+        },
+        {
+          "name": "Get Content by Program ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/program-contents/{{programId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["program-contents", "{{programId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Program Content",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"duration\": \"2.5 Days (20 hours total)\",\n  \"objectives\": [\n    \"Foster self-worth and positive self-image\",\n    \"Equip girls with critical decision-making abilities\",\n    \"Promote open dialogue between parents and adolescents\",\n    \"Instill digital safety habits in online environments\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/program-contents/{{programId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["program-contents", "{{programId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Program Content (Soft Delete)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/program-contents/{{programId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["program-contents", "{{programId}}"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+

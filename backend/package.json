@@ -1,0 +1,20 @@
+{
+  "name": "bjs-program-management-backend",
+  "version": "1.0.0",
+  "description": "Program Management Backend for BJS India using MERN stack",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test-api.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

@@ -1,6 +1,22 @@
+# Dependencies
 node_modules/
+*/node_modules/
+
+# Production build outputs
 dist/
-.env.local
+*/dist/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs and test artifacts
+*.log
 artifacts/
 .dev-logs/
-.vercel
+.vercel/
+
+# System files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,844 @@
+/* ========================================================
+   Program Directory - BJS Style System
+   ======================================================== */
+
+.bjs-programs-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: inherit;
+  padding: 40px 0 80px 0;
+  box-sizing: border-box;
+}
+
+.bjs-pd-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+/* ========================================================
+   1. TOP BASKET ROW (5 Cards)
+   ======================================================== */
+
+.bjs-pd-baskets-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.bjs-basket-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px 16px 20px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  outline: none;
+  overflow: hidden;
+}
+
+.bjs-basket-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Top accent bar for inactive cards */
+.bjs-basket-top-bar {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 6px;
+  border-radius: 0 0 4px 4px;
+}
+
+.bjs-basket-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.bjs-basket-card-subtitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+/* Active Selected Basket Card */
+.bjs-basket-card.is-selected {
+  transform: translateY(-2px);
+}
+
+.bjs-basket-card.is-selected .bjs-basket-card-title {
+  color: #ffffff !important;
+}
+
+.bjs-basket-card.is-selected .bjs-basket-card-subtitle {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ========================================================
+   2. SELECTED BASKET DETAILS
+   ======================================================== */
+
+.bjs-pd-basket-details {
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto 36px auto;
+}
+
+.bjs-basket-details-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.02em;
+}
+
+.bjs-basket-details-tagline {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+}
+
+.bjs-basket-details-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+  margin: 0 auto;
+}
+
+/* Category cards for Prarabdh (Foundation Programs) */
+.bjs-prarabdh-categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 32px;
+  text-align: left;
+}
+
+.bjs-cat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-top-width: 4px;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.bjs-cat-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+}
+
+.bjs-cat-subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.bjs-cat-text {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #64748b;
+  margin: 0;
+}
+
+/* ========================================================
+   3. HORIZONTAL PROGRAM PILLS CAROUSEL
+   ======================================================== */
+
+.bjs-pd-programs-carousel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  padding: 4px 0;
+}
+
+.bjs-pill-nav-btn {
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.bjs-pill-nav-btn:hover {
+  color: #0f172a;
+  background: #f1f5f9;
+}
+
+.bjs-pills-track {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex: 1;
+  padding: 6px 2px;
+}
+
+.bjs-pills-track::-webkit-scrollbar {
+  display: none;
+}
+
+.bjs-program-pill {
+  white-space: nowrap;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  flex-shrink: 0;
+}
+
+.bjs-program-pill:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.bjs-program-pill.is-active {
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ========================================================
+   4. SELECTED PROGRAM DETAILS & 2X2 GALLERY
+   ======================================================== */
+
+.bjs-pd-program-section {
+  margin-bottom: 60px;
+}
+
+/* Program Header (Icon + Title) */
+.bjs-prog-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.bjs-prog-icon-card {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.bjs-prog-icon-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.bjs-prog-title-wrap {
+  flex: 1;
+}
+
+.bjs-prog-main-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.01em;
+}
+
+.bjs-prog-main-tagline {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Two-Column Grid */
+.bjs-prog-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+/* Left Column: Details Box */
+.bjs-prog-details-box {
+  border: 1.5px solid;
+  border-radius: 18px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bjs-details-box-heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 14px 0;
+}
+
+.bjs-details-box-desc {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #334155;
+  margin: 0 0 20px 0;
+}
+
+.bjs-details-modules {
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.bjs-modules-heading {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 10px 0;
+}
+
+.bjs-modules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bjs-modules-list li {
+  font-size: 13.5px;
+  color: #334155;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 16px;
+}
+
+.bjs-modules-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  font-size: 18px;
+  line-height: 1;
+  top: 1px;
+}
+
+.bjs-details-action {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.bjs-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bjs-explore-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+}
+
+/* Right Column: 2x2 Gallery Grid */
+.bjs-prog-gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  min-height: 380px;
+}
+
+.bjs-gallery-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bjs-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bjs-gallery-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #f1f5f9;
+}
+
+/* ========================================================
+   5. IMPACT SECTION
+   ======================================================== */
+
+.bjs-pd-impact-section {
+  margin-top: 56px;
+  text-align: center;
+}
+
+.bjs-impact-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 32px 0;
+  letter-spacing: -0.01em;
+}
+
+.bjs-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.bjs-impact-card {
+  border: 1px solid;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+.bjs-impact-card:hover {
+  transform: translateY(-2px);
+}
+
+.bjs-impact-card-body {
+  padding: 24px 20px 16px 20px;
+}
+
+.bjs-impact-value {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.bjs-impact-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  line-height: 1.3;
+}
+
+.bjs-impact-photo-wrap {
+  width: 100%;
+  height: 130px;
+  overflow: hidden;
+}
+
+.bjs-impact-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ========================================================
+   6. FULL PROGRAM DETAIL MODAL
+   ======================================================== */
+
+.bjs-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: bjsFadeIn 0.2s ease-out;
+}
+
+.bjs-modal-card {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: bjsScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bjs-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: none;
+  font-size: 16px;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.bjs-modal-close:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.bjs-modal-header {
+  padding: 28px 32px 20px 32px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.bjs-modal-badge {
+  display: inline-block;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-bottom: 10px;
+}
+
+.bjs-modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+}
+
+.bjs-modal-subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.bjs-modal-content {
+  padding: 24px 32px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.bjs-modal-section {
+  margin-bottom: 24px;
+}
+
+.bjs-modal-section h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 10px 0;
+}
+
+.bjs-modal-section p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #334155;
+  margin: 0;
+}
+
+.bjs-objectives-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bjs-objectives-list li {
+  font-size: 14px;
+  color: #334155;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.bjs-check {
+  font-weight: 800;
+}
+
+.bjs-modal-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.bjs-meta-item h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.05em;
+}
+
+.bjs-meta-item p {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+}
+
+.bjs-audience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bjs-audience-tag {
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+
+.bjs-modules-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bjs-mod-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 18px;
+  background: #ffffff;
+}
+
+.bjs-mod-title {
+  font-size: 14.5px;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.bjs-mod-desc {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0 0 8px 0;
+}
+
+.bjs-mod-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bjs-topic-pill {
+  font-size: 12.5px;
+  color: #475569;
+}
+
+.bjs-resources-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.bjs-resource-card {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.bjs-res-type {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.bjs-resource-card h5 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+}
+
+.bjs-resource-card p {
+  font-size: 12.5px;
+  color: #64748b;
+  margin: 0 0 8px 0;
+}
+
+.bjs-res-link {
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.bjs-modal-footer {
+  padding: 18px 32px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bjs-modal-done-btn {
+  color: #ffffff;
+  border: none;
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ========================================================
+   LOADING & ERROR STATES
+   ======================================================== */
+
+.bjs-pd-loading,
+.bjs-pd-error,
+.bjs-modal-loading {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.bjs-pd-spinner {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 4px solid;
+  animation: bjsSpin 0.8s linear infinite;
+  margin: 0 auto 16px auto;
+}
+
+.bjs-pd-retry-btn {
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ========================================================
+   ANIMATIONS & MEDIA QUERIES
+   ======================================================== */
+
+@keyframes bjsSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bjsFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bjsScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 1024px) {
+  .bjs-pd-baskets-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .bjs-prog-grid {
+    grid-template-columns: 1fr;
+  }
+  .bjs-impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .bjs-pd-baskets-row {
+    grid-template-columns: 1fr;
+  }
+  .bjs-prarabdh-categories {
+    grid-template-columns: 1fr;
+  }
+  .bjs-impact-grid {
+    grid-template-columns: 1fr;
+  }
+  .bjs-prog-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .bjs-modal-meta-grid {
+    grid-template-columns: 1fr;
+  }
+  .bjs-resources-grid {
+    grid-template-columns: 1fr;
+  }
+}
